@@ -1,0 +1,1344 @@
+/* =====================================================================
+   LENS & LEAF PHOTOGRAPHY STUDIO — LUXURY EDITORIAL DESIGN SYSTEM
+   Official 7 Brand Colors from the Logo:
+   - Soft Blush Pink — #FAD6D2 (soft sections, cards, delicate washes)
+   - Rose Pink — #F7A1A7 (subtle accents, floral highlights)
+   - Coral Red — #E94B50 (important buttons, highlights, primary CTAs)
+   - Warm Orange — #F28C28 (subtle decorative accents, warm glows)
+   - Cream / Peach — #FFF0E7 (primary backgrounds, ivory canvas)
+   - Deep Black — #17110F (headings, readable typography, dark luxury panels)
+   - Silver Grey — #A6A6A6 (borders, dividers, secondary metadata)
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* The Official 7 Brand Colors */
+  --color-blush-pink: #FAD6D2;
+  --color-rose-pink: #F7A1A7;
+  --color-coral-red: #E94B50;
+  --color-warm-orange: #F28C28;
+  --color-cream-peach: #FFF0E7;
+  --color-deep-black: #17110F;
+  --color-silver-grey: #A6A6A6;
+
+  /* Harmonious Tonal Extensions */
+  --bg-canvas: #FFF0E7;             /* Cream / Peach primary canvas */
+  --bg-surface: #FFFFFF;            /* Pure white clean cards */
+  --bg-blush: #FAD6D2;              /* Soft blush pink sections */
+  --bg-blush-soft: rgba(250, 214, 210, 0.45);
+  --bg-dark-panel: #17110F;         /* Deep black luxury editorial sections */
+  --bg-dark-card: #201715;
+
+  /* Typography Colors */
+  --text-title: #17110F;            /* Deep black readable headings */
+  --text-body: #3A2F2D;             /* Deep muted black for body legibility */
+  --text-muted: #7A6F6C;            /* Secondary text */
+  --text-light: #A6A6A6;            /* Silver grey secondary metadata */
+  --text-white: #FFFFFF;
+  --text-coral: #E94B50;
+  --text-orange: #F28C28;
+
+  /* Borders & Dividers */
+  --border-silver: #A6A6A6;
+  --border-subtle: rgba(166, 166, 166, 0.35);
+  --border-soft-coral: rgba(233, 75, 80, 0.3);
+  --border-blush: rgba(250, 214, 210, 0.8);
+
+  /* Gradients */
+  --gradient-coral-orange: linear-gradient(135deg, #E94B50 0%, #F28C28 100%);
+  --gradient-blush-cream: linear-gradient(180deg, #FFF0E7 0%, #FAD6D2 100%);
+  --gradient-hero-overlay: linear-gradient(180deg, rgba(23, 17, 15, 0.75) 0%, rgba(23, 17, 15, 0.42) 50%, rgba(23, 17, 15, 0.94) 100%);
+  --gradient-dark-card: linear-gradient(145deg, #221816 0%, #17110F 100%);
+  --gradient-rose-gold: linear-gradient(135deg, #F7A1A7 0%, #E94B50 50%, #F28C28 100%);
+
+  /* Shadows */
+  --shadow-subtle: 0 4px 20px rgba(23, 17, 15, 0.05);
+  --shadow-card: 0 10px 30px rgba(23, 17, 15, 0.08);
+  --shadow-hover: 0 20px 48px rgba(23, 17, 15, 0.14);
+  --shadow-coral-hover: 0 10px 28px rgba(233, 75, 80, 0.4);
+  --shadow-rose-glow: 0 0 35px rgba(247, 161, 167, 0.35);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease-in-out;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-body);
+  line-height: 1.68;
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #17110F;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-coral-red), var(--color-warm-orange));
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-coral-red);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--text-title);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* =====================================================================
+   PAGE ENTRANCE ANIMATIONS & REVEALS
+   ===================================================================== */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: pageFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Text Shimmer Effect */
+@keyframes textShimmerWave {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #F7A1A7 0%,
+    #FFF0E7 25%,
+    #E94B50 50%,
+    #F28C28 75%,
+    #F7A1A7 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textShimmerWave 7s linear infinite;
+  display: inline-block;
+}
+
+/* Water Ripple Animation (Inspired by the Logo Base) */
+@keyframes waterRipple {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.water-ripple-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(250, 214, 210, 0.5);
+  pointer-events: none;
+  animation: waterRipple 3.5s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+
+.water-ripple-ring.delay-1 {
+  animation-delay: 1.2s;
+}
+
+.water-ripple-ring.delay-2 {
+  animation-delay: 2.4s;
+}
+
+/* Golden Teardrop Rim Glow */
+@keyframes teardropGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(242, 140, 40, 0.3)) drop-shadow(0 0 25px rgba(233, 75, 80, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(242, 140, 40, 0.55)) drop-shadow(0 0 35px rgba(247, 161, 167, 0.4));
+  }
+}
+
+.teardrop-glow {
+  animation: teardropGlow 4s ease-in-out infinite;
+}
+
+/* Gentle Lotus Leaf Breathing */
+@keyframes leafFloatMotion {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(3px) rotate(-1deg);
+  }
+}
+
+.animated-leaf {
+  animation: leafFloatMotion 6s ease-in-out infinite;
+}
+
+/* Camera Lens Aperture Ring Rotation */
+@keyframes apertureSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.aperture-spin {
+  animation: apertureSpin 30s linear infinite;
+}
+
+/* Soft Light Bloom Breathing */
+@keyframes lightBloomPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.18;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.32;
+  }
+}
+
+.light-bloom-pulse {
+  animation: lightBloomPulse 8s ease-in-out infinite;
+}
+
+/* =====================================================================
+   SIGNATURE BUTTONS & PILLS WITH REFINED MICRO-INTERACTIONS
+   ===================================================================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background-color: var(--color-coral-red);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.92rem 2.2rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(233, 75, 80, 0.35);
+  transition: var(--transition-smooth);
+  letter-spacing: 0.02em;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  transition: all 0.75s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover::after {
+  left: 130%;
+}
+
+.btn-primary:hover {
+  background-color: #D6373C;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-coral-hover);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background-color: transparent;
+  color: var(--color-deep-black);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.88rem 2.1rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-deep-black);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-deep-black);
+  color: #FFFFFF;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(23, 17, 15, 0.15);
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.88rem 2.1rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-outline-light:hover {
+  background-color: #FFFFFF;
+  color: var(--color-deep-black);
+  border-color: #FFFFFF;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+}
+
+/* Badges */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 1.15rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+  background-color: rgba(233, 75, 80, 0.1);
+  color: var(--color-coral-red);
+  border: 1px solid rgba(233, 75, 80, 0.25);
+  transition: var(--transition-fast);
+}
+
+.section-badge:hover {
+  border-color: var(--color-coral-red);
+  background-color: rgba(233, 75, 80, 0.16);
+}
+
+.section-badge.orange {
+  background-color: rgba(242, 140, 40, 0.12);
+  color: var(--color-warm-orange);
+  border-color: rgba(242, 140, 40, 0.3);
+}
+
+.section-badge.light {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Card Containers & Elevated Glassmorphism */
+.glass-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(166, 166, 166, 0.3);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(233, 75, 80, 0.4);
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  color: var(--text-title);
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+
+.section-subtitle {
+  font-size: 1.08rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+/* Image Hover Zoom Utility */
+.img-zoom-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-zoom-container img {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.img-zoom-container:hover img {
+  transform: scale(1.06);
+}
+
+/* Floating Bokeh / Petal Elements */
+@keyframes petalDrift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(120px, 600px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Reduced Motion Support (Requirement #11 & #17) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  .hide-on-tablet { display: none !important; }
+  .show-on-tablet { display: flex !important; }
+}
+
+@media (max-width: 640px) {
+  .hide-on-mobile { display: none !important; }
+}
+
+/* =====================================================================
+   LUXURY ADVANCED ANIMATIONS & MICRO-INTERACTIONS
+   ===================================================================== */
+
+/* Seamless Infinite Luxury Marquee */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  white-space: nowrap;
+  animation: marqueeScroll 26s linear infinite;
+  will-change: transform;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Slow Rotating Luxury Seal */
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotate-emblem {
+  animation: rotateSlow 24s linear infinite;
+  transform-origin: center center;
+}
+
+/* Scroll Reveal Utilities */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(3px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
+
+/* Luxury Card Sheen & Glow */
+.card-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-sheen::after {
+  content: '';
+  position: absolute;
+  top: -120%;
+  left: -120%;
+  width: 55%;
+  height: 350%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 100%
+  );
+  transform: rotate(35deg);
+  transition: all 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card-sheen:hover::after {
+  left: 220%;
+}
+
+/* Luxury Border Glow Card */
+.luxury-border-glow {
+  position: relative;
+  background: #201715;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(247, 161, 167, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.luxury-border-glow:hover {
+  border-color: rgba(233, 75, 80, 0.65);
+  box-shadow: 0 14px 40px rgba(233, 75, 80, 0.22), 0 0 25px rgba(242, 140, 40, 0.18);
+  transform: translateY(-5px);
+}
+
+/* Subtle Breathing Glow for Badges & Buttons */
+@keyframes pulseSubtle {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(233, 75, 80, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 8px rgba(233, 75, 80, 0);
+  }
+}
+
+.pulse-badge {
+  animation: pulseSubtle 3s infinite;
+}
+
+/* Camera Focus Brackets Animation */
+@keyframes focusBracketBlink {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.focus-bracket {
+  animation: focusBracketBlink 3.4s ease-in-out infinite;
+}
+
+/* Floating Elevation for Elements */
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
+.float-gentle {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+/* =====================================================================
+   CINEMATIC OPENING & IRIS APERTURE KEYFRAMES
+   ===================================================================== */
+@keyframes apertureIrisOpen {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 1;
+  }
+  65% {
+    clip-path: circle(42% at 50% 50%);
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(150% at 50% 50%);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes logoPetalUnfold {
+  0% {
+    stroke-dashoffset: 140;
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Clip-Path Reveals for Editorial Sections */
+@keyframes clipRevealLeft {
+  from {
+    clip-path: inset(0 100% 0 0 round 18px);
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 18px);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes clipRevealUp {
+  from {
+    clip-path: inset(100% 0 0 0 round 18px);
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 18px);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.clip-reveal-left.is-revealed {
+  animation: clipRevealLeft 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.clip-reveal-up.is-revealed {
+  animation: clipRevealUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered Word / Line Reveals for Typography */
+@keyframes wordFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(115%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.word-reveal-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 1.15;
+}
+
+.word-reveal-item {
+  display: inline-block;
+  animation: wordFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.word-delay-1 { animation-delay: 0.12s; }
+.word-delay-2 { animation-delay: 0.24s; }
+.word-delay-3 { animation-delay: 0.38s; }
+.word-delay-4 { animation-delay: 0.52s; }
+.word-delay-5 { animation-delay: 0.66s; }
+
+/* Animated Warm Orange Accent Line */
+.accent-line-expand {
+  display: block;
+  height: 2.5px;
+  width: 0;
+  background: linear-gradient(90deg, var(--color-warm-orange) 0%, var(--color-coral-red) 100%);
+  border-radius: 2px;
+  transition: width 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 0.6rem;
+}
+
+.is-revealed .accent-line-expand,
+.accent-line-expand.is-revealed {
+  width: 58px;
+}
+
+/* Lens Reflection / Optical Flare */
+@keyframes lensFlareSweep {
+  0%, 100% {
+    transform: translate(-10%, -10%) rotate(-12deg) scale(0.9);
+    opacity: 0.22;
+  }
+  50% {
+    transform: translate(8%, 10%) rotate(-4deg) scale(1.15);
+    opacity: 0.48;
+  }
+}
+
+.lens-flare-glow {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(242, 140, 40, 0.24) 0%, rgba(247, 161, 167, 0.14) 38%, transparent 72%);
+  filter: blur(55px);
+  animation: lensFlareSweep 11s ease-in-out infinite;
+}
+
+/* Magnetic Button Transition */
+.btn-magnetic {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+/* Refined Form Input States */
+.form-input-luxury {
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(166, 166, 166, 0.4);
+  background: #FFFFFF;
+  font-size: 0.95rem;
+  color: var(--text-title);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  outline: none;
+}
+
+.form-input-luxury:focus {
+  border-color: var(--color-coral-red);
+  box-shadow: 0 0 0 4px rgba(233, 75, 80, 0.16);
+  background-color: #FFFDFD;
+}
+
+.form-input-luxury.has-error {
+  border-color: #E94B50;
+  animation: inputShake 0.4s ease-in-out;
+}
+
+@keyframes inputShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+/* Page Transition Wrapper */
+@keyframes pageSlideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition-enter {
+  animation: pageSlideFadeIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+/* =====================================================================
+   CAMERA & OPTICAL LENS ZOOM IN / ZOOM OUT ANIMATIONS
+   ===================================================================== */
+@keyframes cameraZoomBreathe {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.12) translate(-0.8%, -0.8%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.camera-zoom-bg {
+  animation: cameraZoomBreathe 18s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+/* Optical Aperture Blades Rotation with Zoom Expansion */
+@keyframes apertureBladeZoom {
+  0% {
+    transform: rotate(0deg) scale(0.96);
+  }
+  50% {
+    transform: rotate(24deg) scale(1.08);
+  }
+  100% {
+    transform: rotate(0deg) scale(0.96);
+  }
+}
+
+.aperture-blade-zoom {
+  animation: apertureBladeZoom 8s ease-in-out infinite;
+}
+
+/* Camera Autofocus Crosshair Pulse */
+@keyframes autofocusPulse {
+  0%, 100% {
+    opacity: 0.65;
+    transform: scale(1);
+    border-color: rgba(250, 214, 210, 0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+    border-color: var(--color-coral-red);
+    box-shadow: 0 0 16px rgba(233, 75, 80, 0.5);
+  }
+}
+
+.autofocus-reticle {
+  animation: autofocusPulse 2.8s ease-in-out infinite;
+}
+
+/* Lightest Pink & Lens Prism Sheen */
+@keyframes lensPrismSweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.lens-prism-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(250, 214, 210, 0.2) 0%,
+    rgba(247, 161, 167, 0.3) 25%,
+    rgba(242, 140, 40, 0.22) 50%,
+    rgba(233, 75, 80, 0.25) 75%,
+    rgba(250, 214, 210, 0.2) 100%
+  );
+  background-size: 300% 300%;
+  animation: lensPrismSweep 10s ease infinite;
+}
+
+/* =====================================================================
+   MULTIPLE RICH CARD ANIMATIONS (Requirement: Varied Card Animations)
+   ===================================================================== */
+
+/* 1. 3D Perspective Tilt Card with Specular Sheen */
+.card-anim-tilt {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+.card-anim-tilt:hover {
+  transform: translateY(-8px) rotateX(4deg) rotateY(-4deg) scale(1.02);
+  box-shadow: 0 22px 45px rgba(23, 17, 15, 0.25), 0 0 30px rgba(233, 75, 80, 0.2);
+}
+
+/* 2. Cinematic Lens Viewfinder / Aperture Reticle Focus */
+.card-anim-focus {
+  position: relative;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.card-anim-focus::before,
+.card-anim-focus::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid transparent;
+  pointer-events: none;
+  z-index: 5;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.card-anim-focus::before {
+  top: 14px;
+  left: 14px;
+  border-top-color: var(--color-coral-red);
+  border-left-color: var(--color-coral-red);
+  transform: translate(-8px, -8px);
+}
+
+.card-anim-focus::after {
+  bottom: 14px;
+  right: 14px;
+  border-bottom-color: var(--color-warm-orange);
+  border-right-color: var(--color-warm-orange);
+  transform: translate(8px, 8px);
+}
+
+.card-anim-focus:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 16px 36px rgba(233, 75, 80, 0.25);
+  border-color: rgba(233, 75, 80, 0.6) !important;
+}
+
+.card-anim-focus:hover::before,
+.card-anim-focus:hover::after {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* 3. Prismatic Rainbow / Sunset Edge Shimmer */
+.card-anim-prism {
+  position: relative;
+  border: 1px solid rgba(166, 166, 166, 0.25);
+  transition: all 0.4s ease;
+}
+
+.card-anim-prism::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--color-coral-red),
+    var(--color-warm-orange),
+    var(--color-rose-pink),
+    var(--color-blush-pink),
+    var(--color-coral-red)
+  );
+  background-size: 300% 300%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  animation: lensPrismSweep 6s ease infinite;
+}
+
+.card-anim-prism:hover {
+  transform: translateY(-7px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(242, 140, 40, 0.25);
+}
+
+.card-anim-prism:hover::before {
+  opacity: 1;
+}
+
+/* 4. Editorial Slide-Up Drawer Reveal */
+.card-anim-reveal {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-anim-reveal:hover {
+  transform: translateY(-9px);
+  box-shadow: 0 20px 48px rgba(23, 17, 15, 0.22);
+}
+
+.card-anim-reveal .card-reveal-drawer {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+/* 5. Floating Ambient Levitation */
+@keyframes cardFloatCycle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.card-anim-levitate {
+  animation: cardFloatCycle 5s ease-in-out infinite;
+  transition: box-shadow 0.4s ease;
+}
+
+.card-anim-levitate:hover {
+  animation-play-state: paused;
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(233, 75, 80, 0.3);
+}
+
+/* 6. Shutter Click Flash Simulation */
+@keyframes shutterFlash {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.card-anim-shutter {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-anim-shutter .shutter-flash-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FFFFFF;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.card-anim-shutter:active .shutter-flash-overlay {
+  animation: shutterFlash 0.35s ease-out;
+}
+
+/* =====================================================================
+   7. SJ STUDIOS STYLE: CINEMATIC STUDIO IMAGE CARD ANIMATION
+   Inspired by https://sjstudios.co.in/sj-dance-studio/
+   Features:
+   - Deep smooth scale zoom (1.14x) with contrast & lighting boost
+   - Ambient dark tint overlay with soft backdrop blur
+   - Centered spring lens icon reveal with bounce
+   - Bottom caption & badge slide-up staggered transition
+   - Illuminating coral border glow and elevated 3D shadow
+   ===================================================================== */
+.card-anim-cinema {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(166, 166, 166, 0.25);
+  transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              box-shadow 0.45s cubic-bezier(0.165, 0.84, 0.44, 1),
+              border-color 0.4s ease;
+  cursor: pointer;
+}
+
+.card-anim-cinema .cinema-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1),
+              filter 0.5s ease;
+  will-change: transform;
+}
+
+.card-anim-cinema:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(233, 75, 80, 0.7) !important;
+  box-shadow: 0 24px 55px rgba(23, 17, 15, 0.45), 
+              0 0 35px rgba(233, 75, 80, 0.25);
+}
+
+.card-anim-cinema:hover .cinema-img {
+  transform: scale(1.14);
+  filter: brightness(0.88) contrast(1.08) saturate(1.12);
+}
+
+/* Semi-transparent dark cinematic gradient overlay */
+.card-anim-cinema .cinema-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(23, 17, 15, 0.95) 0%,
+    rgba(23, 17, 15, 0.45) 50%,
+    rgba(23, 17, 15, 0.12) 100%
+  );
+  opacity: 0.35;
+  transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card-anim-cinema:hover .cinema-overlay {
+  opacity: 0.85;
+  backdrop-filter: blur(2px);
+}
+
+/* Centered Zoom/Camera Lens Spring Icon Reveal */
+.card-anim-cinema .cinema-center-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.3) rotate(-20deg);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(233, 75, 80, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(233, 75, 80, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  opacity: 0;
+  transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.card-anim-cinema:hover .cinema-center-icon {
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+/* Bottom Title & Details Slide-Up Reveal */
+.card-anim-cinema .cinema-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 3;
+  transform: translateY(12px);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  pointer-events: none;
+}
+
+.card-anim-cinema:hover .cinema-caption {
+  transform: translateY(0);
+}
+
+.card-anim-cinema .cinema-badge-reveal {
+  opacity: 0.85;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.card-anim-cinema:hover .cinema-badge-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================================
+   SJ DANCE STUDIO SPECIFIC SECTION ANIMATIONS
+   Direct replication from https://sjstudios.co.in/sj-dance-studio/
+   ===================================================================== */
+
+/* 1. SJ Dance Studio Feature Card (Dark sleek card, golden icon bounce, glowing border) */
+.sj-dance-studio-card {
+  position: relative;
+  background: #0D0A09;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 2.2rem 1.8rem;
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease,
+              background 0.4s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.sj-dance-studio-card .sj-card-icon {
+  color: var(--color-warm-orange);
+  margin-bottom: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.4s ease;
+}
+
+.sj-dance-studio-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--color-warm-orange);
+  background: linear-gradient(180deg, #1A1311 0%, #0D0A09 100%);
+  box-shadow: 0 16px 40px rgba(242, 140, 40, 0.22),
+              0 0 24px rgba(233, 75, 80, 0.18);
+}
+
+.sj-dance-studio-card:hover .sj-card-icon {
+  transform: scale(1.22) translateY(-3px);
+  filter: drop-shadow(0 0 12px rgba(242, 140, 40, 0.6));
+}
+
+/* 2. SJ Dance Studio Gallery Card (Smooth widescreen image zoom + glow + light reflection) */
+.sj-dance-gallery-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1),
+              border-color 0.4s ease,
+              box-shadow 0.45s ease;
+}
+
+.sj-dance-gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1),
+              filter 0.5s ease;
+  will-change: transform;
+}
+
+.sj-dance-gallery-card:hover {
+  transform: translateY(-7px) scale(1.02);
+  border-color: var(--color-coral-red);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6),
+              0 0 30px rgba(233, 75, 80, 0.3);
+}
+
+.sj-dance-gallery-card:hover img {
+  transform: scale(1.12);
+  filter: contrast(1.1) brightness(0.95);
+}
+
+.sj-dance-gallery-card .gallery-hover-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(23, 17, 15, 0) 0%,
+    rgba(23, 17, 15, 0.3) 50%,
+    rgba(23, 17, 15, 0.85) 100%
+  );
+  opacity: 0.3;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.sj-dance-gallery-card:hover .gallery-hover-veil {
+  opacity: 0.85;
+}
+
+.sj-dance-gallery-card .gallery-center-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(233, 75, 80, 0.9);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  box-shadow: 0 0 20px rgba(233, 75, 80, 0.6);
+  z-index: 3;
+}
+
+.sj-dance-gallery-card:hover .gallery-center-btn {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+
+
+
+
