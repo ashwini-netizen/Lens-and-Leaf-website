@@ -783,7 +783,7 @@ export default function Contact() {
               </div>
 
               <a
-                href="https://maps.google.com"
+                href="https://maps.google.com/?q=Mysore,+Karnataka,+India"
                 target="_blank"
                 rel="noreferrer"
                 className="btn-secondary btn-magnetic"
@@ -797,8 +797,8 @@ export default function Contact() {
             {/* Embedded Interactive Map Frame */}
             <div style={{ height: '380px', width: '100%', backgroundColor: '#E5E3DF' }}>
               <iframe
-                title="Lens & Leaf Studio Map Location"
-                src="https://maps.google.com/maps?q=New+York+Arts+Quarter&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                title="Lens & Leaf Studio Map Location - Mysore"
+                src="https://maps.google.com/maps?q=Mysore,+Karnataka,+India&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

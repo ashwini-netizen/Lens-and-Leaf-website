@@ -13,8 +13,8 @@ export const STUDIO_INFO = {
   phone: '+1 (212) 584-3320',
   phoneDisplay: '+1 (212) 584-3320',
   email: 'studio@lensandleaf.com',
-  address: '148 Rosewood Boulevard, Suite 400',
-  city: 'Metropolitan Arts Quarter, NY 10012',
+  address: '148 Rosewood Boulevard, Jayalakshmipuram',
+  city: 'Mysore, Karnataka 570012',
   whatsappNumber: '15558924377',
   hours: [
     { days: 'Monday – Friday', time: '09:00 AM – 07:00 PM' },
@@ -471,7 +471,7 @@ export const GALLERY_ITEMS = [
 export const STUDIO_EXPERIENCE_DATA = {
   intro: {
     headline: 'An Art-Directed Sanctuary for Light & Emotion',
-    description: 'Located in the heart of the Metropolitan Arts Quarter, the Lens & Leaf Studio is an intimate 2,400-square-foot sanctuary thoughtfully curated to put clients at ease. Designed with soaring 14-foot ceilings, north-facing frosted solarium glass, and sound-dampened acoustics, every square foot is optimized for pure photographic artistry.'
+    description: 'Located in the heart of Mysore, the Lens & Leaf Studio is an intimate 2,400-square-foot sanctuary thoughtfully curated to put clients at ease. Designed with soaring 14-foot ceilings, north-facing frosted solarium glass, and sound-dampened acoustics, every square foot is optimized for pure photographic artistry.'
   },
   gallery: [
     {

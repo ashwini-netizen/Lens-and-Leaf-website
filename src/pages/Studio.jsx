@@ -337,8 +337,8 @@ export default function Studio({ setActivePage }) {
                 },
                 {
                   icon: <MapPin size={32} />,
-                  title: 'Central Location in Arts Quarter',
-                  desc: 'Easily accessible with valet and private parking in the heart of the Metropolitan Arts Quarter.'
+                  title: 'Central Location in Mysore',
+                  desc: 'Easily accessible with valet and private parking in the heart of Mysore, Karnataka.'
                 }
               ].map((card, cIdx) => (
                 <div
