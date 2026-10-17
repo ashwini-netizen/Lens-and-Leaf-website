@@ -669,7 +669,7 @@ export default function Contact() {
                   {/* 3. Phone & Preferred Contact Method */}
                   <div>
                     <label style={{ display: 'block', fontSize: '0.84rem', fontWeight: 600, color: 'var(--text-title)', marginBottom: '0.4rem' }}>
-                      Phone / Mobile Number (Optional for WhatsApp updates)
+                      Phone / Mobile Number
                     </label>
                     <input
                       type="tel"
