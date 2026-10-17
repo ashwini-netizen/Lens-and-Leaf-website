@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { X, ChevronLeft, ChevronRight, Camera, MapPin, Eye, Info } from 'lucide-react';
 
 export default function Lightbox({ item, onClose, onPrev, onNext }) {
@@ -25,9 +26,9 @@ export default function Lightbox({ item, onClose, onPrev, onNext }) {
     }, 220);
   };
 
-  if (!item) return null;
+  if (!item || typeof document === 'undefined') return null;
 
-  return (
+  return createPortal(
     <div 
       role="dialog"
       aria-modal="true"
@@ -242,6 +243,7 @@ export default function Lightbox({ item, onClose, onPrev, onNext }) {
           <span style={{ color: 'var(--color-warm-orange)', fontWeight: 600 }}>{item.settings}</span>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

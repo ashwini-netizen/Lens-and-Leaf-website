@@ -833,8 +833,7 @@ button, input, select, textarea {
 }
 
 .page-transition-enter {
-  animation: pageSlideFadeIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: opacity, transform;
+  animation: pageSlideFadeIn 0.38s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* =====================================================================

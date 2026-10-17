@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   Camera, 
   Sun, 
@@ -477,7 +478,7 @@ export default function Studio({ setActivePage }) {
       </section>
 
       {/* Image Modal Lightbox */}
-      {selectedStudioImage && (
+      {selectedStudioImage && typeof document !== 'undefined' && createPortal(
         <div style={{
           position: 'fixed',
           top: 0,
@@ -486,7 +487,7 @@ export default function Studio({ setActivePage }) {
           bottom: 0,
           backgroundColor: 'rgba(23, 17, 15, 0.92)',
           backdropFilter: 'blur(12px)',
-          zIndex: 3500,
+          zIndex: 999999,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -519,7 +520,8 @@ export default function Studio({ setActivePage }) {
               <p style={{ color: '#F5EDE8', fontSize: '0.9rem' }}>{selectedStudioImage.description}</p>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Star, Sparkles, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function ReviewModal({ isOpen, onClose, onReviewSubmitted }) {
@@ -57,7 +58,9 @@ export default function ReviewModal({ isOpen, onClose, onReviewSubmitted }) {
     }
   };
 
-  return (
+  if (!isOpen || typeof document === 'undefined') return null;
+
+  return createPortal(
     <div style={{
       position: 'fixed',
       top: 0,
@@ -322,6 +325,7 @@ export default function ReviewModal({ isOpen, onClose, onReviewSubmitted }) {
           </>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
