@@ -17,6 +17,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { STUDIO_INFO, SERVICES_DATA } from '../data/siteData';
+import logoImg from '../assets/logo.png';
 
 export default function Navbar({ activePage, setActivePage, onSelectService }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -140,7 +141,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
               flexShrink: 0
             }}>
               <img 
-                src="/images/logo.png" 
+                src={logoImg} 
                 alt="Lens & Leaf Official Logo" 
                 style={{
                   width: '100%',
@@ -488,7 +489,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <img 
-                src="/images/logo.png" 
+                src={logoImg} 
                 alt="Lens & Leaf" 
                 style={{ width: '42px', height: '42px', borderRadius: '50%', backgroundColor: '#FFF' }}
               />

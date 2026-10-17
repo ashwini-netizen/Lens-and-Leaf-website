@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImg from '../assets/logo.png';
 
 export default function LuxuryEditorialSeal({ size = 110, light = false }) {
   const textColor = light ? '#FFF0E7' : '#17110F';
@@ -65,7 +66,7 @@ export default function LuxuryEditorialSeal({ size = 110, light = false }) {
         }}
       >
         <img
-          src="/images/logo.png"
+          src={logoImg}
           alt="Lens & Leaf Emblem"
           style={{
             width: '100%',

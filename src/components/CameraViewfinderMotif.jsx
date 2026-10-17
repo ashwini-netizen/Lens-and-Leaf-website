@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Camera, Sparkles } from 'lucide-react';
 import { playShutterSound } from '../utils/audio';
+import logoImg from '../assets/logo.png';
 
 export default function CameraViewfinderMotif({ size = 180, onTriggerShutter }) {
   const [isShutterActive, setIsShutterActive] = useState(false);
@@ -79,7 +80,7 @@ export default function CameraViewfinderMotif({ size = 180, onTriggerShutter }) 
         onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
       >
         <img
-          src="/images/logo.png"
+          src={logoImg}
           alt="Lens & Leaf Camera Lens Emblem"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />

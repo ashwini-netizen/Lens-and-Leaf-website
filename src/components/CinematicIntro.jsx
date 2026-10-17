@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import logoImg from '../assets/logo.png';
 
 export default function CinematicIntro({ onComplete }) {
   const [phase, setPhase] = useState('entering'); // 'entering' -> 'opening' -> 'done'
@@ -114,7 +115,7 @@ export default function CinematicIntro({ onComplete }) {
           }}
         >
           <img
-            src="/images/logo.png"
+            src={logoImg}
             alt="Lens & Leaf Official Identity"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />

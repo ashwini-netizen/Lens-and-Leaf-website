@@ -13,6 +13,7 @@ import {
 import { STUDIO_INFO } from '../data/siteData';
 import useScrollReveal from '../hooks/useScrollReveal';
 import LuxuryEditorialSeal from '../components/LuxuryEditorialSeal';
+import logoImg from '../assets/logo.png';
 
 export default function About({ setActivePage }) {
   useScrollReveal();
@@ -65,7 +66,7 @@ export default function About({ setActivePage }) {
               zIndex: 2,
               boxShadow: '0 6px 20px rgba(233, 75, 80, 0.3)'
             }}>
-              <img src="/images/logo.png" alt="Lens & Leaf Brand" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={logoImg} alt="Lens & Leaf Brand" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
           </div>
 

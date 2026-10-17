@@ -14,6 +14,7 @@ import {
   FileText
 } from 'lucide-react';
 import { STUDIO_INFO, SERVICES_DATA } from '../data/siteData';
+import logoImg from '../assets/logo.png';
 
 // Clean SVG social icons
 const InstagramIcon = () => (
@@ -103,7 +104,7 @@ export default function Footer({ setActivePage }) {
                 flexShrink: 0
               }}>
                 <img 
-                  src="/images/logo.png" 
+                  src={logoImg} 
                   alt="Lens & Leaf Official Brand Identity" 
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
