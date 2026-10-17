@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { STUDIO_EXPERIENCE_DATA, STUDIO_INFO } from '../data/siteData';
 import useScrollReveal from '../hooks/useScrollReveal';
+import lowKeyCharcoalImg from '../assets/lowkey-charcoal-set.jpg';
 
 export default function Studio({ setActivePage }) {
   useScrollReveal();
@@ -40,7 +41,7 @@ export default function Studio({ setActivePage }) {
     {
       title: 'Dramatic Low-Key Charcoal Set',
       discipline: 'High-Fashion, Editorial & Horology',
-      image: '/images/lowkey-charcoal-set.jpg',
+      image: lowKeyCharcoalImg,
       description: 'Deep black velvet sound-dampened set with directional grid snoots sculpting razor-sharp highlights and rich shadows.'
     },
     {
