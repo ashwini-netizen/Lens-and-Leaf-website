@@ -889,10 +889,23 @@ export default function Home({ setActivePage, onSelectService }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '2px'
+              clipPath: 'circle(50%)',
+              WebkitClipPath: 'circle(50%)'
             }}
           >
-            <img src={logoImg} alt="Lens & Leaf Brand" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img 
+              src={logoImg} 
+              alt="Lens & Leaf Brand" 
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                objectFit: 'cover',
+                borderRadius: '50%',
+                clipPath: 'circle(50%)',
+                WebkitClipPath: 'circle(50%)',
+                display: 'block'
+              }} 
+            />
           </div>
           <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', color: '#FFFFFF', marginBottom: '1rem' }}>
             Ready to Capture Your Unforgettable Story?

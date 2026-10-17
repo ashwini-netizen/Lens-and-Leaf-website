@@ -55,14 +55,15 @@ export default function LuxuryEditorialSeal({ size = 110, light = false }) {
           width: `${size * 0.44}px`,
           height: `${size * 0.44}px`,
           borderRadius: '50%',
-          backgroundColor: light ? 'rgba(255, 255, 255, 0.12)' : 'rgba(250, 214, 210, 0.55)',
+          backgroundColor: '#FFFFFF',
           border: `1.5px solid ${accentColor}`,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           boxShadow: '0 4px 15px rgba(233, 75, 80, 0.25)',
           overflow: 'hidden',
-          padding: '2px',
+          clipPath: 'circle(50%)',
+          WebkitClipPath: 'circle(50%)',
         }}
       >
         <img
@@ -72,6 +73,10 @@ export default function LuxuryEditorialSeal({ size = 110, light = false }) {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
+            borderRadius: '50%',
+            clipPath: 'circle(50%)',
+            WebkitClipPath: 'circle(50%)',
+            display: 'block',
           }}
         />
       </div>

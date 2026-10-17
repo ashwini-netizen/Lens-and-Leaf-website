@@ -82,7 +82,15 @@ export default function CameraViewfinderMotif({ size = 180, onTriggerShutter }) 
         <img
           src={logoImg}
           alt="Lens & Leaf Camera Lens Emblem"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: '50%',
+            clipPath: 'circle(50%)',
+            WebkitClipPath: 'circle(50%)',
+            display: 'block'
+          }}
         />
 
         {/* Shutter Blades Iris Flash Effect */}

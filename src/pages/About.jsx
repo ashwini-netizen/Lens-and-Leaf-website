@@ -66,7 +66,19 @@ export default function About({ setActivePage }) {
               zIndex: 2,
               boxShadow: '0 6px 20px rgba(233, 75, 80, 0.3)'
             }}>
-              <img src={logoImg} alt="Lens & Leaf Brand" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img 
+                src={logoImg} 
+                alt="Lens & Leaf Brand" 
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'cover',
+                  borderRadius: '50%',
+                  clipPath: 'circle(50%)',
+                  WebkitClipPath: 'circle(50%)',
+                  display: 'block'
+                }} 
+              />
             </div>
           </div>
 
