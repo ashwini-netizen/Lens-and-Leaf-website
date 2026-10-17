@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { X, ChevronLeft, ChevronRight, Camera, MapPin, Eye, Info } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Lightbox({ item, onClose, onPrev, onNext }) {
   const [isClosing, setIsClosing] = useState(false);
@@ -180,8 +180,8 @@ export default function Lightbox({ item, onClose, onPrev, onNext }) {
         {/* Photography Display */}
         <div style={{
           position: 'relative',
-          maxHeight: '74vh',
-          maxWidth: '85vw',
+          maxHeight: '78vh',
+          maxWidth: '88vw',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
@@ -190,8 +190,8 @@ export default function Lightbox({ item, onClose, onPrev, onNext }) {
             src={item.image}
             alt={item.title}
             style={{
-              maxHeight: '74vh',
-              maxWidth: '85vw',
+              maxHeight: '78vh',
+              maxWidth: '88vw',
               objectFit: 'contain',
               borderRadius: 'var(--radius-lg)',
               boxShadow: '0 24px 70px rgba(0, 0, 0, 0.75)',
@@ -201,48 +201,24 @@ export default function Lightbox({ item, onClose, onPrev, onNext }) {
         </div>
       </div>
 
-      {/* Metadata Bottom Bar */}
-      <div style={{
-        backgroundColor: '#1E1513',
-        borderTop: '1px solid rgba(250, 214, 210, 0.2)',
-        padding: '1.2rem 2.5rem',
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: '1.2rem',
-        color: '#E8DFE3',
-        fontSize: '0.88rem'
-      }}>
-        <div style={{ maxWidth: '620px' }}>
-          <p style={{ color: '#FFF0E7', fontStyle: 'italic', marginBottom: '0.35rem', fontSize: '0.94rem' }}>
-            "{item.caption}"
-          </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-warm-orange)', fontSize: '0.82rem' }}>
-            <MapPin size={13} color="var(--color-coral-red)" />
-            <span>{item.location}</span>
-          </div>
-        </div>
-
+      {/* Caption Bottom Bar */}
+      {item.caption && (
         <div style={{
+          backgroundColor: '#1E1513',
+          borderTop: '1px solid rgba(250, 214, 210, 0.2)',
+          padding: '1.2rem 2.5rem',
           display: 'flex',
           alignItems: 'center',
-          gap: '1.4rem',
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
-          padding: '0.65rem 1.3rem',
-          borderRadius: 'var(--radius-md)',
-          border: '1px solid rgba(250, 214, 210, 0.22)'
+          justifyContent: 'center',
+          textAlign: 'center',
+          color: '#E8DFE3',
+          fontSize: '0.94rem'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-blush-pink)' }}>
-            <Camera size={15} color="var(--color-coral-red)" />
-            <span>{item.camera}</span>
-          </div>
-          <span style={{ color: 'rgba(255,255,255,0.2)' }}>•</span>
-          <span style={{ color: '#D5C7CB' }}>{item.lens}</span>
-          <span style={{ color: 'rgba(255,255,255,0.2)' }}>•</span>
-          <span style={{ color: 'var(--color-warm-orange)', fontWeight: 600 }}>{item.settings}</span>
+          <p style={{ color: '#FFF0E7', fontStyle: 'italic', margin: 0, maxWidth: '820px', lineHeight: '1.6' }}>
+            "{item.caption}"
+          </p>
         </div>
-      </div>
+      )}
     </div>,
     document.body
   );
