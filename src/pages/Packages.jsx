@@ -274,16 +274,6 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
 
                   {/* Service Content */}
                   <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    <div style={{
-                      fontSize: '0.74rem',
-                      color: 'var(--color-coral-red)',
-                      letterSpacing: '0.12em',
-                      textTransform: 'uppercase',
-                      fontWeight: 700,
-                      marginBottom: '0.3rem'
-                    }}>
-                      Discipline 0{index + 1}
-                    </div>
                     <h2 style={{
                       fontSize: '1.5rem',
                       color: 'var(--text-title)',

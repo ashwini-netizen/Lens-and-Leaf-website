@@ -9,8 +9,7 @@ import {
   X, 
   ChevronRight, 
   Eye, 
-  Info,
-  Sliders
+  Info
 } from 'lucide-react';
 import { SERVICES_DATA, STUDIO_INFO } from '../data/siteData';
 import useScrollReveal from '../hooks/useScrollReveal';
@@ -19,7 +18,6 @@ import InteractiveCard from '../components/InteractiveCard';
 export default function Services({ setActivePage, onSelectService }) {
   const [selectedServiceDetail, setSelectedServiceDetail] = useState(null);
   const [activeCategoryFilter, setActiveCategoryFilter] = useState('All');
-  const [activeCardAnim, setActiveCardAnim] = useState('mixed');
 
   // Activate scroll reveals on filter change
   useScrollReveal(activeCategoryFilter);
@@ -108,61 +106,9 @@ export default function Services({ setActivePage, onSelectService }) {
                     cursor: 'pointer',
                     transition: 'all 0.25s ease'
                   }}
-                  className={isActive ? 'pulse-badge' : ''}
+                  className=""
                 >
                   {tab}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Card Animation Style Switcher Bar */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.6rem',
-            marginBottom: '3rem',
-            flexWrap: 'wrap',
-            padding: '0.85rem 1.4rem',
-            backgroundColor: 'rgba(23, 17, 15, 0.04)',
-            borderRadius: 'var(--radius-pill)',
-            border: '1px solid rgba(166, 166, 166, 0.25)',
-            maxWidth: 'fit-content',
-            margin: '0 auto 3rem auto'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: 'var(--text-title)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginRight: '0.4rem' }}>
-              <Sliders size={13} color="var(--color-coral-red)" />
-              <span>Card FX Style:</span>
-            </div>
-
-            {[
-              { id: 'mixed', label: '✦ Dynamic Cycle' },
-              { id: 'cinema', label: '🎬 Cinema Studio' },
-              { id: 'tilt', label: '3D Perspective Tilt' },
-              { id: 'focus', label: 'Viewfinder Focus' },
-              { id: 'prism', label: 'Prismatic Glow' },
-              { id: 'reveal', label: 'Drawer Reveal' },
-              { id: 'levitate', label: 'Ambient Float' }
-            ].map((fx) => {
-              const isSelected = activeCardAnim === fx.id;
-              return (
-                <button
-                  key={fx.id}
-                  onClick={() => setActiveCardAnim(fx.id)}
-                  style={{
-                    padding: '0.35rem 0.85rem',
-                    borderRadius: 'var(--radius-pill)',
-                    border: isSelected ? '1px solid var(--color-coral-red)' : '1px solid transparent',
-                    backgroundColor: isSelected ? 'var(--color-coral-red)' : 'transparent',
-                    color: isSelected ? '#FFFFFF' : 'var(--text-body)',
-                    fontSize: '0.76rem',
-                    fontWeight: isSelected ? 600 : 500,
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  {fx.label}
                 </button>
               );
             })}
@@ -176,13 +122,10 @@ export default function Services({ setActivePage, onSelectService }) {
             marginBottom: '6rem'
           }}>
             {filteredServices.map((svc, index) => {
-              const cycleAnim = ['cinema', 'tilt', 'focus', 'prism', 'reveal', 'levitate'][index % 6];
-              const effectiveAnim = activeCardAnim === 'mixed' ? cycleAnim : activeCardAnim;
-
               return (
                 <InteractiveCard
                   key={svc.id}
-                  animationType={effectiveAnim}
+                  animationType="cinema"
                   className={`reveal-on-scroll reveal-delay-${(index % 3) + 1}`}
                   style={{
                     borderRadius: 'var(--radius-lg)',
@@ -247,16 +190,6 @@ export default function Services({ setActivePage, onSelectService }) {
 
                 {/* Service Content */}
                 <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <div style={{
-                    fontSize: '0.74rem',
-                    color: 'var(--color-coral-red)',
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    fontWeight: 700,
-                    marginBottom: '0.3rem'
-                  }}>
-                    Discipline 0{index + 1}
-                  </div>
                   <h2 style={{
                     fontSize: '1.5rem',
                     color: 'var(--text-title)',
