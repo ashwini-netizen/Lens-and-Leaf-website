@@ -200,7 +200,7 @@ export default function Footer({ setActivePage }) {
               {[
                 { id: 'home', label: 'Home' },
                 { id: 'about', label: 'About Us' },
-                { id: 'services', label: 'Photography Services' },
+                { id: 'packages', label: 'Photoshoot Packages' },
                 { id: 'portfolio', label: 'Portfolio & Gallery' },
                 { id: 'studio', label: 'Studio Experience' },
                 { id: 'booking', label: 'Book a Photoshoot' },

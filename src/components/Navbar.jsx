@@ -35,10 +35,12 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
   }, []);
 
   // Navigation items: Home | About | Services | Portfolio | Studio | Contact
+  // Navigation items: Home | About | Services (dropdown only) | Package | Portfolio | Studio | Contact
   const navLinks = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services', hasDropdown: true },
+    { id: 'packages', label: 'Package' },
     { id: 'portfolio', label: 'Portfolio' },
     { id: 'studio', label: 'Studio' },
     { id: 'contact', label: 'Contact' },
@@ -54,10 +56,9 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
   const handleServiceSelect = (serviceTitle) => {
     setServicesDropdownOpen(false);
     setMobileMenuOpen(false);
+    setActivePage('packages');
     if (onSelectService) {
       onSelectService(serviceTitle);
-    } else {
-      setActivePage('booking');
     }
   };
 
@@ -298,7 +299,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                             </div>
 
                             <button
-                              onClick={() => handleNavClick('services')}
+                              onClick={() => handleNavClick('packages')}
                               style={{
                                 background: 'none',
                                 border: 'none',
@@ -311,7 +312,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                                 fontWeight: 500
                               }}
                             >
-                              <span>View All Services</span>
+                              <span>Explore All Packages & Pricing</span>
                               <ArrowRight size={13} />
                             </button>
                           </div>
@@ -572,7 +573,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                         gap: '0.4rem'
                       }}>
                         <button
-                          onClick={() => handleNavClick('services')}
+                          onClick={() => handleNavClick('packages')}
                           style={{
                             background: 'rgba(233, 75, 80, 0.12)',
                             border: '1px solid rgba(233, 75, 80, 0.3)',
@@ -587,7 +588,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                             justifyContent: 'space-between'
                           }}
                         >
-                          <span>Explore All 12 Services</span>
+                          <span>Explore All Photography Packages</span>
                           <ArrowRight size={14} />
                         </button>
 

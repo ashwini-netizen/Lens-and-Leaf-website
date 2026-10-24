@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
+import Packages from './pages/Packages';
 import Portfolio from './pages/Portfolio';
 import Studio from './pages/Studio';
 import Booking from './pages/Booking';
@@ -18,13 +19,12 @@ export default function App() {
   const [activePage, setActivePage] = useState('home');
   const [selectedService, setSelectedService] = useState(null);
   const [showIntro, setShowIntro] = useState(() => {
-    // Show cinematic intro once per session, or if query param ?intro=1
+    // Disabled by default to keep website clean and direct; only show if query param ?intro=1
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('intro') === '1') return true;
-      return !sessionStorage.getItem('lens_leaf_intro_seen');
+      return urlParams.get('intro') === '1';
     }
-    return true;
+    return false;
   });
 
   const handleIntroComplete = () => {
@@ -36,7 +36,7 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#/', '').replace('#', '');
-      const validPages = ['home', 'about', 'services', 'portfolio', 'studio', 'booking', 'contact', 'faqs', 'admin'];
+      const validPages = ['home', 'about', 'services', 'packages', 'package', 'portfolio', 'studio', 'booking', 'contact', 'faqs', 'admin'];
       if (hash && validPages.includes(hash)) {
         setActivePage(hash);
       }
@@ -88,8 +88,8 @@ export default function App() {
         {activePage === 'about' && (
           <About setActivePage={navigateToPage} />
         )}
-        {activePage === 'services' && (
-          <Services
+        {(activePage === 'packages' || activePage === 'package' || activePage === 'services') && (
+          <Packages
             setActivePage={navigateToPage}
             onSelectService={handleSelectServiceForBooking}
           />
