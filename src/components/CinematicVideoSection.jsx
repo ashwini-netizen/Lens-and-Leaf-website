@@ -3,10 +3,7 @@ import {
   Play, 
   Pause, 
   Volume2, 
-  VolumeX, 
-  Camera, 
-  CheckCircle,
-  ChevronRight
+  VolumeX
 } from 'lucide-react';
 import studioProductionVideo from '../assets/studio_production_bts.mp4';
 import studioPosterImg from '../assets/studio_production_bts.png';
@@ -25,45 +22,37 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
     {
       id: 'studio-cyclorama-production',
       title: 'Professional Studio Production & Lighting Stage',
-      category: 'Studio Behind-The-Scenes',
       description: 'Behind the lens of our infinity cyclorama: parabolic softbox key illumination, Godox strobe lighting, tethered preview monitor, and editorial fashion posing.',
       videoUrl: studioProductionVideo,
       poster: studioPosterImg,
       durationTag: '0:14 Studio Reel',
-      lens: '50mm f/1.2 & Parabolic Key Softbox',
       serviceLinked: 'Creative Studio Photoshoots'
     },
     {
       id: 'studio-photographer-craft',
       title: 'Precision Optics & Photographer Direction',
-      category: 'Behind The Lens',
       description: 'Capturing authentic expressions, pose guidance, and instant digital proofing inside our sound-calibrated photography bay.',
       videoUrl: './videos/studio_photographer_dslr.mp4',
       poster: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=80',
       durationTag: '0:15 Studio Reel',
-      lens: 'Nikon Z9 & 70-200mm f/2.8',
       serviceLinked: 'Portrait Photography'
     },
     {
       id: 'studio-cyclorama-wide',
       title: 'Cyclorama Stage & Full Studio Overview',
-      category: 'Commercial Production',
       description: 'Complete studio overview featuring infinity curve, wardrobe rail, secondary backlight stands, and multi-angle camera setups.',
       videoUrl: './videos/studio_stage_wide_session.mp4',
       poster: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=80',
       durationTag: '0:18 Studio Reel',
-      lens: '24-70mm f/2.8 GM & Dual C-Stands',
       serviceLinked: 'Commercial Photography'
     },
     {
       id: 'wedding-fairylights',
       title: 'Evening Vows & First Dance',
-      category: 'Weddings & Celebrations',
       description: 'Memories from an intimate candlelit celebration beneath romantic floral arrangements and warm bistro lights.',
       videoUrl: 'https://cdn.coverr.co/videos/coverr-wedding-dance-under-fairy-lights-5674/1080p.mp4',
       poster: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80',
       durationTag: '0:36 Video',
-      lens: '35mm f/1.4 GM',
       serviceLinked: 'Pre-Wedding Photoshoots'
     }
   ];
@@ -136,9 +125,6 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Section Header */}
         <div className="reveal-on-scroll" style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 2.2rem' }}>
-          <span className="section-badge light">
-            Studio Behind-the-Scenes
-          </span>
           <h2 className="section-title" style={{ color: '#FFFFFF' }}>
             Behind the Lens: The Studio Experience
           </h2>
@@ -171,8 +157,6 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
               <span style={{ color: '#FFFFFF', fontWeight: 600 }}>{currentReel.title}</span>
-              <span className="hide-on-mobile">|</span>
-              <span className="hide-on-mobile" style={{ color: 'var(--color-blush-pink)' }}>{currentReel.lens}</span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -308,37 +292,7 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
                   >
                     {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                   </button>
-
-                  <span style={{ fontSize: '0.85rem', color: '#FFF', fontWeight: 500 }}>
-                    {currentReel.category}
-                  </span>
                 </div>
-
-                <button
-                  onClick={() => {
-                    if (onSelectService && currentReel.serviceLinked) {
-                      onSelectService(currentReel.serviceLinked);
-                    } else if (setActivePage) {
-                      setActivePage('services');
-                    }
-                  }}
-                  className="btn-magnetic"
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: 'var(--color-blush-pink)',
-                    fontSize: '0.82rem',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.3rem',
-                    padding: 0
-                  }}
-                >
-                  <span>Explore Discipline</span>
-                  <ChevronRight size={14} />
-                </button>
               </div>
             </div>
           </div>
@@ -402,16 +356,6 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
                   )}
                 </div>
 
-                <div style={{
-                  fontSize: '0.7rem',
-                  color: 'var(--color-warm-orange)',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.06em',
-                  marginBottom: '0.25rem'
-                }}>
-                  {reel.category}
-                </div>
                 <h4 style={{
                   fontSize: '0.94rem',
                   color: '#FFFFFF',
