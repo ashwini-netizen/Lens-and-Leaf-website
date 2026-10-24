@@ -25,13 +25,17 @@ export default defineConfig({
         }
       },
       closeBundle() {
-        // Sync dist/index.html to root index.html and docs/index.html for static GitHub Pages hosting
-        const distHtmlPath = path.resolve(__dirname, 'dist', 'index.html');
-        if (fs.existsSync(distHtmlPath)) {
-          const distHtml = fs.readFileSync(distHtmlPath, 'utf8');
-          fs.writeFileSync(path.resolve(__dirname, 'index.html'), distHtml, 'utf8');
-          fs.writeFileSync(path.resolve(__dirname, 'docs', 'index.html'), distHtml, 'utf8');
-          console.log('✓ Successfully synchronized production bundles to index.html and docs/index.html');
+        // Sync dist to root index.html and docs folder for static GitHub Pages hosting
+        const distDir = path.resolve(__dirname, 'dist');
+        const docsDir = path.resolve(__dirname, 'docs');
+        if (fs.existsSync(distDir)) {
+          fs.cpSync(distDir, docsDir, { recursive: true });
+          const distHtmlPath = path.resolve(distDir, 'index.html');
+          if (fs.existsSync(distHtmlPath)) {
+            const distHtml = fs.readFileSync(distHtmlPath, 'utf8');
+            fs.writeFileSync(path.resolve(__dirname, 'index.html'), distHtml, 'utf8');
+          }
+          console.log('✓ Successfully synchronized production bundles to docs/ and index.html');
         }
       }
     }
