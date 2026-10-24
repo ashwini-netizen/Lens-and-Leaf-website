@@ -20,6 +20,11 @@ import {
 import { STUDIO_EXPERIENCE_DATA, STUDIO_INFO } from '../data/siteData';
 import useScrollReveal from '../hooks/useScrollReveal';
 import lowKeyCharcoalImg from '../assets/lowkey-charcoal-set.jpg';
+import dualToneChairImg from '../assets/setup_dual_tone_chair.png';
+import floralVelvetStageImg from '../assets/setup_floral_velvet_stage.png';
+import cycloramaBlueBayImg from '../assets/setup_cyclorama_blue_bay.png';
+import solariumDaylightImg from '../assets/setup_solarium_daylight_bay.jpg';
+import fineartCanvasSetImg from '../assets/setup_fineart_canvas_set.jpg';
 
 export default function Studio({ setActivePage }) {
   useScrollReveal();
@@ -28,40 +33,40 @@ export default function Studio({ setActivePage }) {
 
   const photoshootSetups = [
     {
-      title: 'Solarium Soft Window Set',
-      discipline: 'Maternity, Gentle Portraits & Newborns',
-      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
-      description: 'North-facing diffused daylight gently wrapping around subjects with zero harsh shadows, complemented by organic linen swaddles.'
+      title: 'Dual-Tone Accent & Studio Softbox Set',
+      discipline: 'Portraits & Creative Editorial',
+      image: dualToneChairImg,
+      description: 'Vibrant dual-tone cyan and blush staging equipped with a studio octabox on C-stand, rim light, and quilted posing armchair.'
     },
     {
-      title: 'Hand-Painted Blush Canvas Set',
-      discipline: 'Fine-Art Heirloom & Milestone Portraits',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',
-      description: 'Textured oil-paint style canvas backdrop offering painterly depth, illuminated by a 7-foot parabolic diffused key light.'
+      title: 'Botanical Floral Arch & Velvet Drapery Stage',
+      discipline: 'Weddings, Engagements & Fine-Art',
+      image: floralVelvetStageImg,
+      description: 'Handcrafted climbing rose arch framed with rich red velvet drapery, wooden plank flooring, and calibrated dual reflector strobes.'
     },
     {
-      title: 'Dramatic Low-Key Charcoal Set',
+      title: 'Seamless Cyclorama & Blue Paper Bay',
+      discipline: 'Commercial Lookbooks & Modern Portraits',
+      image: cycloramaBlueBayImg,
+      description: 'Expansive studio stage featuring seamless blue backdrop paper, white lounge armchair, dual softbox lights, and tethered preview monitor.'
+    },
+    {
+      title: 'Dramatic Low-Key Charcoal Stage',
       discipline: 'High-Fashion, Editorial & Horology',
       image: lowKeyCharcoalImg,
       description: 'Deep black velvet sound-dampened set with directional grid snoots sculpting razor-sharp highlights and rich shadows.'
     },
     {
-      title: 'Seamless Cyclorama Infinity Bay',
-      discipline: 'Commercial Lookbooks & Executive Headshots',
-      image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80',
-      description: 'Clean, cornerless curved cyclorama for crisp clean corporate headshots, dynamic model movement, and full-length apparel staging.'
+      title: 'Solarium Soft Window & Parabolic Umbrella Set',
+      discipline: 'Maternity, Gentle Portraits & Newborns',
+      image: solariumDaylightImg,
+      description: 'North-facing diffused daylight paired with a 7-foot parabolic umbrella, white backdrop roll, cream armchair, and camera rig.'
     },
     {
-      title: 'Warm Editorial Amber Lifestyle Bay',
-      discipline: 'Family Heirlooms, Couples & Milestones',
-      image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80',
-      description: 'Curated Scandinavian oak furniture and warm linen drapes, capturing unposed emotional intimacy bathed in soft, golden-hour studio tones.'
-    },
-    {
-      title: 'Architectural Fine-Art Spotlight Set',
-      discipline: 'Creative Solo Portraits & Contemporary Fashion',
-      image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80',
-      description: 'Precision optical gobo projector paired with warm cream lime-wash plaster, sculpting geometric shadows and cinematic silhouette profiles.'
+      title: 'Hand-Painted Fine-Art Canvas & Strobe Set',
+      discipline: 'Fine-Art Heirloom & Executive Headshots',
+      image: fineartCanvasSetImg,
+      description: 'Textured olive-ochre canvas backdrop on dual stands with silver beauty dish strobe, wooden posing stool, and black flag reflector.'
     }
   ];
 
@@ -232,13 +237,10 @@ export default function Studio({ setActivePage }) {
                       <Maximize2 size={20} />
                     </div>
                   </div>
-                  <div style={{ padding: '1.4rem', backgroundColor: '#0D0A09' }}>
-                    <h3 style={{ fontSize: '1.15rem', color: '#FFFFFF', marginBottom: '0.4rem' }}>
+                  <div style={{ padding: '1.2rem 1.4rem', backgroundColor: '#0D0A09' }}>
+                    <h3 style={{ fontSize: '1.15rem', color: '#FFFFFF', margin: 0, fontWeight: 500 }}>
                       {item.title}
                     </h3>
-                    <p style={{ fontSize: '0.86rem', color: '#DDD0D5', lineHeight: '1.5' }}>
-                      {item.description}
-                    </p>
                   </div>
                 </div>
               ))}
@@ -378,7 +380,7 @@ export default function Studio({ setActivePage }) {
                 Creative Possibilities
               </span>
               <h2 className="section-title">
-                Photoshoot Setup Examples
+                Photoshoot Setups
               </h2>
               <p className="section-subtitle" style={{ margin: '0 auto' }}>
                 Every commissioned photoshoot is customized with a specific lighting arrangement and backdrop mood tailored to your vision.
@@ -393,13 +395,19 @@ export default function Studio({ setActivePage }) {
               {photoshootSetups.map((setup, sIdx) => (
                 <div
                   key={sIdx}
-                  className="glass-card"
+                  className="glass-card card-sheen"
+                  data-cursor="view"
+                  onClick={() => setSelectedStudioImage(setup)}
                   style={{
                     borderRadius: 'var(--radius-lg)',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease'
                   }}
                 >
-                  <div style={{ height: '220px', position: 'relative' }}>
+                  <div style={{ height: '230px', position: 'relative', overflow: 'hidden' }} className="img-zoom-container">
                     <img
                       src={setup.image}
                       alt={setup.title}
@@ -407,26 +415,31 @@ export default function Studio({ setActivePage }) {
                     />
                     <div style={{
                       position: 'absolute',
-                      top: '0.8rem',
-                      left: '0.8rem',
+                      top: '0.75rem',
+                      right: '0.75rem',
                       backgroundColor: 'rgba(23, 17, 15, 0.85)',
-                      padding: '0.3rem 0.75rem',
-                      borderRadius: 'var(--radius-pill)',
-                      fontSize: '0.72rem',
+                      backdropFilter: 'blur(8px)',
                       color: 'var(--color-blush-pink)',
-                      fontWeight: 600
+                      padding: '0.25rem 0.65rem',
+                      borderRadius: 'var(--radius-pill)',
+                      fontSize: '0.68rem',
+                      fontWeight: 600,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.3rem'
                     }}>
-                      Setup 0{sIdx + 1}
+                      <Maximize2 size={11} />
+                      <span>EXPAND SET</span>
                     </div>
                   </div>
-                  <div style={{ padding: '1.5rem' }}>
-                    <h4 style={{ fontSize: '1.2rem', color: 'var(--text-title)', marginBottom: '0.3rem' }}>
-                      {setup.title}
-                    </h4>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--color-coral-red)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.8rem' }}>
+                  <div style={{ padding: '1.35rem 1.4rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <div style={{ fontSize: '0.74rem', color: 'var(--color-coral-red)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.3rem', letterSpacing: '0.04em' }}>
                       {setup.discipline}
                     </div>
-                    <p style={{ fontSize: '0.88rem', color: 'var(--text-body)', lineHeight: '1.6' }}>
+                    <h4 style={{ fontSize: '1.18rem', color: 'var(--text-title)', marginBottom: '0.5rem', lineHeight: '1.3' }}>
+                      {setup.title}
+                    </h4>
+                    <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: '1.55', margin: 0 }}>
                       {setup.description}
                     </p>
                   </div>
