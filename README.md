@@ -1,7 +1,10 @@
 # 🌿 Lens & Leaf — Fine-Art Photography & Photoshoot Studio
 
 > *"Where precision optics meet the organic soul of life."*  
-> **Brand Tagline:** Capturing Life...
+> **Brand Tagline:** Capturing Life...  
+>  
+> 🌐 **Live Website (GitHub Pages):** [https://ashwini-netizen.github.io/Lens-and-Leaf-website/](https://ashwini-netizen.github.io/Lens-and-Leaf-website/)  
+> 💻 **Local Development:** `http://localhost:5173/` (Frontend) | `http://localhost:5000` (Backend API)
 
 ---
 

@@ -2,6 +2,7 @@
   "name": "lens-leaf",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://ashwini-netizen.github.io/Lens-and-Leaf-website/",
   "type": "module",
   "scripts": {
     "dev": "node dev.js",
