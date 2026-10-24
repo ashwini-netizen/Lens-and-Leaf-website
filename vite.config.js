@@ -17,25 +17,36 @@ export default defineConfig({
       transformIndexHtml: {
         order: 'pre',
         handler(html) {
-          // Ensure Vite always compiles from /src/main.jsx regardless of whether index.html has a production script tag
-          return html.replace(
-            /<script type="module" crossorigin src=".*?"><\/script>/,
-            '<script type="module" src="/src/main.jsx"></script>'
-          );
+          // Clean out accumulated old production asset tags from previous builds
+          let clean = html.replace(/<link rel="stylesheet"[^>]*href="\.?\/assets\/index-[^"]+\.css"[^>]*>/g, '');
+          clean = clean.replace(/<script type="module"[^>]*src="\.?\/assets\/index-[^"]+\.js"[^>]*><\/script>/g, '');
+          if (!clean.includes('/src/main.jsx')) {
+            clean = clean.replace('</body>', '    <script type="module" src="/src/main.jsx"></script>\n  </body>');
+          }
+          return clean;
         }
       },
       closeBundle() {
-        // Sync dist to root index.html and docs folder for static GitHub Pages hosting
         const distDir = path.resolve(__dirname, 'dist');
         const docsDir = path.resolve(__dirname, 'docs');
+        const rootAssetsDir = path.resolve(__dirname, 'assets');
         if (fs.existsSync(distDir)) {
+          // Sync dist to docs/ for docs-based GitHub Pages
           fs.cpSync(distDir, docsDir, { recursive: true });
+
+          // Sync dist/assets to root assets/ for root-based GitHub Pages
+          const distAssets = path.resolve(distDir, 'assets');
+          if (fs.existsSync(distAssets)) {
+            fs.cpSync(distAssets, rootAssetsDir, { recursive: true });
+          }
+
+          // Sync dist/index.html to root index.html
           const distHtmlPath = path.resolve(distDir, 'index.html');
           if (fs.existsSync(distHtmlPath)) {
             const distHtml = fs.readFileSync(distHtmlPath, 'utf8');
             fs.writeFileSync(path.resolve(__dirname, 'index.html'), distHtml, 'utf8');
           }
-          console.log('✓ Successfully synchronized production bundles to docs/ and index.html');
+          console.log('✓ Successfully synchronized production bundles to docs/, assets/, and index.html');
         }
       }
     }
