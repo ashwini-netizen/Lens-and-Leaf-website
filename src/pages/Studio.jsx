@@ -249,48 +249,6 @@ export default function Studio({ setActivePage }) {
 
 
 
-          {/* 5. Lighting & Equipment Highlights (Requirement #10) */}
-          <div style={{
-            backgroundColor: '#17110F',
-            borderRadius: 'var(--radius-xl)',
-            padding: '2.5rem 2.2rem',
-            color: '#FFFFFF',
-            border: '1px solid rgba(166, 166, 166, 0.25)',
-            marginBottom: '3.5rem'
-          }}>
-            <div style={{ maxWidth: '680px', marginBottom: '2rem' }}>
-              <span className="section-badge light">
-                Optical Precision
-              </span>
-              <h2 style={{ fontSize: '2.2rem', color: '#FFF', marginBottom: '0.8rem' }}>
-                Lighting & Equipment Highlights
-              </h2>
-              <p style={{ color: '#F5EDE8', lineHeight: '1.7', fontSize: '0.98rem' }}>
-                We combine medium-format sensors with state-of-the-art Swedish strobe systems to achieve peerless tonal graduations and natural color science.
-              </p>
-            </div>
-
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: '2rem'
-            }}>
-              {STUDIO_EXPERIENCE_DATA.equipment.map((eq, eIdx) => (
-                <div key={eIdx} style={{
-                  borderLeft: '2px solid var(--color-coral-red)',
-                  paddingLeft: '1.4rem'
-                }}>
-                  <h4 style={{ fontSize: '1.15rem', color: '#FFF', marginBottom: '0.5rem' }}>
-                    {eq.title}
-                  </h4>
-                  <p style={{ color: '#DDD0D5', fontSize: '0.88rem', lineHeight: '1.6' }}>
-                    {eq.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* =====================================================================
               WHY CHOOSE LENS & LEAF STUDIO? (Direct SJ Dance Studio Card Design)
               ===================================================================== */}
@@ -407,41 +365,20 @@ export default function Studio({ setActivePage }) {
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease'
                   }}
                 >
-                  <div style={{ height: '230px', position: 'relative', overflow: 'hidden' }} className="img-zoom-container">
+                  <div style={{ height: '250px', position: 'relative', overflow: 'hidden' }} className="img-zoom-container">
                     <img
                       src={setup.image}
                       alt={setup.title}
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
-                    <div style={{
-                      position: 'absolute',
-                      top: '0.75rem',
-                      right: '0.75rem',
-                      backgroundColor: 'rgba(23, 17, 15, 0.85)',
-                      backdropFilter: 'blur(8px)',
-                      color: 'var(--color-blush-pink)',
-                      padding: '0.25rem 0.65rem',
-                      borderRadius: 'var(--radius-pill)',
-                      fontSize: '0.68rem',
-                      fontWeight: 600,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.3rem'
-                    }}>
-                      <Maximize2 size={11} />
-                      <span>EXPAND SET</span>
-                    </div>
                   </div>
-                  <div style={{ padding: '1.35rem 1.4rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <div style={{ padding: '1.2rem 1.4rem' }}>
                     <div style={{ fontSize: '0.74rem', color: 'var(--color-coral-red)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.3rem', letterSpacing: '0.04em' }}>
                       {setup.discipline}
                     </div>
-                    <h4 style={{ fontSize: '1.18rem', color: 'var(--text-title)', marginBottom: '0.5rem', lineHeight: '1.3' }}>
+                    <h4 style={{ fontSize: '1.15rem', color: 'var(--text-title)', margin: 0, lineHeight: '1.3' }}>
                       {setup.title}
                     </h4>
-                    <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: '1.55', margin: 0 }}>
-                      {setup.description}
-                    </p>
                   </div>
                 </div>
               ))}
