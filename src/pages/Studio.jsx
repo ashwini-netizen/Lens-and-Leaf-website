@@ -155,45 +155,6 @@ export default function Studio({ setActivePage }) {
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
-
-              {/* Floating Layered Inset Card (Dressing Suite & Lounge) */}
-              <div 
-                className="float-gentle hide-on-mobile"
-                style={{
-                  position: 'absolute',
-                  bottom: '-2rem',
-                  left: '-2rem',
-                  width: '240px',
-                  borderRadius: 'var(--radius-lg)',
-                  overflow: 'hidden',
-                  boxShadow: '0 16px 40px rgba(23, 17, 15, 0.28)',
-                  border: '2px solid rgba(255, 255, 255, 0.85)',
-                  backgroundColor: '#FFFFFF',
-                  zIndex: 3
-                }}
-              >
-                <div style={{ height: '140px', position: 'relative' }}>
-                  <img
-                    src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80"
-                    alt="Private Client Lounge"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '0.5rem',
-                    left: '0.6rem',
-                    backgroundColor: 'rgba(23, 17, 15, 0.85)',
-                    backdropFilter: 'blur(6px)',
-                    padding: '0.2rem 0.6rem',
-                    borderRadius: 'var(--radius-pill)',
-                    fontSize: '0.68rem',
-                    color: 'var(--color-blush-pink)',
-                    fontWeight: 600
-                  }}>
-                    Client Tea Lounge
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
