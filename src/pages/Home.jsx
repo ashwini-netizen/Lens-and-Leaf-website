@@ -14,13 +14,22 @@ import {
   Star
 } from 'lucide-react';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
-import { STUDIO_INFO, SERVICES_DATA, TESTIMONIALS_DATA } from '../data/siteData';
+import { 
+  STUDIO_INFO, 
+  SERVICES_DATA, 
+  TESTIMONIALS_DATA,
+  CURATED_SHOWCASE_PHOTOS,
+  ATELIER_STRIP_PHOTOS,
+  GALLERY_ITEMS
+} from '../data/siteData';
 import CameraViewfinderMotif from '../components/CameraViewfinderMotif';
 import LuxuryEditorialSeal from '../components/LuxuryEditorialSeal';
 import useScrollReveal from '../hooks/useScrollReveal';
 import CinematicVideoSection from '../components/CinematicVideoSection';
 import InteractiveCard from '../components/InteractiveCard';
+import Lightbox from '../components/Lightbox';
 import logoImg from '../assets/logo.png';
+import luxuryWeddingStageImg from '../assets/luxury_wedding_stage.png';
 
 export default function Home({ setActivePage, onSelectService }) {
   // Activate IntersectionObserver for buttery-smooth scroll reveals
@@ -28,6 +37,11 @@ export default function Home({ setActivePage, onSelectService }) {
 
   // Testimonial carousel state
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
+
+  // Home Showcase photo gallery state
+  const [showcaseCategory, setShowcaseCategory] = useState('All');
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(null);
+  const [showAllPhotos, setShowAllPhotos] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -38,6 +52,26 @@ export default function Home({ setActivePage, onSelectService }) {
 
   // 6 Featured disciplines on homepage for a balanced, full 3x2 grid
   const featuredServices = SERVICES_DATA.slice(0, 6);
+
+  // Filter showcase photos
+  const allFilteredPhotos = showcaseCategory === 'All'
+    ? CURATED_SHOWCASE_PHOTOS
+    : CURATED_SHOWCASE_PHOTOS.filter((p) => p.category === showcaseCategory);
+
+  // If "All", show first 12 unless showAllPhotos is true; if a specific category, show all for that category
+  const filteredShowcasePhotos = (showcaseCategory === 'All' && !showAllPhotos)
+    ? allFilteredPhotos.slice(0, 12)
+    : allFilteredPhotos;
+
+  const currentLightboxItem = selectedPhotoIndex !== null ? filteredShowcasePhotos[selectedPhotoIndex] : null;
+
+  const handlePrevPhoto = () => {
+    setSelectedPhotoIndex((prev) => (prev > 0 ? prev - 1 : filteredShowcasePhotos.length - 1));
+  };
+
+  const handleNextPhoto = () => {
+    setSelectedPhotoIndex((prev) => (prev < filteredShowcasePhotos.length - 1 ? prev + 1 : 0));
+  };
 
   return (
     <div className="page-enter" style={{ backgroundColor: 'var(--bg-canvas)' }}>
@@ -63,103 +97,70 @@ export default function Home({ setActivePage, onSelectService }) {
         color: '#FFFFFF',
         padding: '6rem 1.5rem'
       }}>
-        {/* Background Image with Cinematic Tonal Wash & Camera Zoom Breathe Animation */}
+        {/* Grand Luxury Wedding Stage Hero Background (First Image) */}
         <div 
-          className="camera-zoom-bg"
           style={{
             position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: 'url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=85")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 35%',
-            filter: 'brightness(0.34) saturate(1.15)',
-          }} 
-        />
+            overflow: 'hidden',
+            zIndex: 0,
+            backgroundColor: '#17110F'
+          }}
+        >
+          <img
+            src={luxuryWeddingStageImg}
+            alt="Lens & Leaf Grand Wedding Stage"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center 42%',
+              filter: 'brightness(0.64) contrast(1.08) saturate(1.12)',
+              display: 'block'
+            }}
+          />
+          {/* Subtle Warm Amber & Rose-Gold Vignette Overlay matching Lens & Logo colors */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'radial-gradient(ellipse at center, rgba(23, 17, 15, 0.42) 0%, rgba(23, 17, 15, 0.72) 65%, rgba(18, 12, 10, 0.92) 100%)',
+            pointerEvents: 'none'
+          }} />
+        </div>
 
         {/* Subtle Optical Lens-Flare Reflection */}
-        <div className="lens-flare-glow" style={{ top: '18%', left: '12%', width: '450px', height: '450px' }} />
+        <div className="lens-flare-glow" style={{ top: '16%', left: '10%', width: '480px', height: '480px' }} />
 
-        {/* Soft Ambient Rose & Warm Orange Glows with Breathing Animation */}
+        {/* Harmonious Ambient Rose & Warm Orange/Gold Glows matching Logo & Stage */}
         <div className="light-bloom-pulse" style={{
           position: 'absolute',
-          top: '15%',
+          top: '12%',
           right: '8%',
-          width: '520px',
-          height: '520px',
-          background: 'radial-gradient(circle, rgba(247, 161, 167, 0.28) 0%, transparent 70%)',
-          filter: 'blur(75px)',
+          width: '540px',
+          height: '540px',
+          background: 'radial-gradient(circle, rgba(247, 161, 167, 0.32) 0%, rgba(242, 140, 40, 0.18) 45%, transparent 70%)',
+          filter: 'blur(80px)',
           pointerEvents: 'none'
         }} />
         <div className="light-bloom-pulse" style={{
           position: 'absolute',
-          bottom: '10%',
+          bottom: '8%',
           left: '6%',
-          width: '480px',
-          height: '480px',
-          background: 'radial-gradient(circle, rgba(242, 140, 40, 0.24) 0%, transparent 70%)',
-          filter: 'blur(70px)',
+          width: '500px',
+          height: '500px',
+          background: 'radial-gradient(circle, rgba(242, 140, 40, 0.28) 0%, rgba(233, 75, 80, 0.15) 50%, transparent 70%)',
+          filter: 'blur(75px)',
           pointerEvents: 'none',
           animationDelay: '-4s'
         }} />
 
-        {/* Camera-inspired Viewfinder Corner Brackets with Autofocus Breathing */}
-        <div style={{
-          position: 'absolute',
-          top: '2.5rem',
-          left: '2.5rem',
-          width: '42px',
-          height: '42px',
-          borderTop: '2px solid rgba(250, 214, 210, 0.65)',
-          borderLeft: '2px solid rgba(250, 214, 210, 0.65)',
-          pointerEvents: 'none'
-        }} className="focus-bracket hide-on-mobile" />
-        <div style={{
-          position: 'absolute',
-          top: '2.5rem',
-          right: '2.5rem',
-          width: '42px',
-          height: '42px',
-          borderTop: '2px solid rgba(250, 214, 210, 0.65)',
-          borderRight: '2px solid rgba(250, 214, 210, 0.65)',
-          pointerEvents: 'none'
-        }} className="focus-bracket hide-on-mobile" />
-        <div style={{
-          position: 'absolute',
-          bottom: '2.5rem',
-          left: '2.5rem',
-          width: '42px',
-          height: '42px',
-          borderBottom: '2px solid rgba(250, 214, 210, 0.65)',
-          borderLeft: '2px solid rgba(250, 214, 210, 0.65)',
-          pointerEvents: 'none'
-        }} className="focus-bracket hide-on-mobile" />
-        <div style={{
-          position: 'absolute',
-          bottom: '2.5rem',
-          right: '2.5rem',
-          width: '42px',
-          height: '42px',
-          borderBottom: '2px solid rgba(250, 214, 210, 0.65)',
-          borderRight: '2px solid rgba(250, 214, 210, 0.65)',
-          pointerEvents: 'none'
-        }} className="focus-bracket hide-on-mobile" />
 
-        {/* Floating Rotating Luxury Seal Stamp */}
-        <div 
-          className="hide-on-mobile"
-          style={{
-            position: 'absolute',
-            top: '3.5rem',
-            right: '4.5rem',
-            zIndex: 3,
-            filter: 'drop-shadow(0 6px 20px rgba(0,0,0,0.5))'
-          }}
-        >
-          <LuxuryEditorialSeal size={118} light={true} />
-        </div>
 
         {/* Hero Central Content */}
         <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center', maxWidth: '960px' }}>
@@ -170,7 +171,6 @@ export default function Home({ setActivePage, onSelectService }) {
 
           {/* Luxury Studio Status Badge */}
           <div 
-            className="pulse-badge"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -192,7 +192,7 @@ export default function Home({ setActivePage, onSelectService }) {
             <span>Editorial Photography & Luxury Portrait Studio</span>
           </div>
 
-          {/* Headline strictly per Requirement #6 & #1: "Every Frame Tells a Story." with Word-by-Word Reveal */}
+          {/* Headline: “Every Frame Tells a Story.” with Elegant Serif Style */}
           <h1 style={{
             fontSize: 'clamp(2.8rem, 6.4vw, 5.2rem)',
             fontWeight: 400,
@@ -201,20 +201,9 @@ export default function Home({ setActivePage, onSelectService }) {
             color: '#FFFFFF',
             textShadow: '0 4px 30px rgba(0,0,0,0.6)'
           }}>
-            <span className="word-reveal-wrap">
-              <span className="word-reveal-item word-delay-1">Every&nbsp;</span>
-            </span>
-            <span className="word-reveal-wrap">
-              <span className="word-reveal-item word-delay-2">Frame&nbsp;</span>
-            </span>
-            <span className="word-reveal-wrap">
-              <span className="word-reveal-item word-delay-3">Tells</span>
-            </span>
-            <br />
-            <span className="word-reveal-wrap">
-              <span className="word-reveal-item word-delay-4 text-shimmer" style={{ fontStyle: 'italic', fontWeight: 600 }}>
-                a Story.
-              </span>
+            Every Frame Tells <br />
+            <span style={{ fontStyle: 'italic', fontWeight: 500, color: 'var(--color-blush-pink)' }}>
+              a Story.
             </span>
           </h1>
 
@@ -383,15 +372,15 @@ export default function Home({ setActivePage, onSelectService }) {
               <span className="accent-line-expand" style={{ marginBottom: '0.8rem' }} />
               <h2 className="section-title">
                 More Than Photographs. <br />
-                <span className="text-shimmer" style={{ fontStyle: 'italic', fontWeight: 600 }}>
+                <span style={{ fontStyle: 'italic', fontWeight: 600, color: 'var(--color-coral-red)' }}>
                   Memories That Stay.
                 </span>
               </h2>
-              <p style={{ color: 'var(--text-body)', fontSize: '1.02rem', lineHeight: '1.7', marginBottom: '1rem' }}>
-                At Lens & Leaf, we see photography as the delicate art of freezing time without stripping away its soul. Like a dewdrop resting gently upon an unfurling lotus petal, our camera lens reflects life with crystalline clarity while honoring its organic tenderness.
+              <p style={{ color: 'var(--text-body)', fontSize: '1rem', lineHeight: '1.68', marginBottom: '1rem' }}>
+                We believe photography should feel relaxed, natural, and enjoyable. From personal portraits to weddings and milestone celebrations, our studio pairs soft solarium daylight with gentle direction to capture genuine emotion.
               </p>
-              <p style={{ color: 'var(--text-body)', fontSize: '1.02rem', lineHeight: '1.7', marginBottom: '1.2rem' }}>
-                Whether guiding an expectant mother through her maternity session, capturing a bride’s quiet tears before the aisle, or crafting timeless personal portraits, our studio is dedicated to unhurried, comfortable, and deeply meaningful storytelling.
+              <p style={{ color: 'var(--text-body)', fontSize: '1rem', lineHeight: '1.68', marginBottom: '1.2rem' }}>
+                No stiff poses or artificial filters—just clean, beautifully lit photographs that preserve real moments exactly as they felt.
               </p>
 
               {/* Pillars */}
@@ -441,45 +430,16 @@ export default function Home({ setActivePage, onSelectService }) {
             </p>
           </div>
 
-          {/* Interactive Card Animation Mode Pill Indicator */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.65rem',
-            marginBottom: '2rem',
-            flexWrap: 'wrap'
-          }}>
-            <span style={{ fontSize: '0.78rem', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
-              Interactive Card Effects:
-            </span>
-            <span style={{
-              fontSize: '0.74rem',
-              color: 'var(--color-coral-red)',
-              backgroundColor: 'rgba(233, 75, 80, 0.1)',
-              padding: '0.25rem 0.75rem',
-              borderRadius: 'var(--radius-pill)',
-              border: '1px solid rgba(233, 75, 80, 0.25)',
-              fontWeight: 600
-            }}>
-              Cinema Studio Zoom • 3D Tilt • Viewfinder Focus • Prismatic Glow • Drawer Reveal
-            </span>
-          </div>
-
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: '1.8rem'
           }}>
             {featuredServices.map((svc, idx) => {
-              // Cycle different card animations for the cards:
-              const animStyles = ['cinema', 'tilt', 'focus', 'prism', 'reveal', 'cinema'];
-              const chosenAnim = animStyles[idx % animStyles.length];
-
               return (
                 <InteractiveCard 
                   key={svc.id}
-                  animationType={chosenAnim}
+                  animationType="cinema"
                   className={`reveal-on-scroll reveal-delay-${(idx % 4) + 1} clip-reveal-up`}
                   style={{
                     borderRadius: 'var(--radius-lg)',
@@ -517,24 +477,6 @@ export default function Home({ setActivePage, onSelectService }) {
                       letterSpacing: '0.04em'
                     }}>
                       {svc.badge}
-                    </div>
-
-                    {/* Micro Animation Type Badge */}
-                    <div style={{
-                      position: 'absolute',
-                      bottom: '0.8rem',
-                      right: '0.8rem',
-                      backgroundColor: 'rgba(23, 17, 15, 0.85)',
-                      backdropFilter: 'blur(8px)',
-                      padding: '0.2rem 0.6rem',
-                      borderRadius: 'var(--radius-pill)',
-                      fontSize: '0.65rem',
-                      color: 'var(--color-warm-orange)',
-                      fontWeight: 600,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.06em'
-                    }}>
-                      FX: {chosenAnim}
                     </div>
                   </div>
 
@@ -602,6 +544,175 @@ export default function Home({ setActivePage, onSelectService }) {
       </section>
 
       {/* =====================================================================
+          PHOTO SHOWCASE SECTION: CURATED SIGNATURE WORKS
+          ===================================================================== */}
+      <section style={{ padding: '4.5rem 0 5rem', backgroundColor: 'var(--bg-canvas)' }}>
+        <div className="container">
+          <div className="reveal-on-scroll" style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 2.5rem' }}>
+            <span className="section-badge orange">
+              Visual Anthology
+            </span>
+            <h2 className="section-title">
+              Curated Signature Showcase
+            </h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>
+              A hand-selected anthology of fine-art portraits, intimate celebrations, and editorial commissions captured with painterly natural light.
+            </p>
+          </div>
+
+          {/* Category Filter Pills */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '0.65rem',
+            flexWrap: 'wrap',
+            marginBottom: '2.5rem'
+          }}>
+            {['All', 'Portraits', 'Weddings', 'Couples', 'Maternity', 'Newborns', 'Fashion', 'Events', 'Products'].map((cat) => {
+              const isSelected = showcaseCategory === cat;
+              const count = cat === 'All'
+                ? CURATED_SHOWCASE_PHOTOS.length
+                : CURATED_SHOWCASE_PHOTOS.filter((p) => p.category === cat).length;
+
+              return (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setShowcaseCategory(cat);
+                    setShowAllPhotos(false);
+                    setSelectedPhotoIndex(null);
+                  }}
+                  style={{
+                    padding: '0.5rem 1.25rem',
+                    borderRadius: 'var(--radius-pill)',
+                    border: isSelected ? '1.5px solid var(--color-coral-red)' : '1px solid rgba(166, 166, 166, 0.35)',
+                    backgroundColor: isSelected ? 'var(--color-coral-red)' : '#FFFFFF',
+                    color: isSelected ? '#FFFFFF' : 'var(--text-title)',
+                    fontSize: '0.84rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    transition: 'all 0.25s ease'
+                  }}
+                >
+                  <span>{cat === 'All' ? 'All Works' : cat}</span>
+                  <span style={{
+                    fontSize: '0.7rem',
+                    opacity: 0.85,
+                    padding: '0.08rem 0.4rem',
+                    borderRadius: 'var(--radius-pill)',
+                    backgroundColor: isSelected ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.06)'
+                  }}>
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Photo Showcase Grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))',
+            gap: '1.8rem',
+            marginBottom: '2.8rem'
+          }}>
+            {filteredShowcasePhotos.map((photo, pIdx) => (
+              <div
+                key={photo.id || pIdx}
+                onClick={() => setSelectedPhotoIndex(pIdx)}
+                className={`reveal-on-scroll reveal-delay-${(pIdx % 4) + 1} glass-card card-sheen`}
+                data-cursor="view"
+                style={{
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid rgba(166, 166, 166, 0.25)',
+                  boxShadow: 'var(--shadow-card)',
+                  transition: 'transform 0.35s ease, box-shadow 0.35s ease'
+                }}
+              >
+                <div style={{ position: 'relative', height: '320px', overflow: 'hidden' }} className="img-zoom-container">
+                  <img
+                    src={photo.image}
+                    alt={photo.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block'
+                    }}
+                  />
+                  {/* Category Pill Tag */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '1rem',
+                    left: '1rem',
+                    backgroundColor: 'rgba(23, 17, 15, 0.85)',
+                    backdropFilter: 'blur(8px)',
+                    padding: '0.3rem 0.8rem',
+                    borderRadius: 'var(--radius-pill)',
+                    fontSize: '0.7rem',
+                    color: 'var(--color-blush-pink)',
+                    fontWeight: 600,
+                    letterSpacing: '0.04em'
+                  }}>
+                    {photo.category}
+                  </div>
+
+
+                  {/* Clean Bottom Gradient with Title Only (Leaves Photo Clear & Unobstructed) */}
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: '2rem 1.2rem 1rem',
+                    background: 'linear-gradient(to top, rgba(23, 17, 15, 0.88) 0%, rgba(23, 17, 15, 0.35) 60%, transparent 100%)',
+                    color: '#FFFFFF'
+                  }}>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--color-warm-orange)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, marginBottom: '0.2rem' }}>
+                      {photo.tag || photo.category}
+                    </div>
+                    <h4 style={{ fontSize: '1.15rem', color: '#FFFFFF', margin: 0, fontWeight: 600, textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
+                      {photo.title}
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Action Row: Toggle Show More or Visit Full Gallery */}
+          <div className="reveal-on-scroll" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem', alignItems: 'center' }}>
+            {showcaseCategory === 'All' && allFilteredPhotos.length > 12 && (
+              <button
+                onClick={() => setShowAllPhotos(!showAllPhotos)}
+                className="btn-secondary btn-magnetic"
+                style={{ padding: '0.9rem 2.2rem' }}
+              >
+                <span>{showAllPhotos ? 'Show Less' : `Show All ${allFilteredPhotos.length} Curated Works`}</span>
+              </button>
+            )}
+
+            <button
+              onClick={() => setActivePage('portfolio')}
+              className="btn-primary btn-magnetic"
+              style={{ padding: '0.9rem 2.2rem' }}
+            >
+              <Eye size={17} />
+              <span>Explore Master Portfolio ({GALLERY_ITEMS.length}+ Works)</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
           CINEMATIC VIDEO SHOWCASE SECTION (Requirement: Video Section)
           ===================================================================== */}
       <CinematicVideoSection 
@@ -629,6 +740,79 @@ export default function Home({ setActivePage, onSelectService }) {
           <div className="reveal-on-scroll reveal-delay-2" style={{ maxWidth: '880px', margin: '0 auto' }}>
             <BeforeAfterSlider />
           </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
+          ATELIER LIVE SESSION & VISUAL FILM STRIP SHOWCASE
+          ===================================================================== */}
+      <section style={{
+        padding: '3.8rem 0',
+        backgroundColor: '#17110F',
+        borderTop: '1px solid rgba(166, 166, 166, 0.2)',
+        borderBottom: '1px solid rgba(166, 166, 166, 0.2)'
+      }}>
+        <div className="container" style={{ marginBottom: '2.2rem', textAlign: 'center' }}>
+          <span className="section-badge light">
+            Inside the Studio
+          </span>
+          <h3 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', color: '#FFFFFF', marginBottom: '0.6rem' }}>
+            Atelier Life & Behind the Scenes
+          </h3>
+          <p style={{ color: '#E0D4D0', fontSize: '1rem', maxWidth: '640px', margin: '0 auto', lineHeight: '1.6' }}>
+            From unhurried consultations over artisan tea to natural light solarium setups, wardrobe styling, and print proofing.
+          </p>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '1.2rem',
+          maxWidth: '1360px',
+          margin: '0 auto',
+          padding: '0 1.5rem'
+        }}>
+          {ATELIER_STRIP_PHOTOS.map((strip, sIdx) => (
+            <div
+              key={sIdx}
+              className={`reveal-on-scroll reveal-delay-${(sIdx % 3) + 1} img-zoom-container`}
+              style={{
+                borderRadius: '14px',
+                overflow: 'hidden',
+                height: '240px',
+                position: 'relative',
+                border: '1px solid rgba(166, 166, 166, 0.25)',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.35)'
+              }}
+            >
+              <img
+                src={strip.image}
+                alt={strip.title}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block'
+                }}
+              />
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(to top, rgba(23, 17, 15, 0.92) 0%, rgba(23, 17, 15, 0.2) 55%, transparent 100%)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-end',
+                padding: '1.1rem 1rem'
+              }}>
+                <span style={{ fontSize: '0.68rem', color: 'var(--color-warm-orange)', textTransform: 'uppercase', letterSpacing: '0.07em', fontWeight: 600, marginBottom: '0.2rem' }}>
+                  {strip.category}
+                </span>
+                <span style={{ fontSize: '0.92rem', color: '#FFFFFF', fontWeight: 600, lineHeight: '1.3' }}>
+                  {strip.title}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -877,7 +1061,6 @@ export default function Home({ setActivePage, onSelectService }) {
       }}>
         <div className="container reveal-on-scroll" style={{ maxWidth: '780px' }}>
           <div 
-            className="pulse-badge"
             style={{
               width: '56px',
               height: '56px',
@@ -932,6 +1115,16 @@ export default function Home({ setActivePage, onSelectService }) {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal for Showcase Photography */}
+      {currentLightboxItem && (
+        <Lightbox
+          item={currentLightboxItem}
+          onClose={() => setSelectedPhotoIndex(null)}
+          onPrev={handlePrevPhoto}
+          onNext={handleNextPhoto}
+        />
+      )}
     </div>
   );
 }

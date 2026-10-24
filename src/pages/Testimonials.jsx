@@ -67,14 +67,14 @@ export default function Testimonials({ setActivePage }) {
         textAlign: 'center',
         position: 'relative'
       }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '820px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '1100px' }}>
           <span className="section-badge gold">
             Client Words & Accolades
           </span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: '#FFF', marginBottom: '1rem' }}>
+          <h1 className="banner-hero-title">
             Heirloom Testimonials & Client Reflections
           </h1>
-          <p style={{ fontSize: '1.1rem', color: '#DDD0D5', lineHeight: '1.7', fontWeight: 300 }}>
+          <p style={{ fontSize: '1.1rem', color: '#DDD0D5', lineHeight: '1.7', fontWeight: 300, maxWidth: '780px', margin: '0 auto' }}>
             Read authentic stories from couples, designers, and families who have stepped into our sanctuary and entrusted us with their most cherished memories.
           </p>
         </div>

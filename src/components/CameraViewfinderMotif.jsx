@@ -41,8 +41,8 @@ export default function CameraViewfinderMotif({ size = 180, onTriggerShutter }) 
           position: 'absolute',
           inset: 0,
           borderRadius: '50%',
-          border: '1.5px dashed rgba(247, 161, 167, 0.45)',
-          boxShadow: '0 0 25px rgba(233, 75, 80, 0.25)',
+          border: '1.5px dashed rgba(247, 161, 167, 0.65)',
+          boxShadow: '0 0 28px rgba(233, 75, 80, 0.35)',
           pointerEvents: 'none'
         }}
       />
@@ -52,7 +52,8 @@ export default function CameraViewfinderMotif({ size = 180, onTriggerShutter }) 
         position: 'absolute',
         inset: '8px',
         borderRadius: '50%',
-        border: '1px solid rgba(242, 140, 40, 0.4)',
+        border: '1.5px solid rgba(242, 140, 40, 0.55)',
+        boxShadow: '0 0 16px rgba(242, 140, 40, 0.25)',
         pointerEvents: 'none'
       }} />
 
@@ -68,8 +69,8 @@ export default function CameraViewfinderMotif({ size = 180, onTriggerShutter }) 
           backgroundColor: '#FFFFFF',
           border: isFocused ? '2.5px solid #25D366' : '2px solid var(--color-coral-red)',
           boxShadow: isFocused 
-            ? '0 0 35px rgba(37, 211, 102, 0.6), 0 6px 30px rgba(233, 75, 80, 0.35)' 
-            : '0 6px 30px rgba(233, 75, 80, 0.35)',
+            ? '0 0 35px rgba(37, 211, 102, 0.6), 0 8px 32px rgba(233, 75, 80, 0.45)' 
+            : '0 8px 32px rgba(233, 75, 80, 0.4), 0 0 20px rgba(242, 140, 40, 0.3)',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',

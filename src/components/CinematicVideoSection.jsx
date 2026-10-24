@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import studioProductionVideo from '../assets/studio_production_bts.mp4';
 import studioPosterImg from '../assets/studio_production_bts.png';
+import studioInterviewBtsImg from '../assets/studio_interview_bts.png';
 
 export default function CinematicVideoSection({ setActivePage, onSelectService }) {
   const [activeReelIdx, setActiveReelIdx] = useState(0);
@@ -33,27 +34,27 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
       title: 'Precision Optics & Photographer Direction',
       description: 'Capturing authentic expressions, pose guidance, and instant digital proofing inside our sound-calibrated photography bay.',
       videoUrl: './videos/studio_photographer_dslr.mp4',
-      poster: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=80',
+      poster: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1200&h=750&q=80',
       durationTag: '0:15 Studio Reel',
       serviceLinked: 'Portrait Photography'
     },
     {
-      id: 'studio-cyclorama-wide',
-      title: 'Cyclorama Stage & Full Studio Overview',
-      description: 'Complete studio overview featuring infinity curve, wardrobe rail, secondary backlight stands, and multi-angle camera setups.',
-      videoUrl: './videos/studio_stage_wide_session.mp4',
-      poster: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=80',
-      durationTag: '0:18 Studio Reel',
-      serviceLinked: 'Commercial Photography'
+      id: 'studio-interview-setup',
+      title: 'Studio Spotlight & Calibrated Staging',
+      description: 'Behind the scenes: Nanlite parabolic softboxes with grids, warm circular spotlight, and real-time tethered monitor proofing.',
+      videoUrl: './videos/studio_interview_setup.mp4',
+      poster: studioInterviewBtsImg,
+      durationTag: '0:14 Studio Reel',
+      serviceLinked: 'Creative Studio Photoshoots'
     },
     {
-      id: 'wedding-fairylights',
-      title: 'Evening Vows & First Dance',
-      description: 'Memories from an intimate candlelit celebration beneath romantic floral arrangements and warm bistro lights.',
-      videoUrl: 'https://cdn.coverr.co/videos/coverr-wedding-dance-under-fairy-lights-5674/1080p.mp4',
-      poster: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80',
-      durationTag: '0:36 Video',
-      serviceLinked: 'Pre-Wedding Photoshoots'
+      id: 'heirloom-portrait-reel',
+      title: 'Natural Light & Heirloom Portraiture',
+      description: 'Capturing relaxed family milestones, authentic emotion, and golden-hour connection with documentary artistic warmth.',
+      videoUrl: './videos/hero_portrait_reel.mp4',
+      poster: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&h=750&q=80',
+      durationTag: '0:22 Fine-Art Reel',
+      serviceLinked: 'Family & Heirloom Photography'
     }
   ];
 
@@ -167,7 +168,14 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
           </div>
 
           {/* Video Player Display */}
-          <div style={{ position: 'relative', height: '480px', backgroundColor: '#000' }}>
+          <div style={{ 
+            position: 'relative', 
+            width: '100%',
+            aspectRatio: '16 / 9',
+            maxHeight: '560px', 
+            backgroundColor: '#000',
+            overflow: 'hidden'
+          }}>
             <video
               ref={videoRef}
               key={currentReel.id}
@@ -321,10 +329,12 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
               >
                 <div style={{
                   position: 'relative',
-                  height: '110px',
-                  borderRadius: '8px',
+                  width: '100%',
+                  aspectRatio: '16 / 10',
+                  borderRadius: '10px',
                   overflow: 'hidden',
-                  marginBottom: '0.75rem'
+                  marginBottom: '0.85rem',
+                  backgroundColor: '#000'
                 }}>
                   <img
                     src={reel.poster}
@@ -332,25 +342,29 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
                     style={{
                       width: '100%',
                       height: '100%',
-                      objectFit: 'cover'
+                      objectFit: 'cover',
+                      objectPosition: 'center',
+                      display: 'block'
                     }}
                   />
                   {isSelected && (
                     <div style={{
                       position: 'absolute',
-                      bottom: '0.5rem',
-                      left: '0.5rem',
+                      bottom: '0.6rem',
+                      left: '0.6rem',
                       backgroundColor: 'var(--color-coral-red)',
-                      padding: '0.2rem 0.55rem',
+                      padding: '0.22rem 0.65rem',
                       borderRadius: 'var(--radius-pill)',
-                      fontSize: '0.64rem',
+                      fontSize: '0.68rem',
                       fontWeight: 700,
                       color: '#FFF',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.25rem'
+                      gap: '0.3rem',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
+                      letterSpacing: '0.04em'
                     }}>
-                      <Play size={9} fill="#FFF" />
+                      <Play size={10} fill="#FFF" />
                       <span>SELECTED</span>
                     </div>
                   )}

@@ -60,14 +60,14 @@ export default function Portfolio({ setActivePage }) {
         textAlign: 'center',
         position: 'relative'
       }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '840px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '1100px' }}>
           <span className="section-badge light">
             Master Portfolio & Gallery
           </span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: '#FFF', marginBottom: '1rem' }}>
+          <h1 className="banner-hero-title">
             Visual Anthology & Curated Moments
           </h1>
-          <p style={{ fontSize: '1.1rem', color: '#F5EDE8', lineHeight: '1.7', fontWeight: 300 }}>
+          <p style={{ fontSize: '1.1rem', color: '#F5EDE8', lineHeight: '1.7', fontWeight: 300, maxWidth: '780px', margin: '0 auto' }}>
             An editorial collection of fine-art portraits, weddings, gentle maternal thresholds, and couture fashion. Click any image to open the full-screen master lightbox with camera metadata.
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function Portfolio({ setActivePage }) {
                     setActiveCategory(cat);
                     setSelectedPhotoIndex(null);
                   }}
-                  className={isActive ? 'pulse-badge' : ''}
+                  className=""
                   style={{
                     padding: '0.6rem 1.35rem',
                     borderRadius: 'var(--radius-pill)',
@@ -166,12 +166,11 @@ export default function Portfolio({ setActivePage }) {
 
                   {/* Top Category Badge */}
                   <div 
-                    className="cinema-badge-reveal"
                     style={{
                       position: 'absolute',
                       top: '1rem',
                       left: '1rem',
-                      backgroundColor: 'rgba(23, 17, 15, 0.88)',
+                      backgroundColor: 'rgba(23, 17, 15, 0.82)',
                       backdropFilter: 'blur(8px)',
                       padding: '0.35rem 0.85rem',
                       borderRadius: 'var(--radius-pill)',
@@ -186,33 +185,26 @@ export default function Portfolio({ setActivePage }) {
                     {item.category}
                   </div>
 
-                  {/* Centered Spring Camera Lens View Icon (Inspired by SJ Studios) */}
-                  <div className="cinema-center-icon">
-                    <Camera size={24} />
-                  </div>
-
-                  {/* Bottom Caption with Smooth Slide-Up Transition */}
-                  <div className="cinema-caption">
-                    <h3 style={{ fontSize: '1.35rem', color: '#FFF', marginBottom: '0.35rem', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
+                  {/* Clean Bottom Gradient with Title Only (Leaves Photo Clear & Unobstructed) */}
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: '2rem 1.2rem 1rem',
+                    background: 'linear-gradient(to top, rgba(23, 17, 15, 0.88) 0%, rgba(23, 17, 15, 0.4) 60%, transparent 100%)',
+                    zIndex: 2,
+                    pointerEvents: 'none'
+                  }}>
+                    <h3 style={{
+                      fontSize: '1.15rem',
+                      color: '#FFFFFF',
+                      margin: 0,
+                      fontWeight: 600,
+                      textShadow: '0 2px 8px rgba(0,0,0,0.8)'
+                    }}>
                       {item.title}
                     </h3>
-                    <p style={{ fontSize: '0.85rem', color: '#F5EDE8', lineHeight: '1.45', marginBottom: '0.7rem', textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}>
-                      {item.caption}
-                    </p>
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      fontSize: '0.74rem',
-                      color: 'var(--color-blush-pink)',
-                      paddingTop: '0.6rem',
-                      borderTop: '1px solid rgba(255, 255, 255, 0.2)'
-                    }}>
-                      <span>{item.camera}</span>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: 'var(--color-coral-red)', fontWeight: 600 }}>
-                        <Eye size={13} /> View Master ↗
-                      </span>
-                    </div>
                   </div>
                 </div>
               );

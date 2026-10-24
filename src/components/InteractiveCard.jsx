@@ -20,7 +20,6 @@ export default function InteractiveCard({
   const cardRef = useRef(null);
   const [transformStyle, setTransformStyle] = useState('');
   const [glareStyle, setGlareStyle] = useState({ opacity: 0 });
-  const [isShutterActive, setIsShutterActive] = useState(false);
 
   // Mouse move handler for 3D tilt and specular lighting sheen
   const handleMouseMove = (e) => {
@@ -53,9 +52,6 @@ export default function InteractiveCard({
   };
 
   const handleClick = (e) => {
-    // Trigger quick shutter click flash effect
-    setIsShutterActive(true);
-    setTimeout(() => setIsShutterActive(false), 380);
     if (onClick) onClick(e);
   };
 
@@ -105,23 +101,7 @@ export default function InteractiveCard({
         />
       )}
 
-      {/* Shutter Click White Flash Overlay */}
-      {isShutterActive && (
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: '#FFFFFF',
-            zIndex: 10,
-            pointerEvents: 'none',
-            borderRadius: 'inherit',
-            animation: 'shutterFlash 0.35s ease-out forwards'
-          }}
-        />
-      )}
+
 
       {children}
     </div>

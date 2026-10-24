@@ -21,23 +21,23 @@ export default function About({ setActivePage }) {
   const creativeSteps = [
     {
       num: '01',
-      title: 'Consultation & Personal Vision',
-      desc: 'We begin with an unhurried conversation over artisan tea or video call to understand your personal story, aesthetic preferences, wardrobe ideas, and the emotional tone you wish to capture.'
+      title: 'Consultation & Vision',
+      desc: 'A relaxed conversation to discuss your goals, style preferences, and wardrobe guidance.'
     },
     {
       num: '02',
-      title: 'Styling & Color Moodboard',
-      desc: 'We curate a custom color and texture moodboard harmonizing with our blush, cream, and rose-gold palette, providing advice on clothing choices that flatter your skin tones.'
+      title: 'Studio Styling & Light',
+      desc: 'Setting up custom backdrops, soft solarium lighting, and outfit coordination.'
     },
     {
       num: '03',
-      title: 'The Unhurried Sanctuary Session',
-      desc: 'Step into a tranquil, relaxing atmosphere. With gentle, encouraging direction, comfortable music, and ample rest intervals, your authentic spirit unfolds naturally before the camera.'
+      title: 'The Photography Session',
+      desc: 'A comfortable, unhurried photoshoot with gentle posing direction and zero stress.'
     },
     {
       num: '04',
-      title: 'Master Retouching & Heirloom Delivery',
-      desc: 'Every selected image undergoes delicate hand-retouching to preserve real skin textures, enhance natural luminance, and prepare archival-quality museum files and handcrafted albums.'
+      title: 'Retouching & Delivery',
+      desc: 'Subtle hand-finishing for natural skin tones and prompt delivery of high-res files.'
     }
   ];
 
@@ -51,7 +51,7 @@ export default function About({ setActivePage }) {
         textAlign: 'center',
         position: 'relative'
       }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '840px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '1100px' }}>
           {/* Logo Brand Emblem with Water Ripple */}
           <div style={{ position: 'relative', width: '64px', height: '64px', margin: '0 auto 0.8rem' }}>
             <div className="water-ripple-ring" style={{ inset: '-10px' }} />
@@ -86,13 +86,13 @@ export default function About({ setActivePage }) {
             About Lens & Leaf
           </span>
           {/* Headline strictly per Requirement #7: “More Than Photographs. Memories That Stay.” */}
-          <h1 style={{ fontSize: 'clamp(2.4rem, 4.8vw, 3.6rem)', color: '#FFF', marginBottom: '0.6rem' }}>
-            More Than Photographs. <br />
+          <h1 className="banner-hero-title">
+            More Than Photographs.{' '}
             <span className="text-shimmer" style={{ fontStyle: 'italic', fontWeight: 600 }}>
               Memories That Stay.
             </span>
           </h1>
-          <p style={{ fontSize: '1.02rem', color: '#F5EDE8', lineHeight: '1.6', fontWeight: 300, margin: 0 }}>
+          <p style={{ fontSize: '1.1rem', color: '#F5EDE8', lineHeight: '1.7', fontWeight: 300, maxWidth: '780px', margin: '0 auto' }}>
             Dedicated to the quiet art of preserving meaningful moments, natural connections, and authentic emotion.
           </p>
         </div>
@@ -111,33 +111,41 @@ export default function About({ setActivePage }) {
             {/* Left Column: Creative Philosophy with Scroll Reveal */}
             <div className="reveal-on-scroll">
               <span className="section-badge">
-                Our Creative Approach
+                Our Approach
               </span>
               <h2 className="section-title">
-                Where Floral Elegance Meets Camera Precision
+                Natural Light, Genuine Connection
               </h2>
-              <p style={{ color: 'var(--text-body)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '1rem' }}>
-                Lens & Leaf was conceived with a clear creative intention: that photography should never feel rushed, artificial, or forced. Like the tender embrace of lotus petals cradling a morning dewdrop, our studio creates a calm, protective sanctuary where clients feel truly valued and relaxed.
+              <p style={{ color: 'var(--text-body)', fontSize: '1rem', lineHeight: '1.68', marginBottom: '1rem' }}>
+                Lens & Leaf is a boutique photography studio created around a simple idea: photoshoots should feel relaxed, natural, and enjoyable—never rushed or stiffly posed.
               </p>
-              <p style={{ color: 'var(--text-body)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '1rem' }}>
-                We combine meticulous attention to optical detail—flattering focal lengths, calibrated lighting, and harmonious color palettes—with a deep passion for storytelling. We believe every person, couple, and family carries an unspoken grace that shines brightest when they are encouraged to simply be themselves.
-              </p>
-              <p style={{ color: 'var(--text-body)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '1.4rem' }}>
-                Our commitment is to deliver imagery that transcends fleeting trends, creating timeless heirlooms that evoke the same warmth, tenderness, and love decades from now.
+              <p style={{ color: 'var(--text-body)', fontSize: '1rem', lineHeight: '1.68', marginBottom: '1.5rem' }}>
+                By pairing soft solarium daylight with gentle direction, we highlight authentic expressions and true skin tones to deliver timeless photographs you'll love revisiting for decades.
               </p>
 
-              <div style={{
-                padding: '1.2rem 1.6rem',
-                borderRadius: 'var(--radius-md)',
-                backgroundColor: 'var(--bg-blush-soft)',
-                borderLeft: '4px solid var(--color-coral-red)'
-              }}>
-                <p style={{ fontStyle: 'italic', color: 'var(--text-title)', fontSize: '0.96rem', lineHeight: '1.6', margin: 0 }}>
-                  "We believe the most breathtaking photographs are born when optical precision steps quietly into the service of genuine human connection."
-                </p>
-                <span style={{ display: 'block', marginTop: '0.5rem', fontSize: '0.82rem', color: 'var(--color-coral-red)', fontWeight: 600 }}>
-                  — Lens & Leaf Studio Philosophy
-                </span>
+              {/* 3 Clear, Quick Highlights */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.9rem', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                  <CheckCircle size={18} color="var(--color-coral-red)" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
+                  <div>
+                    <strong style={{ color: 'var(--text-title)', fontSize: '0.95rem' }}>Relaxed Atmosphere:</strong>
+                    <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginLeft: '0.35rem' }}>A comfortable, pressure-free studio where you can simply be yourself.</span>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                  <CheckCircle size={18} color="var(--color-coral-red)" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
+                  <div>
+                    <strong style={{ color: 'var(--text-title)', fontSize: '0.95rem' }}>True-to-Life Tones:</strong>
+                    <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginLeft: '0.35rem' }}>Natural skin textures and painterly light with zero artificial plastic filters.</span>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                  <CheckCircle size={18} color="var(--color-coral-red)" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
+                  <div>
+                    <strong style={{ color: 'var(--text-title)', fontSize: '0.95rem' }}>Heirloom Delivery:</strong>
+                    <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginLeft: '0.35rem' }}>Full-resolution digital master files and archival fine-art prints.</span>
+                  </div>
+                </div>
               </div>
             </div>
 

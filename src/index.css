@@ -444,6 +444,21 @@ button, input, select, textarea {
   line-height: 1.15;
 }
 
+.banner-hero-title {
+  font-size: clamp(1.8rem, 3.4vw, 3.25rem);
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  white-space: normal;
+}
+
+@media (min-width: 900px) {
+  .banner-hero-title {
+    white-space: nowrap;
+  }
+}
+
 .section-subtitle {
   font-size: 1.08rem;
   color: var(--text-muted);
@@ -1222,3 +1237,68 @@ button, input, select, textarea {
     white-space: normal;
   }
 }
+
+/* =====================================================================
+   AUTHENTIC SOCIAL MEDIA BUTTONS WITH REAL APP COLORS
+   ===================================================================== */
+.footer-social-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(166, 166, 166, 0.35);
+  background-color: rgba(255, 255, 255, 0.05);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-blush-pink);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer-social-btn:hover {
+  transform: translateY(-3px) scale(1.12);
+}
+
+.footer-social-btn:active {
+  transform: translateY(0) scale(0.94);
+}
+
+/* Instagram: Radiant brand gradient */
+.footer-social-btn.instagram:hover,
+.footer-social-btn.instagram:active,
+.footer-social-btn.instagram.is-active {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  border-color: transparent;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 22px rgba(220, 39, 67, 0.55), 0 0 12px rgba(253, 89, 73, 0.3);
+}
+
+/* Facebook: Official royal blue */
+.footer-social-btn.facebook:hover,
+.footer-social-btn.facebook:active,
+.footer-social-btn.facebook.is-active {
+  background: #1877F2;
+  border-color: #1877F2;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 22px rgba(24, 119, 242, 0.55), 0 0 12px rgba(24, 119, 242, 0.3);
+}
+
+/* WhatsApp: Official vivid green */
+.footer-social-btn.whatsapp {
+  border-color: rgba(37, 211, 102, 0.35);
+  color: #25D366;
+}
+
+.footer-social-btn.whatsapp:hover,
+.footer-social-btn.whatsapp:active,
+.footer-social-btn.whatsapp.is-active {
+  background: #25D366;
+  border-color: #25D366;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.55), 0 0 12px rgba(37, 211, 102, 0.3);
+}
+

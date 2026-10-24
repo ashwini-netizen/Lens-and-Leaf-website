@@ -464,14 +464,449 @@ export const GALLERY_ITEMS = [
     settings: 'f/2.2 • 1/400s • ISO 200',
     location: 'Rosewood Garden Courtyard',
     caption: 'Bespoke floral cake presentation surrounded by sparklers and joyful family applause.'
+  },
+  {
+    id: 17,
+    title: 'Velvet Soliloquy',
+    category: 'Portraits',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Hasselblad 907X 50C',
+    lens: 'XCD 65mm f/2.8',
+    settings: 'f/2.8 • 1/250s • ISO 100',
+    location: 'Lens & Leaf North Bay',
+    caption: 'Quiet contemplative beauty caught in soft chiaroscuro directional studio light.'
+  },
+  {
+    id: 18,
+    title: 'The Cathedral Veil Cascade',
+    category: 'Weddings',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Sony α1',
+    lens: 'FE 50mm f/1.2 GM',
+    settings: 'f/1.4 • 1/1600s • ISO 100',
+    location: 'St. Augustine Cloisters',
+    caption: 'Handcrafted Chantilly lace veil billowing gracefully in the afternoon breeze.'
+  },
+  {
+    id: 19,
+    title: 'Promenade in Old Town',
+    category: 'Couples',
+    image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Leica M11',
+    lens: 'Noctilux-M 50mm f/0.95',
+    settings: 'f/1.2 • 1/800s • ISO 64',
+    location: 'Historic Promenade Lane',
+    caption: 'Intimate evening walk through golden gaslit cobblestone streets.'
+  },
+  {
+    id: 20,
+    title: 'Golden Hour Motherhood',
+    category: 'Maternity',
+    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Canon EOS R5',
+    lens: 'RF 85mm f/1.2L USM',
+    settings: 'f/1.6 • 1/1000s • ISO 100',
+    location: 'Sunset Botanical Meadow',
+    caption: 'Soft sunlight embracing maternal radiance amidst wild golden grasses.'
+  },
+  {
+    id: 21,
+    title: 'High-Jewelry Chromatic Radiance',
+    category: 'Fashion',
+    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Hasselblad X2D 100C',
+    lens: 'XCD 90mm f/2.5 V',
+    settings: 'f/4.0 • 1/200s • ISO 64',
+    location: 'Studio Chroma Stage',
+    caption: 'Editorial beauty portrait highlighting diamond craftsmanship and painterly makeup styling.'
+  },
+  {
+    id: 22,
+    title: 'Slumber in Cashmere Wrap',
+    category: 'Newborns',
+    image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Sony α7R V',
+    lens: 'FE 50mm f/1.2 GM',
+    settings: 'f/1.8 • 1/250s • ISO 160',
+    location: 'Sanctuary Newborn Nursery',
+    caption: 'Twelve-day-old infant resting peacefully swaddled in natural organic cashmere.'
+  },
+  {
+    id: 23,
+    title: 'Bespoke Botanical Perfumery',
+    category: 'Products',
+    image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Sony α1',
+    lens: 'FE 90mm f/2.8 Macro G',
+    settings: 'f/8.0 • 1/160s • ISO 100',
+    location: 'Solarium Tabletop Stage',
+    caption: 'Crystal perfume bottle set against delicate morning dew droplets and rose petals.'
+  },
+  {
+    id: 24,
+    title: 'Symphony Hall Gala',
+    category: 'Events',
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Sony α1',
+    lens: 'FE 24-70mm f/2.8 GM II',
+    settings: 'f/2.8 • 1/125s • ISO 1250',
+    location: 'Philharmonic Grand Foyer',
+    caption: 'Black-tie gala attendees celebrating beneath soaring vaulted architecture.'
+  },
+  {
+    id: 25,
+    title: 'Gentle Sunlight Radiance',
+    category: 'Portraits',
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Canon EOS R5',
+    lens: 'RF 50mm f/1.2L',
+    settings: 'f/1.4 • 1/1200s • ISO 100',
+    location: 'Solarium Greenhouse',
+    caption: 'Warm morning light cascading across natural curls in relaxed authentic beauty.'
+  },
+  {
+    id: 26,
+    title: 'Sunset Vineyard First Dance',
+    category: 'Weddings',
+    image: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Sony α1',
+    lens: 'FE 35mm f/1.4 GM',
+    settings: 'f/1.8 • 1/1000s • ISO 100',
+    location: 'Napa Valley Terraces',
+    caption: 'First dance overlooking rolling sun-drenched vineyards bathed in rose-gold dusk.'
+  },
+  {
+    id: 27,
+    title: 'Minimalist Tailoring & Light',
+    category: 'Fashion',
+    image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Leica SL2',
+    lens: 'Vario-Elmarit-SL 24-90mm',
+    settings: 'f/3.5 • 1/400s • ISO 100',
+    location: 'Brutalist Concrete Pavilion',
+    caption: 'Monochromatic architectural tailoring contrasting with soft botanical textures.'
+  },
+  {
+    id: 28,
+    title: 'Whispered Secrets',
+    category: 'Couples',
+    image: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1200&q=85',
+    camera: 'Sony α7R V',
+    lens: 'FE 85mm f/1.4 GM',
+    settings: 'f/1.4 • 1/1600s • ISO 100',
+    location: 'Coastal Cypress Grove',
+    caption: 'Candid intimacy between newlyweds beneath the coastal pines.'
+  }
+];
+
+// Curated Showcase photos specifically presented on Home page photo sections
+export const CURATED_SHOWCASE_PHOTOS = [
+  // --- PORTRAITS ---
+  {
+    id: 'sc-1',
+    title: 'Rose Petal Solitude',
+    category: 'Portraits',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Sculpted key lighting balancing natural ambient glow with soft shadow roll-off in the Solarium Bay.',
+    tag: 'Editorial Portrait',
+    camera: 'Sony α1',
+    lens: '85mm f/1.4 GM'
+  },
+  {
+    id: 'sc-2',
+    title: 'Velvet Soliloquy',
+    category: 'Portraits',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Quiet contemplative beauty caught in soft directional chiaroscuro studio lighting.',
+    tag: 'Fine-Art Portrait',
+    camera: 'Hasselblad 907X',
+    lens: 'XCD 65mm f/2.8'
+  },
+  {
+    id: 'sc-3',
+    title: 'Gentle Sunlight Radiance',
+    category: 'Portraits',
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Morning sun cascading across natural curls in authentic, unforced radiance.',
+    tag: 'Natural Light Portrait',
+    camera: 'Canon EOS R5',
+    lens: 'RF 50mm f/1.2L'
+  },
+  {
+    id: 'sc-4',
+    title: 'Architectural Visionary',
+    category: 'Portraits',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Clean, commanding executive composition for an art monograph feature.',
+    tag: 'Executive Headshot',
+    camera: 'Sony α1',
+    lens: '135mm f/1.8 GM'
+  },
+
+  // --- WEDDINGS ---
+  {
+    id: 'sc-5',
+    title: 'The Glasshouse Ceremony Vows',
+    category: 'Weddings',
+    image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Soft sunlight filtering through historic leaded glass as Clara and Julian shared their vows.',
+    tag: 'Fine-Art Ceremony',
+    camera: 'Hasselblad H6D',
+    lens: '100mm f/2.2'
+  },
+  {
+    id: 'sc-6',
+    title: 'The Cathedral Veil Cascade',
+    category: 'Weddings',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Handcrafted Chantilly lace veil billowing gracefully in the afternoon breeze.',
+    tag: 'Bridal Heirloom',
+    camera: 'Sony α1',
+    lens: '50mm f/1.2 GM'
+  },
+  {
+    id: 'sc-7',
+    title: 'Sunset Vineyard First Dance',
+    category: 'Weddings',
+    image: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1200&q=85',
+    caption: 'First dance overlooking rolling sun-drenched vineyards bathed in rose-gold dusk.',
+    tag: 'Twilight Reception',
+    camera: 'Sony α1',
+    lens: '35mm f/1.4 GM'
+  },
+  {
+    id: 'sc-8',
+    title: 'Chateau Courtyard Vows',
+    category: 'Weddings',
+    image: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Chamber music, champagne toasts, and the joyous exit beneath historic stone arches.',
+    tag: 'Courtyard Celebration',
+    camera: 'Canon EOS R5',
+    lens: '35mm f/1.4'
+  },
+
+  // --- COUPLES ---
+  {
+    id: 'sc-9',
+    title: 'Golden Hour Embrace',
+    category: 'Couples',
+    image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Unrehearsed laughter as the warm dusk light kissed the ocean breeze.',
+    tag: 'Romantic Intimacy',
+    camera: 'Sony α7R V',
+    lens: '50mm f/1.2 GM'
+  },
+  {
+    id: 'sc-10',
+    title: 'Promenade in Old Town',
+    category: 'Couples',
+    image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Intimate evening walk through golden gaslit cobblestone streets and quiet arches.',
+    tag: 'City Romance',
+    camera: 'Leica M11',
+    lens: '50mm f/0.95'
+  },
+  {
+    id: 'sc-11',
+    title: 'Whispered Secrets',
+    category: 'Couples',
+    image: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Candid laughter between two souls beneath the fragrant coastal pines.',
+    tag: 'Candid Lovers',
+    camera: 'Sony α7R V',
+    lens: '85mm f/1.4 GM'
+  },
+
+  // --- MATERNITY ---
+  {
+    id: 'sc-12',
+    title: 'Sacred First Breath',
+    category: 'Maternity',
+    image: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Gentle morning warmth wrapping expectant parents in a serene moment of sacred stillness.',
+    tag: 'Maternity Fine-Art',
+    camera: 'Canon EOS R5',
+    lens: '50mm f/1.2L'
+  },
+  {
+    id: 'sc-13',
+    title: 'Floral Sanctuary Maternity',
+    category: 'Maternity',
+    image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Handcrafted floral halo and flowing blush chiffon celebrating maternal grace.',
+    tag: 'Solarium Maternity',
+    camera: 'Hasselblad H6D',
+    lens: '100mm f/2.2'
+  },
+  {
+    id: 'sc-14',
+    title: 'Golden Hour Motherhood',
+    category: 'Maternity',
+    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Soft sunlight embracing maternal radiance amidst wild golden meadow grasses.',
+    tag: 'Natural Meadow Glow',
+    camera: 'Canon EOS R5',
+    lens: '85mm f/1.2L'
+  },
+
+  // --- NEWBORNS ---
+  {
+    id: 'sc-15',
+    title: 'Ethereal Newborn Repose',
+    category: 'Newborns',
+    image: 'https://images.unsplash.com/photo-1546015720-b8b30df5aa27?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Nine days young, curled peacefully inside organic cashmere and gentle natural bedding.',
+    tag: 'Newborn Sanctuary',
+    camera: 'Canon EOS R5',
+    lens: '85mm f/1.2L DS'
+  },
+  {
+    id: 'sc-16',
+    title: 'Slumber in Cashmere Wrap',
+    category: 'Newborns',
+    image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Twelve-day-old infant resting peacefully swaddled in natural organic knits.',
+    tag: 'Pure Innocence',
+    camera: 'Sony α7R V',
+    lens: '50mm f/1.2 GM'
+  },
+  {
+    id: 'sc-17',
+    title: 'Cradle of Tenderness',
+    category: 'Newborns',
+    image: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Gentle hands cradling a sleeping newborn in diffused morning solarium light.',
+    tag: 'Family Bonding',
+    camera: 'Canon EOS R5',
+    lens: '50mm f/1.2L'
+  },
+
+  // --- FASHION ---
+  {
+    id: 'sc-18',
+    title: 'Silk & Structure',
+    category: 'Fashion',
+    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Haute couture editorial exploring fluid silk drape against clean architectural lines.',
+    tag: 'Haute Couture',
+    camera: 'Hasselblad X2D',
+    lens: '55mm f/2.5 V'
+  },
+  {
+    id: 'sc-19',
+    title: 'Avant-Garde Silhouette',
+    category: 'Fashion',
+    image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Fashion editorial exploring wind, natural linen drapery, and warm earthy tones.',
+    tag: 'Editorial Campaign',
+    camera: 'Leica SL2',
+    lens: '50mm f/1.4'
+  },
+  {
+    id: 'sc-20',
+    title: 'High-Jewelry Radiance',
+    category: 'Fashion',
+    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Editorial beauty portrait highlighting diamond craftsmanship and delicate makeup styling.',
+    tag: 'Jewelry & Glamour',
+    camera: 'Hasselblad X2D',
+    lens: '90mm f/2.5 V'
+  },
+
+  // --- EVENTS ---
+  {
+    id: 'sc-21',
+    title: 'Candlelit Milestone Gala',
+    category: 'Events',
+    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Heartfelt toasts and clinking crystal beneath cascading ballroom chandeliers.',
+    tag: 'Gala & Milestone',
+    camera: 'Sony α1',
+    lens: '24-70mm f/2.8 GM'
+  },
+  {
+    id: 'sc-22',
+    title: 'Garden Soirée Birthday',
+    category: 'Events',
+    image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Bespoke floral celebration cake surrounded by golden sparklers and laughter.',
+    tag: 'Intimate Gathering',
+    camera: 'Canon EOS R5',
+    lens: '35mm f/1.8'
+  },
+
+  // --- PRODUCTS & STILL LIFE ---
+  {
+    id: 'sc-23',
+    title: 'Bespoke Horology Still Life',
+    category: 'Products',
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Refined sapphire crystal watch facets illuminated with precision studio rim lights.',
+    tag: 'Luxury Horology',
+    camera: 'Hasselblad X2D',
+    lens: '120mm Macro'
+  },
+  {
+    id: 'sc-24',
+    title: 'Botanical Perfumery',
+    category: 'Products',
+    image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Crystal perfume flacon set against delicate morning dew droplets and rose petals.',
+    tag: 'Artisan Perfume',
+    camera: 'Sony α1',
+    lens: '90mm f/2.8 Macro'
+  },
+  {
+    id: 'sc-25',
+    title: 'Artisan Ceramic Tableware',
+    category: 'Products',
+    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=85',
+    caption: 'Tactile stoneware texture and rich coffee crema captured for an artisanal catalog.',
+    tag: 'Craft Still Life',
+    camera: 'Sony α1',
+    lens: '90mm f/2.8 Macro'
+  }
+];
+
+// Live Atelier session ribbon photos for the continuous photo strip
+export const ATELIER_STRIP_PHOTOS = [
+  {
+    title: 'North Solarium Session',
+    category: 'Studio Atmosphere',
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    title: 'Hand-Retouched Proofing',
+    category: 'Darkroom & Color Lab',
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    title: 'Wardrobe & Chiffon Styling',
+    category: 'Dressing Suite',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    title: 'Medium Format Medium Capture',
+    category: 'Hasselblad Still Life',
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    title: 'Botanical Tea & Consultation',
+    category: 'Client Lounge',
+    image: 'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    title: 'Golden Sunset Session',
+    category: 'Outdoor Location',
+    image: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80'
   }
 ];
 
 // Studio Experience Data for Requirement #10
 export const STUDIO_EXPERIENCE_DATA = {
   intro: {
-    headline: 'An Art-Directed Sanctuary for Light & Emotion',
-    description: 'Located in the heart of Mysore, the Lens & Leaf Studio is an intimate 2,400-square-foot sanctuary thoughtfully curated to put clients at ease. Designed with soaring 14-foot ceilings, north-facing frosted solarium glass, and sound-dampened acoustics, every square foot is optimized for pure photographic artistry.'
+    headline: 'A Natural Light Sanctuary for Photography',
+    description: 'Located in Mysore, Lens & Leaf is a 2,400 sq. ft. studio featuring 14-foot ceilings, north-facing solarium daylight, and dedicated styling suites designed for comfort and creative freedom.'
   },
   gallery: [
     {

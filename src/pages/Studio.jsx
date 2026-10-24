@@ -80,14 +80,14 @@ export default function Studio({ setActivePage }) {
         textAlign: 'center',
         position: 'relative'
       }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '840px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '1100px' }}>
           <span className="section-badge light">
             Studio Sanctuary
           </span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: '#FFF', marginBottom: '1rem' }}>
+          <h1 className="banner-hero-title">
             The Lens & Leaf Studio Experience
           </h1>
-          <p style={{ fontSize: '1.1rem', color: '#F5EDE8', lineHeight: '1.7', fontWeight: 300 }}>
+          <p style={{ fontSize: '1.1rem', color: '#F5EDE8', lineHeight: '1.7', fontWeight: 300, maxWidth: '780px', margin: '0 auto' }}>
             An art-directed daylight solarium and controlled lighting sanctuary crafted for comfort, intimacy, and timeless photographic composition.
           </p>
         </div>

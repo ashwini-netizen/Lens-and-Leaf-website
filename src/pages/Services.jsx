@@ -66,14 +66,14 @@ export default function Services({ setActivePage, onSelectService }) {
         textAlign: 'center',
         position: 'relative'
       }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '840px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '1100px' }}>
           <span className="section-badge light">
             Artisan Disciplines
           </span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: '#FFF', marginBottom: '1rem' }}>
+          <h1 className="banner-hero-title">
             Artisan Photography Services
           </h1>
-          <p style={{ fontSize: '1.1rem', color: '#F5EDE8', lineHeight: '1.7', fontWeight: 300 }}>
+          <p style={{ fontSize: '1.1rem', color: '#F5EDE8', lineHeight: '1.7', fontWeight: 300, maxWidth: '780px', margin: '0 auto' }}>
             Dedicated photography crafted with precision optics, flattering lighting, and authentic artistic empathy. Explore our specialized disciplines below.
           </p>
         </div>

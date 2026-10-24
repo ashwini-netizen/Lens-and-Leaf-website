@@ -14,6 +14,45 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Endpoint to receive videos from browser context
+app.post('/api/save-hero-video', express.raw({ type: '*/*', limit: '60mb' }), (req, res) => {
+  try {
+    const filename = req.query.filename || 'studio_interview_spotlight.webm';
+    const dest = path.join(__dirname, '..', 'public', 'videos', filename);
+    fs.writeFileSync(dest, req.body);
+    // Also sync to dist and docs if they exist
+    const distDest = path.join(__dirname, '..', 'dist', 'videos', filename);
+    const docsDest = path.join(__dirname, '..', 'docs', 'videos', filename);
+    if (fs.existsSync(path.dirname(distDest))) fs.writeFileSync(distDest, req.body);
+    if (fs.existsSync(path.dirname(docsDest))) fs.writeFileSync(docsDest, req.body);
+    console.log(`✓ Successfully saved ${filename}! Size:`, req.body.length);
+    res.json({ success: true, size: req.body.length });
+  } catch (e) {
+    console.error('Failed to save video:', e);
+    res.status(500).json({ error: e.message });
+  }
+});
+
+// Endpoint to receive images from browser context
+app.post('/api/save-image', express.raw({ type: '*/*', limit: '20mb' }), (req, res) => {
+  try {
+    const filename = req.query.filename || 'studio_poster.png';
+    const dest = path.join(__dirname, '..', 'public', 'images', filename);
+    fs.writeFileSync(dest, req.body);
+    const assetDest = path.join(__dirname, '..', 'src', 'assets', filename);
+    fs.writeFileSync(assetDest, req.body);
+    const distDest = path.join(__dirname, '..', 'dist', 'images', filename);
+    const docsDest = path.join(__dirname, '..', 'docs', 'images', filename);
+    if (fs.existsSync(path.dirname(distDest))) fs.writeFileSync(distDest, req.body);
+    if (fs.existsSync(path.dirname(docsDest))) fs.writeFileSync(docsDest, req.body);
+    console.log(`✓ Successfully saved image ${filename}! Size:`, req.body.length);
+    res.json({ success: true, size: req.body.length });
+  } catch (e) {
+    console.error('Failed to save image:', e);
+    res.status(500).json({ error: e.message });
+  }
+});
+
 // Serve static assets from public
 app.use(express.static(path.join(__dirname, '..', 'public')));
 

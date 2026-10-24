@@ -26,3 +26,20 @@ dist-ssr
 # Database
 *.db-wal
 *.db-shm
+
+# Scratch & Temporary Tools
+scratch/
+
+# Unused large raw video caches
+public/videos/*.webm
+public/videos/photographer_behind_lens_*.mp4
+public/videos/studio_photoshoot_set_*.mp4
+public/videos/studio_interview_spotlight.*
+public/videos/studiob_hero_reel.mp4
+public/videos/walking_demo.mp4
+public/videos/botanical_macro.mp4
+public/videos/fashion_blue.mp4
+public/videos/fashion_silver.mp4
+public/videos/studio_camera_tripod_rig.mp4
+public/videos/studio_photoshoot_lighting.mp4
+src/assets/studio_interview_spotlight.mp4
