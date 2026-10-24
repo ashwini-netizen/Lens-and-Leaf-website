@@ -40,13 +40,22 @@ export default defineConfig({
             fs.cpSync(distAssets, rootAssetsDir, { recursive: true });
           }
 
-          // Sync dist/index.html to root index.html
+          // Sync dist/index.html to root index.html and create 404.html fallbacks
           const distHtmlPath = path.resolve(distDir, 'index.html');
           if (fs.existsSync(distHtmlPath)) {
             const distHtml = fs.readFileSync(distHtmlPath, 'utf8');
             fs.writeFileSync(path.resolve(__dirname, 'index.html'), distHtml, 'utf8');
+            fs.writeFileSync(path.resolve(__dirname, '404.html'), distHtml, 'utf8');
+            fs.writeFileSync(path.resolve(docsDir, '404.html'), distHtml, 'utf8');
+            fs.writeFileSync(path.resolve(distDir, '404.html'), distHtml, 'utf8');
           }
-          console.log('✓ Successfully synchronized production bundles to docs/, assets/, and index.html');
+
+          // Create .nojekyll files to prevent GitHub Pages Jekyll processing
+          fs.writeFileSync(path.resolve(__dirname, '.nojekyll'), '', 'utf8');
+          fs.writeFileSync(path.resolve(docsDir, '.nojekyll'), '', 'utf8');
+          fs.writeFileSync(path.resolve(distDir, '.nojekyll'), '', 'utf8');
+
+          console.log('✓ Successfully synchronized production bundles, 404 fallbacks, and .nojekyll to docs/, assets/, and index.html');
         }
       }
     }
