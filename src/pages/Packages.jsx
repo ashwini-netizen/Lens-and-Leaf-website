@@ -151,14 +151,21 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
         textAlign: 'center',
         position: 'relative'
       }}>
-        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '840px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '1150px' }}>
           <span className="section-badge light">
             Transparent Investment
           </span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: '#FFF', marginBottom: '1rem' }}>
+          <h1 
+            className="packages-heading-nowrap"
+            style={{ 
+              fontSize: 'clamp(1.75rem, 3.8vw, 3.25rem)', 
+              color: '#FFF', 
+              marginBottom: '1rem' 
+            }}
+          >
             Photoshoot Packages & Collections
           </h1>
-          <p style={{ fontSize: '1.1rem', color: '#F5EDE8', lineHeight: '1.7', fontWeight: 300 }}>
+          <p style={{ fontSize: '1.1rem', color: '#F5EDE8', lineHeight: '1.7', fontWeight: 300, maxWidth: '820px', margin: '0 auto' }}>
             Every commissioned collection is transparent and all-inclusive with master color grading, private digital galleries, and personal printing rights. Choose your preferred discipline package below.
           </p>
         </div>
