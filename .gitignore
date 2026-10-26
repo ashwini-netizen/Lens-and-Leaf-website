@@ -31,6 +31,7 @@ dist-ssr
 scratch/
 
 # Unused large raw video caches
+videos/
 public/videos/*.webm
 public/videos/photographer_behind_lens_*.mp4
 public/videos/studio_photoshoot_set_*.mp4
@@ -43,3 +44,4 @@ public/videos/fashion_silver.mp4
 public/videos/studio_camera_tripod_rig.mp4
 public/videos/studio_photoshoot_lighting.mp4
 src/assets/studio_interview_spotlight.mp4
+

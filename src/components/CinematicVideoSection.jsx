@@ -6,6 +6,9 @@ import {
   VolumeX
 } from 'lucide-react';
 import studioProductionVideo from '../assets/studio_production_bts.mp4';
+import photographerDslrVideo from '../assets/studio_photographer_dslr.mp4';
+import interviewSetupVideo from '../assets/studio_interview_setup.mp4';
+import heroPortraitVideo from '../assets/hero_portrait_reel.mp4';
 import studioPosterImg from '../assets/studio_production_bts.png';
 import studioInterviewBtsImg from '../assets/studio_interview_bts.png';
 
@@ -33,7 +36,7 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
       id: 'studio-photographer-craft',
       title: 'Precision Optics & Photographer Direction',
       description: 'Capturing authentic expressions, pose guidance, and instant digital proofing inside our sound-calibrated photography bay.',
-      videoUrl: './videos/studio_photographer_dslr.mp4',
+      videoUrl: photographerDslrVideo,
       poster: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1200&h=750&q=80',
       durationTag: '0:15 Studio Reel',
       serviceLinked: 'Portrait Photography'
@@ -42,7 +45,7 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
       id: 'studio-interview-setup',
       title: 'Studio Spotlight & Calibrated Staging',
       description: 'Behind the scenes: Nanlite parabolic softboxes with grids, warm circular spotlight, and real-time tethered monitor proofing.',
-      videoUrl: './videos/studio_interview_setup.mp4',
+      videoUrl: interviewSetupVideo,
       poster: studioInterviewBtsImg,
       durationTag: '0:14 Studio Reel',
       serviceLinked: 'Creative Studio Photoshoots'
@@ -51,7 +54,7 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
       id: 'heirloom-portrait-reel',
       title: 'Natural Light & Heirloom Portraiture',
       description: 'Capturing relaxed family milestones, authentic emotion, and golden-hour connection with documentary artistic warmth.',
-      videoUrl: './videos/hero_portrait_reel.mp4',
+      videoUrl: heroPortraitVideo,
       poster: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&h=750&q=80',
       durationTag: '0:22 Fine-Art Reel',
       serviceLinked: 'Family & Heirloom Photography'
@@ -60,15 +63,38 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
 
   const currentReel = VIDEO_REELS[activeReelIdx];
 
+  const handleSelectReel = (index) => {
+    setActiveReelIdx(index);
+    setProgress(0);
+    setCurrentTime('0:00');
+    // Ensure smooth playback switch
+    setTimeout(() => {
+      const video = videoRef.current;
+      if (video) {
+        video.muted = isMuted;
+        video.currentTime = 0;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => setIsPlaying(true))
+            .catch(() => setIsPlaying(false));
+        }
+      }
+    }, 50);
+  };
+
   // Auto-play when active reel changes
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.load();
-      videoRef.current.play().then(() => {
-        setIsPlaying(true);
-      }).catch(() => {
-        setIsPlaying(false);
-      });
+    const video = videoRef.current;
+    if (video) {
+      video.muted = isMuted;
+      video.currentTime = 0;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setIsPlaying(true))
+          .catch(() => setIsPlaying(false));
+      }
     }
   }, [activeReelIdx]);
 
@@ -168,14 +194,17 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
           </div>
 
           {/* Video Player Display */}
-          <div style={{ 
-            position: 'relative', 
-            width: '100%',
-            aspectRatio: '16 / 9',
-            maxHeight: '560px', 
-            backgroundColor: '#000',
-            overflow: 'hidden'
-          }}>
+          <div 
+            id="video-showcase-player"
+            style={{ 
+              position: 'relative', 
+              width: '100%',
+              aspectRatio: '16 / 9',
+              maxHeight: '560px', 
+              backgroundColor: '#000',
+              overflow: 'hidden'
+            }}
+          >
             <video
               ref={videoRef}
               key={currentReel.id}
@@ -187,6 +216,14 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
               playsInline
               onTimeUpdate={handleTimeUpdate}
               onClick={togglePlay}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onLoadedMetadata={() => {
+                if (videoRef.current) {
+                  videoRef.current.muted = isMuted;
+                  videoRef.current.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+                }
+              }}
               style={{
                 width: '100%',
                 height: '100%',
@@ -194,10 +231,7 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
                 cursor: 'pointer',
                 display: 'block'
               }}
-            >
-              <source src={currentReel.videoUrl} type="video/mp4" />
-              <source src="./videos/studio_production_bts.mp4" type="video/mp4" />
-            </video>
+            />
 
             {/* Centered Play Button when paused */}
             {!isPlaying && (
@@ -317,14 +351,26 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
             return (
               <div
                 key={reel.id}
-                onClick={() => setActiveReelIdx(index)}
+                id={`video-reel-card-${index}`}
+                role="button"
+                tabIndex={0}
+                onClick={() => handleSelectReel(index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleSelectReel(index);
+                  }
+                }}
                 style={{
                   borderRadius: '14px',
                   padding: '1rem',
                   backgroundColor: isSelected ? 'rgba(32, 23, 21, 0.95)' : 'rgba(23, 17, 15, 0.6)',
                   border: isSelected ? '1.5px solid var(--color-coral-red)' : '1px solid rgba(166, 166, 166, 0.25)',
                   cursor: 'pointer',
-                  transition: 'all 0.25s ease'
+                  outline: 'none',
+                  transition: 'all 0.25s ease',
+                  transform: isSelected ? 'translateY(-3px)' : 'none',
+                  boxShadow: isSelected ? '0 8px 24px rgba(233, 75, 80, 0.25)' : 'none'
                 }}
               >
                 <div style={{
