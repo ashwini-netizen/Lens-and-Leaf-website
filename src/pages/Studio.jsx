@@ -188,7 +188,7 @@ export default function Studio({ setActivePage }) {
                     flexDirection: 'column'
                   }}
                 >
-                  <div style={{ height: '240px', position: 'relative', overflow: 'hidden' }}>
+                  <div className="studio-gallery-img-wrap">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -306,11 +306,7 @@ export default function Studio({ setActivePage }) {
               </p>
             </div>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '1.8rem'
-            }}>
+            <div className="photoshoot-setups-grid">
               {photoshootSetups.map((setup, sIdx) => (
                 <div
                   key={sIdx}
@@ -326,11 +322,10 @@ export default function Studio({ setActivePage }) {
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease'
                   }}
                 >
-                  <div style={{ height: '250px', position: 'relative', overflow: 'hidden' }} className="img-zoom-container">
+                  <div className="photoshoot-setup-card-img img-zoom-container">
                     <img
                       src={setup.image}
                       alt={setup.title}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                   </div>
                   <div style={{ padding: '1.2rem 1.4rem' }}>

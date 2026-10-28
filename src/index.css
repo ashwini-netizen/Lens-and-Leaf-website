@@ -749,6 +749,64 @@ html, body {
   }
 }
 
+/* Photoshoot Setups Grid & Image Aspect Ratio (Square 1:1 prevents studio equipment from being cropped) */
+.photoshoot-setups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+@media (max-width: 580px) {
+  .photoshoot-setups-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+}
+
+.photoshoot-setup-card-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 480px;
+  overflow: hidden;
+  background-color: #120D0C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photoshoot-setup-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photoshoot-setup-card-img:hover img {
+  transform: scale(1.05);
+}
+
+/* Studio Dedicated Spaces Gallery Image Wrapper */
+.studio-gallery-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #120D0C;
+}
+
+.studio-gallery-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
 
 
 /* =====================================================================
