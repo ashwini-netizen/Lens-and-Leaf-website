@@ -523,8 +523,8 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                         border: activePage === link.id ? '1px solid rgba(233, 75, 80, 0.4)' : '1px solid transparent',
                         borderRadius: '10px',
                         color: activePage === link.id ? 'var(--color-coral-red)' : '#F5EDE8',
-                        padding: '0.52rem 0.85rem',
-                        fontSize: '0.96rem',
+                        padding: '0.45rem 0.8rem',
+                        fontSize: '0.94rem',
                         fontFamily: 'var(--font-serif)',
                         display: 'flex',
                         alignItems: 'center',
@@ -566,7 +566,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                             border: '1px solid rgba(233, 75, 80, 0.3)',
                             borderRadius: '8px',
                             color: 'var(--color-coral-red)',
-                            padding: '0.5rem 0.8rem',
+                            padding: '0.48rem 0.8rem',
                             fontSize: '0.82rem',
                             textAlign: 'left',
                             cursor: 'pointer',
@@ -587,8 +587,8 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                               background: 'none',
                               border: 'none',
                               color: '#DDD0D5',
-                              padding: '0.45rem 0.8rem',
-                              fontSize: '0.85rem',
+                              padding: '0.42rem 0.8rem',
+                              fontSize: '0.84rem',
                               textAlign: 'left',
                               cursor: 'pointer',
                               display: 'flex',
@@ -614,8 +614,8 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                     border: activePage === link.id ? '1px solid rgba(233, 75, 80, 0.4)' : '1px solid transparent',
                     borderRadius: '10px',
                     color: activePage === link.id ? 'var(--color-coral-red)' : '#F5EDE8',
-                    padding: '0.52rem 0.85rem',
-                    fontSize: '0.96rem',
+                    padding: '0.45rem 0.8rem',
+                    fontSize: '0.94rem',
                     fontFamily: 'var(--font-serif)',
                     display: 'flex',
                     alignItems: 'center',
@@ -636,24 +636,9 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
             })}
           </div>
 
-          {/* Bottom Action CTAs (Pinned at bottom with safe-area spacing) */}
+          {/* Bottom Action CTAs (Pinned at bottom with generous clearance) */}
           <div className="mobile-drawer-bottom-ctas">
-            <button
-              onClick={() => handleNavClick('booking')}
-              className="btn-primary"
-              style={{
-                width: '100%',
-                padding: '0.68rem 1rem',
-                minHeight: '44px',
-                fontSize: '0.88rem',
-                justifyContent: 'center',
-                boxShadow: 'var(--shadow-coral-hover)'
-              }}
-            >
-              <Calendar size={15} />
-              <span>Book a Photoshoot</span>
-            </button>
-            
+            {/* Direct WhatsApp Chat (Placed upper as requested) */}
             <a
               href={`https://wa.me/${STUDIO_INFO.whatsappNumber}`}
               target="_blank"
@@ -680,6 +665,23 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
               <MessageCircle size={17} />
               <span>Direct WhatsApp Chat</span>
             </a>
+
+            {/* Book a Photoshoot */}
+            <button
+              onClick={() => handleNavClick('booking')}
+              className="btn-primary"
+              style={{
+                width: '100%',
+                padding: '0.68rem 1rem',
+                minHeight: '44px',
+                fontSize: '0.88rem',
+                justifyContent: 'center',
+                boxShadow: 'var(--shadow-coral-hover)'
+              }}
+            >
+              <Calendar size={15} />
+              <span>Book a Photoshoot</span>
+            </button>
           </div>
         </div>
       )}
