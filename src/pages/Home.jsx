@@ -839,10 +839,19 @@ export default function Home({ setActivePage, onSelectService }) {
                 Equipped with north-facing natural solarium light, hand-painted canvas backdrops, high-CRI vanity suites, and an artisan tea bar, our space is an inspiring sanctuary designed for comfort and creative freedom.
               </p>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+              <div 
+                className="studio-atmosphere-actions" 
+                style={{ 
+                  display: 'flex', 
+                  flexWrap: 'wrap', 
+                  gap: '1rem',
+                  alignItems: 'center'
+                }}
+              >
                 <button
                   onClick={() => setActivePage('studio')}
                   className="btn-primary btn-magnetic"
+                  style={{ justifyContent: 'center' }}
                 >
                   <Camera size={16} />
                   <span>Discover the Studio Experience</span>
@@ -850,6 +859,7 @@ export default function Home({ setActivePage, onSelectService }) {
                 <button
                   onClick={() => setActivePage('booking')}
                   className="btn-secondary btn-magnetic"
+                  style={{ justifyContent: 'center' }}
                 >
                   <span>Book a Session</span>
                 </button>
