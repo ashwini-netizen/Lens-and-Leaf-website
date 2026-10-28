@@ -464,131 +464,104 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
         </div>
       </header>
 
-      {/* Mobile Menu Drawer Overlay */}
+      {/* Mobile Menu Drawer Overlay (Full-page natural scroll experience) */}
       {mobileMenuOpen && (
         <div className="mobile-menu-drawer-overlay">
-          {/* Top Drawer Header */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            borderBottom: '1px solid rgba(166, 166, 166, 0.25)',
-            paddingBottom: '0.75rem',
-            flexShrink: 0
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <img 
-                src={logoImg} 
-                alt="Lens & Leaf" 
-                style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: '#FFF' }}
-              />
-              <div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#FFF', lineHeight: 1.1 }}>
-                  Lens <span style={{ color: 'var(--color-warm-orange)' }}>&</span> Leaf
-                </div>
-                <div style={{ fontSize: '0.6rem', color: 'var(--color-blush-pink)', letterSpacing: '0.2em', marginTop: '0.12rem' }}>
-                  CAPTURING LIFE...
+          <div className="mobile-drawer-inner-content">
+            {/* Sticky Drawer Header */}
+            <div className="mobile-drawer-header-sticky">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <img 
+                  src={logoImg} 
+                  alt="Lens & Leaf" 
+                  style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: '#FFF' }}
+                />
+                <div>
+                  <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#FFF', lineHeight: 1.1 }}>
+                    Lens <span style={{ color: 'var(--color-warm-orange)' }}>&</span> Leaf
+                  </div>
+                  <div style={{ fontSize: '0.6rem', color: 'var(--color-blush-pink)', letterSpacing: '0.2em', marginTop: '0.12rem' }}>
+                    CAPTURING LIFE...
+                  </div>
                 </div>
               </div>
+
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(166, 166, 166, 0.35)',
+                  borderRadius: '8px',
+                  color: '#FFF',
+                  padding: '0.4rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <X size={22} />
+              </button>
             </div>
 
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              aria-label="Close menu"
-              style={{
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(166, 166, 166, 0.35)',
-                borderRadius: '8px',
-                color: '#FFF',
-                padding: '0.4rem',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <X size={22} />
-            </button>
-          </div>
-
-          {/* Scrollable Navigation Links */}
-          <div className="mobile-nav-links-scroll">
-            {navLinks.map((link, idx) => {
-              if (link.id === 'services') {
-                return (
-                  <div key={link.id} style={{ display: 'flex', flexDirection: 'column' }}>
-                    <div
-                      style={{
-                        background: activePage === link.id ? 'rgba(233, 75, 80, 0.15)' : 'none',
-                        border: activePage === link.id ? '1px solid rgba(233, 75, 80, 0.4)' : '1px solid transparent',
-                        borderRadius: '10px',
-                        color: activePage === link.id ? 'var(--color-coral-red)' : '#F5EDE8',
-                        padding: '0.45rem 0.8rem',
-                        fontSize: '0.94rem',
-                        fontFamily: 'var(--font-serif)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        cursor: 'pointer'
-                      }}
-                      onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <span style={{ fontSize: '0.72rem', color: 'var(--color-silver-grey)', fontFamily: 'var(--font-sans)' }}>
-                          0{idx + 1}
-                        </span>
-                        <span>{link.label}</span>
-                      </div>
-                      <ChevronDown 
-                        size={17} 
-                        color="var(--color-coral-red)" 
+            {/* Navigation Links */}
+            <div className="mobile-nav-links-list">
+              {navLinks.map((link, idx) => {
+                if (link.id === 'services') {
+                  return (
+                    <div key={link.id} style={{ display: 'flex', flexDirection: 'column' }}>
+                      <div
                         style={{
-                          transform: mobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                          transition: 'transform 0.25s ease'
+                          background: activePage === link.id ? 'rgba(233, 75, 80, 0.15)' : 'none',
+                          border: activePage === link.id ? '1px solid rgba(233, 75, 80, 0.4)' : '1px solid transparent',
+                          borderRadius: '10px',
+                          color: activePage === link.id ? 'var(--color-coral-red)' : '#F5EDE8',
+                          padding: '0.55rem 0.85rem',
+                          fontSize: '0.96rem',
+                          fontFamily: 'var(--font-serif)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          cursor: 'pointer'
                         }}
-                      />
-                    </div>
-
-                    {/* Mobile Services Accordion List */}
-                    {mobileServicesOpen && (
-                      <div style={{
-                        paddingLeft: '1.5rem',
-                        paddingRight: '0.3rem',
-                        marginTop: '0.35rem',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '0.35rem'
-                      }}>
-                        <button
-                          onClick={() => handleNavClick('packages')}
+                        onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                          <span style={{ fontSize: '0.72rem', color: 'var(--color-silver-grey)', fontFamily: 'var(--font-sans)' }}>
+                            0{idx + 1}
+                          </span>
+                          <span>{link.label}</span>
+                        </div>
+                        <ChevronDown 
+                          size={17} 
+                          color="var(--color-coral-red)" 
                           style={{
-                            background: 'rgba(233, 75, 80, 0.12)',
-                            border: '1px solid rgba(233, 75, 80, 0.3)',
-                            borderRadius: '8px',
-                            color: 'var(--color-coral-red)',
-                            padding: '0.48rem 0.8rem',
-                            fontSize: '0.82rem',
-                            textAlign: 'left',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between'
+                            transform: mobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                            transition: 'transform 0.25s ease'
                           }}
-                        >
-                          <span>Explore All Photography Packages</span>
-                          <ArrowRight size={13} />
-                        </button>
+                        />
+                      </div>
 
-                        {SERVICES_DATA.map((svc) => (
+                      {/* Mobile Services Accordion List */}
+                      {mobileServicesOpen && (
+                        <div style={{
+                          paddingLeft: '1.5rem',
+                          paddingRight: '0.3rem',
+                          marginTop: '0.35rem',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '0.35rem'
+                        }}>
                           <button
-                            key={svc.id}
-                            onClick={() => handleServiceSelect(svc.title)}
+                            onClick={() => handleNavClick('packages')}
                             style={{
-                              background: 'none',
-                              border: 'none',
-                              color: '#DDD0D5',
-                              padding: '0.42rem 0.8rem',
-                              fontSize: '0.84rem',
+                              background: 'rgba(233, 75, 80, 0.12)',
+                              border: '1px solid rgba(233, 75, 80, 0.3)',
+                              borderRadius: '8px',
+                              color: 'var(--color-coral-red)',
+                              padding: '0.5rem 0.8rem',
+                              fontSize: '0.82rem',
                               textAlign: 'left',
                               cursor: 'pointer',
                               display: 'flex',
@@ -596,92 +569,114 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                               justifyContent: 'space-between'
                             }}
                           >
-                            <span>{svc.title}</span>
+                            <span>Explore All Photography Packages</span>
+                            <ArrowRight size={13} />
                           </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+
+                          {SERVICES_DATA.map((svc) => (
+                            <button
+                              key={svc.id}
+                              onClick={() => handleServiceSelect(svc.title)}
+                              style={{
+                                background: 'none',
+                                border: 'none',
+                                color: '#DDD0D5',
+                                padding: '0.45rem 0.8rem',
+                                fontSize: '0.84rem',
+                                textAlign: 'left',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between'
+                              }}
+                            >
+                              <span>{svc.title}</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                return (
+                  <button
+                    key={link.id}
+                    onClick={() => handleNavClick(link.id)}
+                    style={{
+                      background: activePage === link.id ? 'rgba(233, 75, 80, 0.15)' : 'none',
+                      border: activePage === link.id ? '1px solid rgba(233, 75, 80, 0.4)' : '1px solid transparent',
+                      borderRadius: '10px',
+                      color: activePage === link.id ? 'var(--color-coral-red)' : '#F5EDE8',
+                      padding: '0.55rem 0.85rem',
+                      fontSize: '0.96rem',
+                      fontFamily: 'var(--font-serif)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      textAlign: 'left',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      <span style={{ fontSize: '0.72rem', color: 'var(--color-silver-grey)', fontFamily: 'var(--font-sans)' }}>
+                        0{idx + 1}
+                      </span>
+                      <span>{link.label}</span>
+                    </div>
+                    <ChevronRight size={15} color="var(--color-coral-red)" />
+                  </button>
                 );
-              }
+              })}
+            </div>
 
-              return (
-                <button
-                  key={link.id}
-                  onClick={() => handleNavClick(link.id)}
-                  style={{
-                    background: activePage === link.id ? 'rgba(233, 75, 80, 0.15)' : 'none',
-                    border: activePage === link.id ? '1px solid rgba(233, 75, 80, 0.4)' : '1px solid transparent',
-                    borderRadius: '10px',
-                    color: activePage === link.id ? 'var(--color-coral-red)' : '#F5EDE8',
-                    padding: '0.45rem 0.8rem',
-                    fontSize: '0.94rem',
-                    fontFamily: 'var(--font-serif)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    textAlign: 'left',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <span style={{ fontSize: '0.72rem', color: 'var(--color-silver-grey)', fontFamily: 'var(--font-sans)' }}>
-                      0{idx + 1}
-                    </span>
-                    <span>{link.label}</span>
-                  </div>
-                  <ChevronRight size={15} color="var(--color-coral-red)" />
-                </button>
-              );
-            })}
-          </div>
+            {/* Bottom Action CTAs */}
+            <div className="mobile-drawer-bottom-ctas">
+              {/* Direct WhatsApp Chat */}
+              <a
+                href={`https://wa.me/${STUDIO_INFO.whatsappNumber}`}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.65rem',
+                  padding: '0.75rem 1rem',
+                  minHeight: '46px',
+                  borderRadius: '12px',
+                  border: '1.5px solid rgba(37, 211, 102, 0.65)',
+                  backgroundColor: 'rgba(37, 211, 102, 0.12)',
+                  color: '#25D366',
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 14px rgba(37, 211, 102, 0.15)',
+                  transition: 'all 0.2s ease',
+                  boxSizing: 'border-box'
+                }}
+              >
+                <MessageCircle size={18} />
+                <span>Direct WhatsApp Chat</span>
+              </a>
 
-          {/* Bottom Action CTAs (Pinned at bottom with generous clearance) */}
-          <div className="mobile-drawer-bottom-ctas">
-            {/* Direct WhatsApp Chat (Placed upper as requested) */}
-            <a
-              href={`https://wa.me/${STUDIO_INFO.whatsappNumber}`}
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.65rem',
-                padding: '0.68rem 1rem',
-                minHeight: '44px',
-                borderRadius: '12px',
-                border: '1.5px solid rgba(37, 211, 102, 0.65)',
-                backgroundColor: 'rgba(37, 211, 102, 0.12)',
-                color: '#25D366',
-                fontSize: '0.88rem',
-                fontWeight: 600,
-                textDecoration: 'none',
-                boxShadow: '0 4px 14px rgba(37, 211, 102, 0.15)',
-                transition: 'all 0.2s ease',
-                boxSizing: 'border-box'
-              }}
-            >
-              <MessageCircle size={17} />
-              <span>Direct WhatsApp Chat</span>
-            </a>
-
-            {/* Book a Photoshoot */}
-            <button
-              onClick={() => handleNavClick('booking')}
-              className="btn-primary"
-              style={{
-                width: '100%',
-                padding: '0.68rem 1rem',
-                minHeight: '44px',
-                fontSize: '0.88rem',
-                justifyContent: 'center',
-                boxShadow: 'var(--shadow-coral-hover)'
-              }}
-            >
-              <Calendar size={15} />
-              <span>Book a Photoshoot</span>
-            </button>
+              {/* Book a Photoshoot */}
+              <button
+                onClick={() => handleNavClick('booking')}
+                className="btn-primary"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem 1rem',
+                  minHeight: '46px',
+                  fontSize: '0.9rem',
+                  justifyContent: 'center',
+                  boxShadow: 'var(--shadow-coral-hover)'
+                }}
+              >
+                <Calendar size={16} />
+                <span>Book a Photoshoot</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
