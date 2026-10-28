@@ -466,41 +466,27 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
 
       {/* Mobile Menu Drawer Overlay */}
       {mobileMenuOpen && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(23, 17, 15, 0.98)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          zIndex: 2000,
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '1.1rem 1.25rem 0.85rem',
-          animation: 'fadeIn 0.25s ease'
-        }}>
+        <div className="mobile-menu-drawer-overlay">
           {/* Top Drawer Header */}
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             borderBottom: '1px solid rgba(166, 166, 166, 0.25)',
-            paddingBottom: '0.85rem',
+            paddingBottom: '0.75rem',
             flexShrink: 0
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <img 
                 src={logoImg} 
                 alt="Lens & Leaf" 
-                style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#FFF' }}
+                style={{ width: '38px', height: '38px', borderRadius: '50%', backgroundColor: '#FFF' }}
               />
               <div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: '#FFF', lineHeight: 1.1 }}>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#FFF', lineHeight: 1.1 }}>
                   Lens <span style={{ color: 'var(--color-warm-orange)' }}>&</span> Leaf
                 </div>
-                <div style={{ fontSize: '0.62rem', color: 'var(--color-blush-pink)', letterSpacing: '0.2em', marginTop: '0.15rem' }}>
+                <div style={{ fontSize: '0.6rem', color: 'var(--color-blush-pink)', letterSpacing: '0.2em', marginTop: '0.12rem' }}>
                   CAPTURING LIFE...
                 </div>
               </div>
@@ -525,18 +511,8 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
             </button>
           </div>
 
-          {/* Scrollable Navigation Links (minHeight: 0 prevents flex child from pushing bottom CTAs offscreen) */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.45rem',
-            margin: '0.85rem 0',
-            overflowY: 'auto',
-            WebkitOverflowScrolling: 'touch',
-            flex: '1 1 auto',
-            minHeight: 0,
-            paddingRight: '0.2rem'
-          }}>
+          {/* Scrollable Navigation Links */}
+          <div className="mobile-nav-links-scroll">
             {navLinks.map((link, idx) => {
               if (link.id === 'services') {
                 return (
@@ -547,8 +523,8 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                         border: activePage === link.id ? '1px solid rgba(233, 75, 80, 0.4)' : '1px solid transparent',
                         borderRadius: '10px',
                         color: activePage === link.id ? 'var(--color-coral-red)' : '#F5EDE8',
-                        padding: '0.68rem 0.95rem',
-                        fontSize: '1rem',
+                        padding: '0.52rem 0.85rem',
+                        fontSize: '0.96rem',
                         fontFamily: 'var(--font-serif)',
                         display: 'flex',
                         alignItems: 'center',
@@ -590,7 +566,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                             border: '1px solid rgba(233, 75, 80, 0.3)',
                             borderRadius: '8px',
                             color: 'var(--color-coral-red)',
-                            padding: '0.55rem 0.8rem',
+                            padding: '0.5rem 0.8rem',
                             fontSize: '0.82rem',
                             textAlign: 'left',
                             cursor: 'pointer',
@@ -611,7 +587,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                               background: 'none',
                               border: 'none',
                               color: '#DDD0D5',
-                              padding: '0.5rem 0.8rem',
+                              padding: '0.45rem 0.8rem',
                               fontSize: '0.85rem',
                               textAlign: 'left',
                               cursor: 'pointer',
@@ -638,8 +614,8 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                     border: activePage === link.id ? '1px solid rgba(233, 75, 80, 0.4)' : '1px solid transparent',
                     borderRadius: '10px',
                     color: activePage === link.id ? 'var(--color-coral-red)' : '#F5EDE8',
-                    padding: '0.68rem 0.95rem',
-                    fontSize: '1rem',
+                    padding: '0.52rem 0.85rem',
+                    fontSize: '0.96rem',
                     fontFamily: 'var(--font-serif)',
                     display: 'flex',
                     alignItems: 'center',
@@ -660,22 +636,15 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
             })}
           </div>
 
-          {/* Bottom Action CTAs (Pinned at bottom, flexShrink: 0 guaranteed visible) */}
-          <div style={{
-            paddingTop: '0.85rem',
-            paddingBottom: 'max(0.35rem, env(safe-area-inset-bottom))',
-            borderTop: '1px solid rgba(166, 166, 166, 0.25)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.65rem',
-            flexShrink: 0
-          }}>
+          {/* Bottom Action CTAs (Pinned at bottom with safe-area spacing) */}
+          <div className="mobile-drawer-bottom-ctas">
             <button
               onClick={() => handleNavClick('booking')}
               className="btn-primary"
               style={{
                 width: '100%',
-                padding: '0.72rem 1rem',
+                padding: '0.68rem 1rem',
+                minHeight: '44px',
                 fontSize: '0.88rem',
                 justifyContent: 'center',
                 boxShadow: 'var(--shadow-coral-hover)'
@@ -693,19 +662,22 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '0.6rem',
+                gap: '0.65rem',
                 padding: '0.68rem 1rem',
-                borderRadius: 'var(--radius-pill)',
-                border: '1.5px solid rgba(37, 211, 102, 0.55)',
-                backgroundColor: 'rgba(37, 211, 102, 0.08)',
+                minHeight: '44px',
+                borderRadius: '12px',
+                border: '1.5px solid rgba(37, 211, 102, 0.65)',
+                backgroundColor: 'rgba(37, 211, 102, 0.12)',
                 color: '#25D366',
-                fontSize: '0.86rem',
+                fontSize: '0.88rem',
                 fontWeight: 600,
                 textDecoration: 'none',
-                transition: 'all 0.2s ease'
+                boxShadow: '0 4px 14px rgba(37, 211, 102, 0.15)',
+                transition: 'all 0.2s ease',
+                boxSizing: 'border-box'
               }}
             >
-              <MessageCircle size={16} />
+              <MessageCircle size={17} />
               <span>Direct WhatsApp Chat</span>
             </a>
           </div>
