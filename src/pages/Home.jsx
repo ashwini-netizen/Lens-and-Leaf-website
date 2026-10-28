@@ -319,14 +319,13 @@ export default function Home({ setActivePage, onSelectService }) {
             {/* Visual Photography Composition with Scroll Reveal & Clip Mask */}
             <div className="reveal-on-scroll clip-reveal-left" style={{ position: 'relative' }}>
               <div 
-                className="card-sheen img-zoom-container"
+                className="card-sheen img-zoom-container about-hero-image-wrap"
                 data-cursor="view"
                 style={{
                   borderRadius: 'var(--radius-xl)',
                   overflow: 'hidden',
                   boxShadow: 'var(--shadow-hover)',
-                  border: '1px solid rgba(166, 166, 166, 0.35)',
-                  height: '500px'
+                  border: '1px solid rgba(166, 166, 166, 0.35)'
                 }}
               >
                 <img 
@@ -454,18 +453,14 @@ export default function Home({ setActivePage, onSelectService }) {
                   }}
                 >
                   <div 
-                    className="img-zoom-container"
+                    className="service-card-cover-wrapper img-zoom-container"
                     data-cursor="view"
-                    style={{ height: '260px', position: 'relative', overflow: 'hidden' }}
                   >
                     <img 
                       src={svc.cover} 
                       alt={svc.title} 
                       style={{ 
-                        width: '100%', 
-                        height: '100%', 
-                        objectFit: 'cover', 
-                        objectPosition: svc.id === 'portrait' ? 'center 22%' : 'center 15%' 
+                        objectPosition: svc.id === 'portrait' ? 'center 18%' : 'center 15%' 
                       }}
                     />
                     <div style={{
@@ -643,16 +638,10 @@ export default function Home({ setActivePage, onSelectService }) {
                   transition: 'transform 0.35s ease, box-shadow 0.35s ease'
                 }}
               >
-                <div style={{ position: 'relative', height: '320px', overflow: 'hidden' }} className="img-zoom-container">
+                <div className="showcase-card-cover-wrapper img-zoom-container">
                   <img
                     src={photo.image}
                     alt={photo.title}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block'
-                    }}
                   />
                   {/* Category Pill Tag */}
                   <div style={{

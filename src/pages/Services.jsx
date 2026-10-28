@@ -136,13 +136,10 @@ export default function Services({ setActivePage, onSelectService }) {
                 >
                   {/* Service Cover Photograph */}
                   <div 
-                    className="img-zoom-container"
+                    className="service-card-cover-wrapper img-zoom-container"
                     data-cursor="view"
                     onClick={() => setSelectedServiceDetail(svc)}
                     style={{
-                      height: '270px',
-                      position: 'relative',
-                      overflow: 'hidden',
                       cursor: 'pointer'
                     }}
                   >
@@ -150,10 +147,7 @@ export default function Services({ setActivePage, onSelectService }) {
                     src={svc.cover}
                     alt={svc.title}
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: svc.id === 'portrait' ? 'center 22%' : 'center 15%'
+                      objectPosition: svc.id === 'portrait' ? 'center 18%' : 'center 15%'
                     }}
                   />
                   <div style={{

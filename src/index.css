@@ -639,16 +639,16 @@ html, body {
     font-size: 0.8rem !important;
   }
 
-  .showcase-cards-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.35rem !important;
-    margin-bottom: 2rem !important;
+  /* Grid Layouts: 2 Balanced Columns on Tablets/669px, 1 Column on Mobile */
+  .services-preview-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 1.5rem !important;
   }
 
-  /* Grid Layouts to 1 Column on Mobile */
-  .services-preview-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.35rem !important;
+  .showcase-cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
   }
 
   .studio-grid-2col {
@@ -666,6 +666,89 @@ html, body {
     gap: 0.9rem !important;
   }
 }
+
+/* Phone screens under 580px: Single clean column */
+@media (max-width: 580px) {
+  .services-preview-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .showcase-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+}
+
+/* Service Card Image Wrapper - Aspect Ratio Protection to never cut off portraits */
+.service-card-cover-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  min-height: 220px;
+  max-height: 380px;
+  overflow: hidden;
+  background-color: #17110F;
+}
+
+.service-card-cover-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card-cover-wrapper:hover img {
+  transform: scale(1.06);
+}
+
+@media (max-width: 580px) {
+  .service-card-cover-wrapper {
+    aspect-ratio: 4 / 3;
+    max-height: 320px;
+  }
+}
+
+/* Showcase Card Cover Wrapper - Fine Art Aspect Ratio */
+.showcase-card-cover-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 240px;
+  max-height: 420px;
+  overflow: hidden;
+  background-color: #17110F;
+}
+
+.showcase-card-cover-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.showcase-card-cover-wrapper:hover img {
+  transform: scale(1.06);
+}
+
+/* About Section Portrait Cover */
+.about-hero-image-wrap {
+  width: 100%;
+  height: 500px;
+}
+
+@media (max-width: 768px) {
+  .about-hero-image-wrap {
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    max-height: 440px !important;
+  }
+}
+
 
 
 /* =====================================================================
