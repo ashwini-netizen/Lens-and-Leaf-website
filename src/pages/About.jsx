@@ -261,7 +261,7 @@ export default function About({ setActivePage }) {
                 onClick={() => setActivePage('services')}
                 className="btn-primary"
               >
-                <span>Explore Photography Services</span>
+                <span>View Photography Services</span>
                 <ArrowRight size={16} />
               </button>
             </div>

@@ -134,13 +134,11 @@ export default function Services({ setActivePage, onSelectService }) {
                     flexDirection: 'column'
                   }}
                 >
-                  {/* Service Cover Photograph */}
+                  {/* Service Cover Photograph (View only, non-clickable) */}
                   <div 
-                    className="service-card-cover-wrapper img-zoom-container"
-                    data-cursor="view"
-                    onClick={() => setSelectedServiceDetail(svc)}
+                    className="service-card-cover-wrapper"
                     style={{
-                      cursor: 'pointer'
+                      cursor: 'default'
                     }}
                   >
                   <img
@@ -242,34 +240,20 @@ export default function Services({ setActivePage, onSelectService }) {
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '0.6rem' }}>
-                      <button
-                        onClick={() => setSelectedServiceDetail(svc)}
-                        style={{
-                          background: 'rgba(233, 75, 80, 0.08)',
-                          border: '1px solid rgba(233, 75, 80, 0.3)',
-                          borderRadius: 'var(--radius-pill)',
-                          padding: '0.55rem 1rem',
-                          color: 'var(--color-coral-red)',
-                          fontSize: '0.82rem',
-                          fontWeight: 600,
-                          cursor: 'pointer',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.3rem'
-                        }}
-                      >
-                        <Info size={14} />
-                        <span>Explore</span>
-                      </button>
-
+                    <div>
                       <button
                         onClick={() => handleBookService(svc.title)}
-                        className="btn-primary"
-                        style={{ padding: '0.55rem 1.1rem', fontSize: '0.82rem' }}
+                        className="btn-primary btn-magnetic"
+                        style={{
+                          padding: '0.55rem 1.25rem',
+                          fontSize: '0.86rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.45rem'
+                        }}
                       >
-                        <Calendar size={14} />
-                        <span>Book</span>
+                        <Calendar size={15} />
+                        <span>Book Session</span>
                       </button>
                     </div>
                   </div>

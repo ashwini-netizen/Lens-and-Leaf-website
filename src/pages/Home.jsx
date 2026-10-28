@@ -238,7 +238,7 @@ export default function Home({ setActivePage, onSelectService }) {
               style={{ padding: '1rem 2.4rem', fontSize: '0.95rem' }}
             >
               <Eye size={18} />
-              <span>Explore Our Work</span>
+              <span>View Our Work</span>
             </button>
 
             <button
@@ -453,8 +453,8 @@ export default function Home({ setActivePage, onSelectService }) {
                   }}
                 >
                   <div 
-                    className="service-card-cover-wrapper img-zoom-container"
-                    data-cursor="view"
+                    className="service-card-cover-wrapper"
+                    style={{ cursor: 'default' }}
                   >
                     <img 
                       src={svc.cover} 
@@ -521,7 +521,7 @@ export default function Home({ setActivePage, onSelectService }) {
                           padding: 0
                         }}
                       >
-                        <span>Explore Service</span>
+                        <span>View Service</span>
                         <ChevronRight size={16} />
                       </button>
                     </div>
@@ -701,7 +701,7 @@ export default function Home({ setActivePage, onSelectService }) {
               style={{ padding: '0.9rem 2.2rem' }}
             >
               <Eye size={17} />
-              <span>Explore Master Portfolio ({GALLERY_ITEMS.length}+ Works)</span>
+              <span>View Master Portfolio ({GALLERY_ITEMS.length}+ Works)</span>
             </button>
           </div>
         </div>

@@ -263,7 +263,7 @@ export default function Portfolio({ setActivePage }) {
                 onClick={() => setActivePage('services')}
                 className="btn-secondary"
               >
-                <span>Explore All Services</span>
+                <span>View All Services</span>
               </button>
             </div>
           </div>

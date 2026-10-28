@@ -312,7 +312,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                                 fontWeight: 500
                               }}
                             >
-                              <span>Explore All Packages & Pricing</span>
+                              <span>View All Packages & Pricing</span>
                               <ArrowRight size={13} />
                             </button>
                           </div>
@@ -569,7 +569,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                               justifyContent: 'space-between'
                             }}
                           >
-                            <span>Explore All Photography Packages</span>
+                            <span>View All Photography Packages</span>
                             <ArrowRight size={13} />
                           </button>
 
