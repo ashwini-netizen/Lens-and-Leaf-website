@@ -133,51 +133,32 @@ export default function CustomCursor() {
           position: 'fixed',
           top: trailingPos.y,
           left: trailingPos.x,
-          width: cursorMode === 'view' ? '112px' : cursorMode === 'link' ? '48px' : '32px',
-          height: cursorMode === 'view' ? '36px' : cursorMode === 'link' ? '48px' : '32px',
-          borderRadius: cursorMode === 'view' ? 'var(--radius-pill)' : '50%',
+          width: cursorMode === 'view' ? '46px' : cursorMode === 'link' ? '48px' : '32px',
+          height: cursorMode === 'view' ? '46px' : cursorMode === 'link' ? '48px' : '32px',
+          borderRadius: '50%',
           border: cursorMode === 'view' 
-            ? '1.5px solid rgba(250, 214, 210, 0.95)' 
+            ? '1.5px solid var(--color-coral-red)' 
             : cursorMode === 'link' 
               ? '1.5px solid var(--color-coral-red)' 
               : '1.2px solid rgba(233, 75, 80, 0.45)',
           backgroundColor: cursorMode === 'view' 
-            ? 'rgba(23, 17, 15, 0.92)' 
+            ? 'rgba(233, 75, 80, 0.12)' 
             : cursorMode === 'link' 
               ? 'rgba(233, 75, 80, 0.08)' 
               : 'transparent',
-          backdropFilter: cursorMode === 'view' ? 'blur(10px)' : 'none',
+          backdropFilter: 'none',
           transform: 'translate(-50%, -50%)',
           pointerEvents: 'none',
           zIndex: 999998,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: cursorMode === 'link' 
+          boxShadow: (cursorMode === 'link' || cursorMode === 'view')
             ? '0 0 20px rgba(233, 75, 80, 0.35)' 
-            : cursorMode === 'view'
-              ? '0 10px 25px rgba(23, 17, 15, 0.5)'
-              : 'none',
+            : 'none',
           transition: 'width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease',
         }}
-      >
-        {cursorMode === 'view' && (
-          <span
-            style={{
-              color: '#FFF0E7',
-              fontSize: '0.68rem',
-              fontWeight: 700,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-            }}
-          >
-            <span style={{ color: 'var(--color-coral-red)' }}>✦</span> View Photo
-          </span>
-        )}
-      </div>
+      />
     </>
   );
 }

@@ -238,7 +238,7 @@ export default function Services({ setActivePage, onSelectService }) {
                     <div>
                       <div style={{ fontSize: '0.72rem', color: 'var(--text-light)' }}>Starting from</div>
                       <div style={{ fontSize: '1.35rem', fontFamily: 'var(--font-serif)', color: 'var(--color-coral-red)', fontWeight: 600 }}>
-                        ${svc.startingPrice}
+                        ₹{svc.startingPrice}
                       </div>
                     </div>
 
@@ -423,7 +423,7 @@ export default function Services({ setActivePage, onSelectService }) {
                   <div>
                     <span style={{ fontSize: '0.75rem', color: 'var(--text-light)', textTransform: 'uppercase' }}>Investment</span>
                     <div style={{ fontWeight: 600, color: 'var(--color-coral-red)', fontSize: '1.25rem', fontFamily: 'var(--font-serif)' }}>
-                      Starting at ${selectedServiceDetail.startingPrice}
+                      Starting at ₹{selectedServiceDetail.startingPrice}
                     </div>
                   </div>
                 </div>

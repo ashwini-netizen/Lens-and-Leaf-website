@@ -498,7 +498,7 @@ export default function Home({ setActivePage, onSelectService }) {
                       <div>
                         <div style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>Starting from</div>
                         <div style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', fontWeight: 600, color: 'var(--color-coral-red)' }}>
-                          ${svc.startingPrice}
+                          ₹{svc.startingPrice}
                         </div>
                       </div>
 

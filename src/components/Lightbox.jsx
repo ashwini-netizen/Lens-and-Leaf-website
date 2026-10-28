@@ -187,7 +187,7 @@ export default function Lightbox({ item, onClose, onPrev, onNext }) {
           justifyContent: 'center'
         }}>
           <img
-            src={item.image}
+            src={item.image || item.cover}
             alt={item.title}
             style={{
               maxHeight: '78vh',

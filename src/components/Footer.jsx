@@ -326,9 +326,19 @@ export default function Footer({ setActivePage }) {
                   <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '0.4rem' }}>
                     <input
                       type="email"
-                      placeholder="Your email..."
+                      autoCapitalize="none"
+                      autoCorrect="off"
+                      spellCheck="false"
+                      placeholder="Your email (e.g. name@domain.com)..."
                       value={newsletterEmail}
-                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      onChange={(e) => {
+                        let val = e.target.value.toLowerCase().replace(/\s+/g, '');
+                        if (val.includes('.com') && !val.includes('.com.')) {
+                          val = val.replace(/(\.com)[a-z0-9_-]+/gi, '$1');
+                        }
+                        setNewsletterEmail(val);
+                      }}
+                      pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,5}$"
                       required
                       style={{
                         padding: '0.55rem 0.85rem',

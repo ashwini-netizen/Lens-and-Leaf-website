@@ -193,15 +193,19 @@ export default function ReviewModal({ isOpen, onClose, onReviewSubmitted }) {
               {/* Client Name & Service */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', color: '#E4D5DA', marginBottom: '0.4rem', fontWeight: 500 }}>
-                    Your Name / Names *
-                  </label>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
+                    <label style={{ fontSize: '0.85rem', color: '#E4D5DA', fontWeight: 500 }}>
+                      Your Name / Names *
+                    </label>
+                    <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.45)' }}>Letters only</span>
+                  </div>
                   <input
                     type="text"
                     required
+                    maxLength={50}
                     placeholder="e.g. Clara & Julian"
                     value={clientName}
-                    onChange={(e) => setClientName(e.target.value)}
+                    onChange={(e) => setClientName(e.target.value.replace(/[^a-zA-Z\s'&,-]/g, ''))}
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',

@@ -52,21 +52,65 @@ export default function Booking({ initialService, setActivePage }) {
     '10+ People (Event / Wedding Party)'
   ];
 
+  const handleNameChange = (e) => {
+    // Only allow letters, spaces, hyphens, and apostrophes
+    const filtered = e.target.value.replace(/[^a-zA-Z\s'-]/g, '');
+    setCustomerName(filtered);
+    if (errorMessage) setErrorMessage('');
+  };
+
+  const handlePhoneChange = (e) => {
+    // Only allow digits and restrict strictly to 10 digits
+    const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setPhoneNumber(digitsOnly);
+    if (errorMessage) setErrorMessage('');
+  };
+
+  const handleEmailChange = (e) => {
+    // 1. Force lowercase only and remove any whitespace
+    let val = e.target.value.toLowerCase().replace(/\s+/g, '');
+    // 2. Prevent characters from being entered after .com (e.g. .comxyz)
+    if (val.includes('.com') && !val.includes('.com.')) {
+      val = val.replace(/(\.com)[a-z0-9_-]+/gi, '$1');
+    }
+    setEmailAddress(val);
+    if (errorMessage) setErrorMessage('');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
 
     // Field Validations
-    if (!customerName.trim()) {
+    const trimmedName = customerName.trim();
+    if (!trimmedName) {
       setErrorMessage('Please provide your full name.');
       return;
     }
-    if (!phoneNumber.trim()) {
-      setErrorMessage('Please provide your contact phone number.');
+    if (!/^[a-zA-Z\s'-]{2,50}$/.test(trimmedName)) {
+      setErrorMessage('Customer Name must only contain letters and spaces (minimum 2 characters).');
       return;
     }
-    if (!emailAddress.trim() || !emailAddress.includes('@')) {
-      setErrorMessage('Please provide a valid email address.');
+    if (!phoneNumber.trim()) {
+      setErrorMessage('Please provide your 10-digit contact phone number.');
+      return;
+    }
+    if (phoneNumber.length !== 10) {
+      setErrorMessage(`Phone number must be exactly 10 digits (currently ${phoneNumber.length} digits).`);
+      return;
+    }
+    const trimmedEmail = emailAddress.trim().toLowerCase();
+    if (!trimmedEmail) {
+      setErrorMessage('Please provide your email address.');
+      return;
+    }
+    if (/\.com[a-z0-9_-]+/i.test(trimmedEmail)) {
+      setErrorMessage('Invalid email: extra characters are not allowed after ".com".');
+      return;
+    }
+    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,5}$/;
+    if (!emailPattern.test(trimmedEmail)) {
+      setErrorMessage('Please provide a valid lowercase email address (e.g. clara@example.com).');
       return;
     }
     if (!preferredDate) {
@@ -330,9 +374,12 @@ export default function Booking({ initialService, setActivePage }) {
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.8rem' }}>
                 {/* 1. Customer Name */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-title)', marginBottom: '0.5rem' }}>
-                    Customer Name *
-                  </label>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                    <label style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-title)' }}>
+                      Customer Name *
+                    </label>
+                    <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>Letters only</span>
+                  </div>
                   <div style={{ position: 'relative' }}>
                     <User size={18} color="var(--color-silver-grey)" style={{ position: 'absolute', left: '1.2rem', top: '50%', transform: 'translateY(-50%)' }} />
                     <input
@@ -340,7 +387,10 @@ export default function Booking({ initialService, setActivePage }) {
                       className="form-input-luxury"
                       placeholder="e.g. Clara Delacroix"
                       value={customerName}
-                      onChange={(e) => setCustomerName(e.target.value)}
+                      onChange={handleNameChange}
+                      maxLength={50}
+                      pattern="[A-Za-z\s'-]+"
+                      title="Name can only contain alphabetic characters and spaces"
                       required
                       style={{ paddingLeft: '3.2rem' }}
                     />
@@ -350,17 +400,30 @@ export default function Booking({ initialService, setActivePage }) {
                 {/* 2 & 3. Phone Number & Email Address */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-title)', marginBottom: '0.5rem' }}>
-                      Phone Number *
-                    </label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                      <label style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-title)' }}>
+                        Phone Number *
+                      </label>
+                      <span style={{
+                        fontSize: '0.74rem',
+                        fontWeight: phoneNumber.length === 10 ? 600 : 400,
+                        color: phoneNumber.length === 10 ? '#16a34a' : (phoneNumber.length > 0 ? 'var(--color-coral-red)' : 'var(--text-muted)')
+                      }}>
+                        {phoneNumber.length}/10 digits
+                      </span>
+                    </div>
                     <div style={{ position: 'relative' }}>
                       <Phone size={18} color="var(--color-silver-grey)" style={{ position: 'absolute', left: '1.2rem', top: '50%', transform: 'translateY(-50%)' }} />
                       <input
                         type="tel"
+                        inputMode="numeric"
                         className="form-input-luxury"
-                        placeholder="e.g. +1 (555) 234-8761"
+                        placeholder="e.g. 9876543210 (10 digits)"
                         value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        onChange={handlePhoneChange}
+                        maxLength={10}
+                        pattern="\d{10}"
+                        title="Please enter exactly 10 digits"
                         required
                         style={{ paddingLeft: '3.2rem' }}
                       />
@@ -368,17 +431,25 @@ export default function Booking({ initialService, setActivePage }) {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-title)', marginBottom: '0.5rem' }}>
-                      Email Address *
-                    </label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                      <label style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-title)' }}>
+                        Email Address *
+                      </label>
+                      <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>Lowercase only</span>
+                    </div>
                     <div style={{ position: 'relative' }}>
                       <Mail size={18} color="var(--color-silver-grey)" style={{ position: 'absolute', left: '1.2rem', top: '50%', transform: 'translateY(-50%)' }} />
                       <input
                         type="email"
+                        autoCapitalize="none"
+                        autoCorrect="off"
+                        spellCheck="false"
                         className="form-input-luxury"
                         placeholder="e.g. clara@example.com"
                         value={emailAddress}
-                        onChange={(e) => setEmailAddress(e.target.value)}
+                        onChange={handleEmailChange}
+                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,5}$"
+                        title="Lowercase email address (e.g. clara@example.com) with valid extension"
                         required
                         style={{ paddingLeft: '3.2rem' }}
                       />
@@ -399,7 +470,7 @@ export default function Booking({ initialService, setActivePage }) {
                   >
                     {SERVICES_DATA.map((svc) => (
                       <option key={svc.id} value={svc.title}>
-                        {svc.title} — from ${svc.startingPrice} ({svc.duration})
+                        {svc.title} — from ₹{svc.startingPrice} ({svc.duration})
                       </option>
                     ))}
                   </select>

@@ -52,12 +52,56 @@ export default function Contact() {
     setTimeout(() => setCopiedChannel(null), 2500);
   };
 
+  const handleFullNameChange = (e) => {
+    const val = e.target.value.replace(/[^a-zA-Z\s'-]/g, '');
+    setFullName(val);
+    if (errorMsg) setErrorMsg('');
+  };
+
+  const handlePhoneChange = (e) => {
+    const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setPhone(val);
+    if (errorMsg) setErrorMsg('');
+  };
+
+  const handleEmailChange = (e) => {
+    let val = e.target.value.toLowerCase().replace(/\s+/g, '');
+    if (val.includes('.com') && !val.includes('.com.')) {
+      val = val.replace(/(\.com)[a-z0-9_-]+/gi, '$1');
+    }
+    setEmail(val);
+    if (errorMsg) setErrorMsg('');
+  };
+
   const handleSubmitEnquiry = async (e) => {
     e.preventDefault();
     setErrorMsg('');
 
-    if (!fullName.trim() || !email.trim() || !message.trim()) {
+    const trimmedName = fullName.trim();
+    const trimmedEmail = email.trim().toLowerCase();
+    if (!trimmedName || !trimmedEmail || !message.trim()) {
       setErrorMsg('Please complete your name, email address, and message.');
+      return;
+    }
+
+    if (!/^[a-zA-Z\s'-]{2,50}$/.test(trimmedName)) {
+      setErrorMsg('Name must only contain letters and spaces (minimum 2 characters).');
+      return;
+    }
+
+    if (/\.com[a-z0-9_-]+/i.test(trimmedEmail)) {
+      setErrorMsg('Invalid email: extra characters are not allowed after ".com".');
+      return;
+    }
+
+    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,5}$/;
+    if (!emailPattern.test(trimmedEmail)) {
+      setErrorMsg('Please enter a valid lowercase email address (e.g. sarah@example.com).');
+      return;
+    }
+
+    if (phone.trim() && phone.length !== 10) {
+      setErrorMsg(`Phone number must be exactly 10 digits (currently ${phone.length} digits).`);
       return;
     }
 
@@ -508,14 +552,20 @@ export default function Contact() {
                   {/* 2. Client Identity Fields */}
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-title)', marginBottom: '0.35rem' }}>
-                        Your Full Name *
-                      </label>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
+                        <label style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-title)' }}>
+                          Your Full Name *
+                        </label>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Letters only</span>
+                      </div>
                       <input
                         type="text"
                         placeholder="e.g. Sarah Jenkins"
                         value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
+                        onChange={handleFullNameChange}
+                        maxLength={50}
+                        pattern="[A-Za-z\s'-]+"
+                        title="Name can only contain alphabetic characters and spaces"
                         required
                         style={{
                           width: '100%',
@@ -530,14 +580,22 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-title)', marginBottom: '0.35rem' }}>
-                        Email Address *
-                      </label>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
+                        <label style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-title)' }}>
+                          Email Address *
+                        </label>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Lowercase only</span>
+                      </div>
                       <input
                         type="email"
+                        autoCapitalize="none"
+                        autoCorrect="off"
+                        spellCheck="false"
                         placeholder="e.g. sarah@example.com"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleEmailChange}
+                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,5}$"
+                        title="Lowercase email address (e.g. sarah@example.com) with valid extension"
                         required
                         style={{
                           width: '100%',
@@ -554,14 +612,27 @@ export default function Contact() {
 
                   {/* 3. Phone */}
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-title)', marginBottom: '0.35rem' }}>
-                      Phone Number
-                    </label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
+                      <label style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-title)' }}>
+                        Phone Number
+                      </label>
+                      <span style={{
+                        fontSize: '0.72rem',
+                        fontWeight: phone.length === 10 ? 600 : 400,
+                        color: phone.length === 10 ? '#16a34a' : (phone.length > 0 ? 'var(--color-coral-red)' : 'var(--text-muted)')
+                      }}>
+                        {phone.length}/10 digits
+                      </span>
+                    </div>
                     <input
                       type="tel"
-                      placeholder="+1 (555) 000-0000"
+                      inputMode="numeric"
+                      placeholder="e.g. 9876543210 (10 digits)"
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onChange={handlePhoneChange}
+                      maxLength={10}
+                      pattern="\d{10}"
+                      title="Please enter 10 digits"
                       style={{
                         width: '100%',
                         padding: '0.8rem 1rem',

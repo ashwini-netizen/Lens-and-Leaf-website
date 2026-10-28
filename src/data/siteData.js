@@ -1014,7 +1014,7 @@ export const FAQS = [
   {
     category: 'Pricing & Packages',
     question: 'What are your pricing guidelines and payment terms?',
-    answer: 'Our sessions start from $250 for headshots, $450 for portraits, and $2,400 for comprehensive wedding commissions. A 30% retainer reserves your dedicated calendar slot, with the balance due before final gallery release. Custom packages and bespoke commercial licensing can be configured upon request.'
+    answer: 'Our sessions start from ₹250 for headshots, ₹450 for portraits, and ₹2,400 for comprehensive wedding commissions. A 30% retainer reserves your dedicated calendar slot, with the balance due before final gallery release. Custom packages and bespoke commercial licensing can be configured upon request.'
   },
   {
     category: 'Policies',

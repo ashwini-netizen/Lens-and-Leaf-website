@@ -17,9 +17,11 @@ import {
 import { SERVICES_DATA, STUDIO_INFO } from '../data/siteData';
 import useScrollReveal from '../hooks/useScrollReveal';
 import InteractiveCard from '../components/InteractiveCard';
+import Lightbox from '../components/Lightbox';
 
 export default function Packages({ setActivePage, onSelectService, onSelectPackage }) {
   const [selectedServiceDetail, setSelectedServiceDetail] = useState(null);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(null);
   const [activeCategoryFilter, setActiveCategoryFilter] = useState('All');
   
   // Customizer / Tiers state
@@ -226,13 +228,11 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
                     flexDirection: 'column'
                   }}
                 >
-                  {/* Service Cover Photograph */}
+                  {/* Service Cover Photograph (View only, non-clickable) */}
                   <div 
-                    className="service-card-cover-wrapper img-zoom-container"
-                    data-cursor="view"
-                    onClick={() => setSelectedServiceDetail(svc)}
+                    className="service-card-cover-wrapper"
                     style={{
-                      cursor: 'pointer'
+                      cursor: 'default'
                     }}
                   >
                     <img
@@ -329,39 +329,24 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
                       <div>
                         <div style={{ fontSize: '0.76rem', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Starting from</div>
                         <div style={{ fontSize: '1.35rem', fontFamily: 'var(--font-serif)', fontWeight: 600, color: 'var(--color-coral-red)' }}>
-                          ${svc.startingPrice}
+                          ₹{svc.startingPrice}
                         </div>
                       </div>
 
-                      <div style={{ display: 'flex', gap: '0.6rem' }}>
-                        <button
-                          onClick={() => setSelectedServiceDetail(svc)}
-                          className="btn-secondary btn-magnetic"
-                          style={{
-                            padding: '0.45rem 0.9rem',
-                            fontSize: '0.82rem',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.35rem'
-                          }}
-                        >
-                          <Info size={14} />
-                          <span>Explore</span>
-                        </button>
-
+                      <div>
                         <button
                           onClick={() => handleBookService(svc.title)}
                           className="btn-primary btn-magnetic"
                           style={{
-                            padding: '0.45rem 1.05rem',
-                            fontSize: '0.82rem',
+                            padding: '0.55rem 1.25rem',
+                            fontSize: '0.86rem',
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '0.35rem'
+                            gap: '0.45rem'
                           }}
                         >
-                          <Calendar size={14} />
-                          <span>Book</span>
+                          <Calendar size={15} />
+                          <span>Book Session</span>
                         </button>
                       </div>
                     </div>
@@ -444,7 +429,7 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
                       {pkg.name}
                     </h3>
                     <div style={{ fontSize: '2.2rem', fontFamily: 'var(--font-serif)', color: 'var(--color-blush-pink)', fontWeight: 600, marginBottom: '1.2rem' }}>
-                      ${pkg.price}
+                      ₹{pkg.price.toLocaleString('en-IN')}
                     </div>
                     <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.5rem', flex: 1 }}>
                       {pkg.inclusions.map((inc, i) => (
@@ -454,17 +439,6 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
                         </li>
                       ))}
                     </ul>
-                    <div style={{
-                      padding: '0.6rem 0',
-                      textAlign: 'center',
-                      borderRadius: 'var(--radius-pill)',
-                      backgroundColor: isSelected ? 'var(--color-coral-red)' : 'rgba(255,255,255,0.08)',
-                      color: '#FFF',
-                      fontSize: '0.82rem',
-                      fontWeight: 600
-                    }}>
-                      {isSelected ? 'Selected Tier' : 'Select Tier'}
-                    </div>
                   </div>
                 );
               })}
@@ -521,7 +495,7 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
                         </span>
                       </div>
                       <span style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--color-warm-orange)' }}>
-                        +${addon.price}
+                        +₹{addon.price.toLocaleString('en-IN')}
                       </span>
                     </div>
                   );
@@ -545,7 +519,7 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
                     Estimated Custom Investment ({currentPkg?.name} + {activeAddOns.length} Add-on{activeAddOns.length !== 1 ? 's' : ''}):
                   </div>
                   <div style={{ fontSize: '2.2rem', fontFamily: 'var(--font-serif)', color: 'var(--color-blush-pink)', fontWeight: 600 }}>
-                    ${estimatedInvestment}
+                    ₹{estimatedInvestment.toLocaleString('en-IN')}
                   </div>
                 </div>
 
@@ -651,7 +625,7 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
               <div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Estimated Investment</div>
                 <div style={{ fontSize: '1.6rem', fontFamily: 'var(--font-serif)', color: 'var(--color-coral-red)', fontWeight: 600 }}>
-                  ${selectedServiceDetail.startingPrice}
+                  ₹{selectedServiceDetail.startingPrice}
                 </div>
               </div>
 
@@ -666,6 +640,21 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
             </div>
           </div>
         </div>
+      )}
+
+      {/* Photo Lightbox Viewer (Opens when clicking any package cover photograph) */}
+      {selectedPhotoIndex !== null && filteredServices[selectedPhotoIndex] && (
+        <Lightbox
+          item={{
+            image: filteredServices[selectedPhotoIndex].cover,
+            title: filteredServices[selectedPhotoIndex].title,
+            category: filteredServices[selectedPhotoIndex].badge || 'Photography Package',
+            description: filteredServices[selectedPhotoIndex].tagline || filteredServices[selectedPhotoIndex].shortDesc
+          }}
+          onClose={() => setSelectedPhotoIndex(null)}
+          onPrev={() => setSelectedPhotoIndex((prev) => (prev > 0 ? prev - 1 : filteredServices.length - 1))}
+          onNext={() => setSelectedPhotoIndex((prev) => (prev < filteredServices.length - 1 ? prev + 1 : 0))}
+        />
       )}
     </div>
   );
