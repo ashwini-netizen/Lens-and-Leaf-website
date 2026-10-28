@@ -474,30 +474,33 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
           bottom: 0,
           backgroundColor: 'rgba(23, 17, 15, 0.98)',
           backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
           zIndex: 2000,
           display: 'flex',
           flexDirection: 'column',
-          padding: '1.5rem',
+          padding: '1.1rem 1.25rem 0.85rem',
           animation: 'fadeIn 0.25s ease'
         }}>
+          {/* Top Drawer Header */}
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             borderBottom: '1px solid rgba(166, 166, 166, 0.25)',
-            paddingBottom: '1.2rem'
+            paddingBottom: '0.85rem',
+            flexShrink: 0
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <img 
                 src={logoImg} 
                 alt="Lens & Leaf" 
-                style={{ width: '42px', height: '42px', borderRadius: '50%', backgroundColor: '#FFF' }}
+                style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#FFF' }}
               />
               <div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: '#FFF' }}>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: '#FFF', lineHeight: 1.1 }}>
                   Lens <span style={{ color: 'var(--color-warm-orange)' }}>&</span> Leaf
                 </div>
-                <div style={{ fontSize: '0.65rem', color: 'var(--color-blush-pink)', letterSpacing: '0.2em' }}>
+                <div style={{ fontSize: '0.62rem', color: 'var(--color-blush-pink)', letterSpacing: '0.2em', marginTop: '0.15rem' }}>
                   CAPTURING LIFE...
                 </div>
               </div>
@@ -505,25 +508,34 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
 
             <button
               onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close menu"
               style={{
-                background: 'none',
-                border: 'none',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(166, 166, 166, 0.35)',
+                borderRadius: '8px',
                 color: '#FFF',
-                padding: '0.5rem',
-                cursor: 'pointer'
+                padding: '0.4rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
             >
-              <X size={26} />
+              <X size={22} />
             </button>
           </div>
 
+          {/* Scrollable Navigation Links (minHeight: 0 prevents flex child from pushing bottom CTAs offscreen) */}
           <div style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '0.6rem',
-            marginTop: '1.2rem',
+            gap: '0.45rem',
+            margin: '0.85rem 0',
             overflowY: 'auto',
-            flex: 1
+            WebkitOverflowScrolling: 'touch',
+            flex: '1 1 auto',
+            minHeight: 0,
+            paddingRight: '0.2rem'
           }}>
             {navLinks.map((link, idx) => {
               if (link.id === 'services') {
@@ -535,8 +547,8 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                         border: activePage === link.id ? '1px solid rgba(233, 75, 80, 0.4)' : '1px solid transparent',
                         borderRadius: '10px',
                         color: activePage === link.id ? 'var(--color-coral-red)' : '#F5EDE8',
-                        padding: '0.85rem 1rem',
-                        fontSize: '1.05rem',
+                        padding: '0.68rem 0.95rem',
+                        fontSize: '1rem',
                         fontFamily: 'var(--font-serif)',
                         display: 'flex',
                         alignItems: 'center',
@@ -545,14 +557,14 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                       }}
                       onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                        <span style={{ fontSize: '0.75rem', color: 'var(--color-silver-grey)', fontFamily: 'var(--font-sans)' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--color-silver-grey)', fontFamily: 'var(--font-sans)' }}>
                           0{idx + 1}
                         </span>
                         <span>{link.label}</span>
                       </div>
                       <ChevronDown 
-                        size={18} 
+                        size={17} 
                         color="var(--color-coral-red)" 
                         style={{
                           transform: mobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -564,12 +576,12 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                     {/* Mobile Services Accordion List */}
                     {mobileServicesOpen && (
                       <div style={{
-                        paddingLeft: '1.8rem',
-                        paddingRight: '0.5rem',
-                        marginTop: '0.4rem',
+                        paddingLeft: '1.5rem',
+                        paddingRight: '0.3rem',
+                        marginTop: '0.35rem',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '0.4rem'
+                        gap: '0.35rem'
                       }}>
                         <button
                           onClick={() => handleNavClick('packages')}
@@ -578,8 +590,8 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                             border: '1px solid rgba(233, 75, 80, 0.3)',
                             borderRadius: '8px',
                             color: 'var(--color-coral-red)',
-                            padding: '0.6rem 0.8rem',
-                            fontSize: '0.85rem',
+                            padding: '0.55rem 0.8rem',
+                            fontSize: '0.82rem',
                             textAlign: 'left',
                             cursor: 'pointer',
                             display: 'flex',
@@ -588,7 +600,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                           }}
                         >
                           <span>Explore All Photography Packages</span>
-                          <ArrowRight size={14} />
+                          <ArrowRight size={13} />
                         </button>
 
                         {SERVICES_DATA.map((svc) => (
@@ -599,8 +611,8 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                               background: 'none',
                               border: 'none',
                               color: '#DDD0D5',
-                              padding: '0.55rem 0.8rem',
-                              fontSize: '0.88rem',
+                              padding: '0.5rem 0.8rem',
+                              fontSize: '0.85rem',
                               textAlign: 'left',
                               cursor: 'pointer',
                               display: 'flex',
@@ -626,8 +638,8 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                     border: activePage === link.id ? '1px solid rgba(233, 75, 80, 0.4)' : '1px solid transparent',
                     borderRadius: '10px',
                     color: activePage === link.id ? 'var(--color-coral-red)' : '#F5EDE8',
-                    padding: '0.85rem 1rem',
-                    fontSize: '1.05rem',
+                    padding: '0.68rem 0.95rem',
+                    fontSize: '1rem',
                     fontFamily: 'var(--font-serif)',
                     display: 'flex',
                     alignItems: 'center',
@@ -636,31 +648,40 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                     cursor: 'pointer'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                    <span style={{ fontSize: '0.75rem', color: 'var(--color-silver-grey)', fontFamily: 'var(--font-sans)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <span style={{ fontSize: '0.72rem', color: 'var(--color-silver-grey)', fontFamily: 'var(--font-sans)' }}>
                       0{idx + 1}
                     </span>
                     <span>{link.label}</span>
                   </div>
-                  <ChevronRight size={16} color="var(--color-coral-red)" />
+                  <ChevronRight size={15} color="var(--color-coral-red)" />
                 </button>
               );
             })}
           </div>
 
+          {/* Bottom Action CTAs (Pinned at bottom, flexShrink: 0 guaranteed visible) */}
           <div style={{
-            paddingTop: '1.2rem',
+            paddingTop: '0.85rem',
+            paddingBottom: 'max(0.35rem, env(safe-area-inset-bottom))',
             borderTop: '1px solid rgba(166, 166, 166, 0.25)',
             display: 'flex',
             flexDirection: 'column',
-            gap: '0.8rem'
+            gap: '0.65rem',
+            flexShrink: 0
           }}>
             <button
               onClick={() => handleNavClick('booking')}
               className="btn-primary"
-              style={{ width: '100%' }}
+              style={{
+                width: '100%',
+                padding: '0.72rem 1rem',
+                fontSize: '0.88rem',
+                justifyContent: 'center',
+                boxShadow: 'var(--shadow-coral-hover)'
+              }}
             >
-              <Calendar size={16} />
+              <Calendar size={15} />
               <span>Book a Photoshoot</span>
             </button>
             
@@ -673,12 +694,15 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '0.6rem',
-                padding: '0.75rem',
+                padding: '0.68rem 1rem',
                 borderRadius: 'var(--radius-pill)',
-                border: '1px solid rgba(37, 211, 102, 0.4)',
+                border: '1.5px solid rgba(37, 211, 102, 0.55)',
+                backgroundColor: 'rgba(37, 211, 102, 0.08)',
                 color: '#25D366',
-                fontSize: '0.88rem',
-                fontWeight: 500
+                fontSize: '0.86rem',
+                fontWeight: 600,
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
               }}
             >
               <MessageCircle size={16} />
