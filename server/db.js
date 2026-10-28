@@ -1,4 +1,4 @@
-import Database from 'better-sqlite3';
+import { DatabaseSync } from 'node:sqlite';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
@@ -12,10 +12,14 @@ if (!fs.existsSync(dataDir)) {
 }
 
 const dbPath = path.join(dataDir, 'lens_leaf.db');
-const db = new Database(dbPath);
+const db = new DatabaseSync(dbPath);
 
-// Enable foreign keys and WAL mode for high performance
-db.pragma('journal_mode = WAL');
+// Enable WAL mode for high performance
+try {
+  db.exec('PRAGMA journal_mode = WAL;');
+} catch (e) {
+  // Pragma fallback
+}
 
 // Initialize database tables
 db.exec(`
@@ -110,11 +114,20 @@ if (reviewCount.count === 0) {
 
   const insertReview = db.prepare(`
     INSERT INTO reviews (client_name, service_type, rating, headline, comment, session_date, avatar_url, verified)
-    VALUES (@client_name, @service_type, @rating, @headline, @comment, @session_date, @avatar_url, @verified)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
   `);
 
   for (const review of seedReviews) {
-    insertReview.run(review);
+    insertReview.run(
+      review.client_name,
+      review.service_type,
+      review.rating,
+      review.headline,
+      review.comment,
+      review.session_date,
+      review.avatar_url,
+      review.verified
+    );
   }
 }
 

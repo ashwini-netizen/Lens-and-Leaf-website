@@ -32,16 +32,16 @@ import logoImg from '../assets/logo.png';
 import luxuryWeddingStageImg from '../assets/luxury_wedding_stage.png';
 
 export default function Home({ setActivePage, onSelectService }) {
-  // Activate IntersectionObserver for buttery-smooth scroll reveals
-  useScrollReveal();
-
-  // Testimonial carousel state
-  const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
-
   // Home Showcase photo gallery state
   const [showcaseCategory, setShowcaseCategory] = useState('All');
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(null);
   const [showAllPhotos, setShowAllPhotos] = useState(false);
+
+  // Testimonial carousel state
+  const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
+
+  // Activate IntersectionObserver for buttery-smooth scroll reveals, tracking active category
+  useScrollReveal([showcaseCategory, showAllPhotos]);
 
   useEffect(() => {
     const timer = setInterval(() => {
