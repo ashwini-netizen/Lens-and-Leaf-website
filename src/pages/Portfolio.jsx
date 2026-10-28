@@ -76,7 +76,8 @@ export default function Portfolio({ setActivePage }) {
       {/* 2. Category Filters (Requirement #9) */}
       <section style={{ padding: '2.4rem 0 1rem' }}>
         <div className="container">
-          <div style={{
+          {/* Filter Pills with Horizontal Scroll on Mobile */}
+          <div className="showcase-filter-row" style={{
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
@@ -96,7 +97,7 @@ export default function Portfolio({ setActivePage }) {
                     setActiveCategory(cat);
                     setSelectedPhotoIndex(null);
                   }}
-                  className=""
+                  className="showcase-pill-button"
                   style={{
                     padding: '0.6rem 1.35rem',
                     borderRadius: 'var(--radius-pill)',
@@ -129,7 +130,7 @@ export default function Portfolio({ setActivePage }) {
           </div>
 
           {/* 3. Asymmetric Editorial Masonry Grid (Requirement #9 & #3) */}
-          <div style={{
+          <div className="portfolio-masonry-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
             gap: '1.8rem',

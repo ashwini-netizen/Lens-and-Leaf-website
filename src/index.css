@@ -508,7 +508,9 @@ button, input, select, textarea {
   }
 }
 
-/* Responsive Media Queries */
+/* =====================================================================
+   RESPONSIVE MEDIA QUERIES & MOBILE DIMENSION PERFECTION
+   ===================================================================== */
 @media (max-width: 992px) {
   .hide-on-tablet { display: none !important; }
   .show-on-tablet { display: flex !important; }
@@ -516,7 +518,155 @@ button, input, select, textarea {
 
 @media (max-width: 640px) {
   .hide-on-mobile { display: none !important; }
+  .show-on-mobile { display: flex !important; }
 }
+
+/* Global Mobile Layout Constraints & Horizontal Overflow Shield */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  position: relative;
+}
+
+#root {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  position: relative;
+}
+
+/* Responsive Container & Spacing for Mobile Screens */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1.1rem !important;
+    padding-right: 1.1rem !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .section-title {
+    font-size: clamp(1.85rem, 6.8vw, 2.45rem) !important;
+    line-height: 1.18 !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem !important;
+    line-height: 1.62 !important;
+  }
+
+  /* Navbar Mobile Dimensions */
+  .navbar-container {
+    padding-top: 0.55rem !important;
+    padding-bottom: 0.55rem !important;
+  }
+
+  .navbar-logo-box {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .navbar-brand-title {
+    font-size: 1.3rem !important;
+  }
+
+  .navbar-brand-sub {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.18em !important;
+  }
+
+  /* Hero Section Mobile Dimensions */
+  .hero-section-wrap {
+    padding: 4rem 1rem 3.2rem !important;
+    min-height: auto !important;
+  }
+
+  .hero-status-pill {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.08em !important;
+    padding: 0.35rem 0.85rem !important;
+    max-width: 100% !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  .hero-main-title {
+    font-size: clamp(2.1rem, 7.8vw, 3.4rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 1.1rem !important;
+  }
+
+  .hero-desc-text {
+    font-size: 0.98rem !important;
+    line-height: 1.62 !important;
+    margin-bottom: 1.8rem !important;
+    padding: 0 0.5rem;
+  }
+
+  .hero-actions-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    gap: 0.85rem !important;
+  }
+
+  .hero-actions-row button {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.85rem 1.6rem !important;
+  }
+
+  /* Showcase Category Filter Pills Mobile Scroll Row */
+  .showcase-filter-row {
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0.3rem 0.2rem 0.8rem !important;
+    margin-bottom: 1.8rem !important;
+    scrollbar-width: none !important;
+  }
+
+  .showcase-filter-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .showcase-pill-button {
+    flex-shrink: 0 !important;
+    padding: 0.44rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .showcase-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.35rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  /* Grid Layouts to 1 Column on Mobile */
+  .services-preview-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.35rem !important;
+  }
+
+  .studio-grid-2col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .atelier-strip-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Video Section Mobile Dimension */
+  .video-session-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.9rem !important;
+  }
+}
+
 
 /* =====================================================================
    LUXURY ADVANCED ANIMATIONS & MICRO-INTERACTIONS

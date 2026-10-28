@@ -86,7 +86,7 @@ export default function Home({ setActivePage, onSelectService }) {
           - Secondary button: “Book Your Session” (-> Booking)
           - Camera-inspired viewfinder & aperture detail
           ===================================================================== */}
-      <section style={{
+      <section className="hero-section-wrap" style={{
         position: 'relative',
         minHeight: '94vh',
         display: 'flex',
@@ -160,8 +160,6 @@ export default function Home({ setActivePage, onSelectService }) {
           animationDelay: '-4s'
         }} />
 
-
-
         {/* Hero Central Content */}
         <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center', maxWidth: '960px' }}>
           {/* Animated Water Ripple & Lens Aperture Motif */}
@@ -171,6 +169,7 @@ export default function Home({ setActivePage, onSelectService }) {
 
           {/* Luxury Studio Status Badge */}
           <div 
+            className="hero-status-pill"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -188,39 +187,45 @@ export default function Home({ setActivePage, onSelectService }) {
               fontWeight: 600
             }}
           >
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#25D366', display: 'inline-block' }} />
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#25D366', display: 'inline-block', flexShrink: 0 }} />
             <span>Editorial Photography & Luxury Portrait Studio</span>
           </div>
 
           {/* Headline: “Every Frame Tells a Story.” with Elegant Serif Style */}
-          <h1 style={{
-            fontSize: 'clamp(2.8rem, 6.4vw, 5.2rem)',
-            fontWeight: 400,
-            lineHeight: 1.1,
-            marginBottom: '1.4rem',
-            color: '#FFFFFF',
-            textShadow: '0 4px 30px rgba(0,0,0,0.6)'
-          }}>
-            Every Frame Tells <br />
+          <h1 
+            className="hero-main-title"
+            style={{
+              fontSize: 'clamp(2.4rem, 6.4vw, 5.2rem)',
+              fontWeight: 400,
+              lineHeight: 1.1,
+              marginBottom: '1.4rem',
+              color: '#FFFFFF',
+              textShadow: '0 4px 30px rgba(0,0,0,0.6)'
+            }}
+          >
+            Every Frame Tells{' '}
             <span style={{ fontStyle: 'italic', fontWeight: 500, color: 'var(--color-blush-pink)' }}>
               a Story.
             </span>
           </h1>
 
           {/* Supporting Text strictly per Requirement #6 */}
-          <p style={{
-            fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)',
-            color: '#F5EDE8',
-            maxWidth: '740px',
-            margin: '0 auto 2.5rem',
-            lineHeight: 1.7,
-            fontWeight: 300
-          }}>
+          <p 
+            className="hero-desc-text"
+            style={{
+              fontSize: 'clamp(1.02rem, 1.4vw, 1.25rem)',
+              color: '#F5EDE8',
+              maxWidth: '740px',
+              margin: '0 auto 2.5rem',
+              lineHeight: 1.7,
+              fontWeight: 300
+            }}
+          >
             From beautiful portraits to unforgettable celebrations, we capture the moments that deserve to last forever.
           </p>
 
           {/* Buttons strictly per Requirement #6: "Explore Our Work" and "Book Your Session" */}
-          <div style={{
+          <div className="hero-actions-row" style={{
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
@@ -430,7 +435,7 @@ export default function Home({ setActivePage, onSelectService }) {
             </p>
           </div>
 
-          <div style={{
+          <div className="services-preview-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: '1.8rem'
@@ -561,7 +566,7 @@ export default function Home({ setActivePage, onSelectService }) {
           </div>
 
           {/* Category Filter Pills */}
-          <div style={{
+          <div className="showcase-filter-row" style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -578,6 +583,7 @@ export default function Home({ setActivePage, onSelectService }) {
               return (
                 <button
                   key={cat}
+                  className="showcase-pill-button"
                   onClick={() => {
                     setShowcaseCategory(cat);
                     setShowAllPhotos(false);
@@ -614,7 +620,7 @@ export default function Home({ setActivePage, onSelectService }) {
           </div>
 
           {/* Photo Showcase Grid */}
-          <div style={{
+          <div className="showcase-cards-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))',
             gap: '1.8rem',
@@ -764,7 +770,7 @@ export default function Home({ setActivePage, onSelectService }) {
           </p>
         </div>
 
-        <div style={{
+        <div className="atelier-strip-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           gap: '1.2rem',
@@ -822,7 +828,7 @@ export default function Home({ setActivePage, onSelectService }) {
       <section style={{ padding: '3.8rem 0', backgroundColor: 'var(--bg-canvas)' }}>
         <div className="container">
           <div 
-            className="reveal-on-scroll"
+            className="reveal-on-scroll studio-grid-2col"
             style={{
               borderRadius: 'var(--radius-xl)',
               backgroundColor: 'var(--bg-surface)',

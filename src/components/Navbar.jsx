@@ -111,7 +111,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
         transition: 'all 0.3s ease',
         boxShadow: isScrolled ? '0 10px 30px rgba(0,0,0,0.35)' : 'none'
       }}>
-        <div className="container" style={{
+        <div className="container navbar-container" style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -125,15 +125,15 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.9rem',
+              gap: '0.75rem',
               cursor: 'pointer',
               userSelect: 'none'
             }}
           >
-            <div style={{
+            <div className="navbar-logo-box" style={{
               position: 'relative',
-              width: '52px',
-              height: '52px',
+              width: '50px',
+              height: '50px',
               borderRadius: '50%',
               overflow: 'hidden',
               boxShadow: '0 4px 18px rgba(233, 75, 80, 0.25)',
@@ -152,7 +152,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
               />
             </div>
             <div>
-              <div style={{
+              <div className="navbar-brand-title" style={{
                 fontFamily: 'var(--font-serif)',
                 fontSize: '1.55rem',
                 fontWeight: 600,
@@ -166,7 +166,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                 <span style={{ color: 'var(--color-warm-orange)', fontStyle: 'italic', fontWeight: 400 }}>&</span>
                 <span style={{ color: 'var(--color-rose-pink)' }}>Leaf</span>
               </div>
-              <div style={{
+              <div className="navbar-brand-sub" style={{
                 fontSize: '0.68rem',
                 color: 'var(--color-blush-pink)',
                 letterSpacing: '0.28em',
@@ -432,7 +432,7 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
             <button
               onClick={() => handleNavClick('booking')}
-              className="btn-primary"
+              className="btn-primary hide-on-tablet"
               style={{
                 padding: '0.68rem 1.45rem',
                 fontSize: '0.84rem'
@@ -454,7 +454,6 @@ export default function Navbar({ activePage, setActivePage, onSelectService }) {
                 padding: '0.55rem',
                 color: '#FFFFFF',
                 cursor: 'pointer',
-                display: 'none',
                 alignItems: 'center',
                 justifyContent: 'center'
               }}

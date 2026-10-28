@@ -82,7 +82,7 @@ export default function Services({ setActivePage, onSelectService }) {
       {/* Category Filter Pills */}
       <section style={{ padding: '2.5rem 0 1rem' }}>
         <div className="container">
-          <div style={{
+          <div className="showcase-filter-row" style={{
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
@@ -95,6 +95,7 @@ export default function Services({ setActivePage, onSelectService }) {
                 <button
                   key={tab}
                   onClick={() => setActiveCategoryFilter(tab)}
+                  className="showcase-pill-button"
                   style={{
                     padding: '0.55rem 1.3rem',
                     borderRadius: 'var(--radius-pill)',
@@ -106,7 +107,6 @@ export default function Services({ setActivePage, onSelectService }) {
                     cursor: 'pointer',
                     transition: 'all 0.25s ease'
                   }}
-                  className=""
                 >
                   {tab}
                 </button>
@@ -115,7 +115,7 @@ export default function Services({ setActivePage, onSelectService }) {
           </div>
 
           {/* All 12 Services Grid (Requirement #8) */}
-          <div style={{
+          <div className="services-preview-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
             gap: '2.5rem',

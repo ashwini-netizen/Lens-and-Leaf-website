@@ -341,7 +341,7 @@ export default function CinematicVideoSection({ setActivePage, onSelectService }
         </div>
 
         {/* 4 Session Cards */}
-        <div style={{
+        <div className="video-session-cards-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
           gap: '1.2rem'

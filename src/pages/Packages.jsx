@@ -174,7 +174,7 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
       {/* 2. Category Filter Pills */}
       <section style={{ padding: '2.5rem 0 1rem' }}>
         <div className="container">
-          <div style={{
+          <div className="showcase-filter-row" style={{
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
@@ -187,6 +187,7 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
                 <button
                   key={tab}
                   onClick={() => setActiveCategoryFilter(tab)}
+                  className="showcase-pill-button"
                   style={{
                     padding: '0.55rem 1.3rem',
                     borderRadius: 'var(--radius-pill)',
@@ -206,7 +207,7 @@ export default function Packages({ setActivePage, onSelectService, onSelectPacka
           </div>
 
           {/* 3. All 12 Photography Service Packages (The Cards shown in 2nd image) */}
-          <div style={{
+          <div className="services-preview-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
             gap: '2.5rem',
