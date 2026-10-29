@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Sparkles, SlidersHorizontal, Eye } from 'lucide-react';
+import defaultBeforeImg from '../assets/newborn_before_raw.jpg';
+import defaultAfterImg from '../assets/newborn_after_fineart.jpg';
 
 export default function BeforeAfterSlider({
-  beforeImage = 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=70',
-  afterImage = 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=95',
+  beforeImage = defaultBeforeImg,
+  afterImage = defaultAfterImg,
   beforeLabel = 'Uncompressed RAW Capture',
   afterLabel = 'Lens & Leaf Signature Master Edit',
   title,
@@ -79,7 +81,7 @@ export default function BeforeAfterSlider({
         style={{
           position: 'relative',
           width: '100%',
-          aspectRatio: '16/10',
+          aspectRatio: '16/9',
           maxHeight: '580px',
           overflow: 'hidden',
           borderRadius: 'var(--radius-lg)',
@@ -89,47 +91,55 @@ export default function BeforeAfterSlider({
           userSelect: 'none'
         }}
       >
-        {/* Layer 1: "After" Image (Complete Fine Art Edit) */}
+        {/* Layer 1: "After" Image (Complete Fine Art Master Edit) */}
         <img
           src={afterImage}
-          alt="Lens and Leaf Retouched Edit"
+          alt="Lens & Leaf Signature Master Edit"
+          draggable={false}
           style={{
             position: 'absolute',
             top: 0,
             left: 0,
             width: '100%',
             height: '100%',
-            objectFit: 'cover'
+            objectFit: 'cover',
+            pointerEvents: 'none'
           }}
         />
 
-        {/* Layer 2: "Before" Image (Clipped RAW look) */}
-        <div
+        {/* Layer 2: "Before" Image (Uncompressed RAW Capture with clip-path) */}
+        <img
+          src={beforeImage}
+          alt="Original RAW Capture"
+          draggable={false}
           style={{
             position: 'absolute',
             top: 0,
             left: 0,
-            bottom: 0,
-            width: `${sliderPosition}%`,
-            overflow: 'hidden',
-            borderRight: '2px solid #FFFFFF'
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+            WebkitClipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+            pointerEvents: 'none'
           }}
-        >
-          <img
-            src={beforeImage}
-            alt="Original RAW Capture"
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100%',
-              height: '100%',
-              maxWidth: 'none',
-              objectFit: 'cover',
-              filter: 'saturate(0.7) brightness(0.92) contrast(0.9)' // Realistic RAW desaturated simulation
-            }}
-          />
-        </div>
+        />
+
+        {/* Divider vertical white bar */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: `${sliderPosition}%`,
+            width: '2px',
+            backgroundColor: '#FFFFFF',
+            boxShadow: '0 0 12px rgba(0,0,0,0.6)',
+            transform: 'translateX(-50%)',
+            pointerEvents: 'none',
+            zIndex: 3
+          }}
+        />
 
         {/* Labels */}
         <div style={{
